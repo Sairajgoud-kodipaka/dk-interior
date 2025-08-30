@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 245 244 242;
+    --foreground: 15 17 21;
+    --card: 255 255 255;
+    --card-foreground: 15 17 21;
+    --popover: 255 255 255;
+    --popover-foreground: 15 17 21;
+    --primary: 184 80 66;
+    --primary-foreground: 255 255 255;
+    --secondary: 245 244 242;
+    --secondary-foreground: 15 17 21;
+    --muted: 245 244 242;
+    --muted-foreground: 107 114 128;
+    --accent: 245 244 242;
+    --accent-foreground: 15 17 21;
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
+    --border: 107 114 128;
+    --input: 245 244 242;
+    --ring: 184 80 66;
+    --radius: 0.5rem;
+    
+    /* Fluid Typography Variables */
+    --fluid-min-width: 320;
+    --fluid-max-width: 1140;
+    --fluid-screen: 100vw;
+    --fluid-bp: calc(
+      (var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) /
+      (var(--fluid-max-width) - var(--fluid-min-width))
+    );
+  }
+  
+  @media screen and (min-width: 1140px) {
+    :root {
+      --fluid-screen: calc(var(--fluid-max-width) * 1px);
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Fluid Typography Classes */
+  .text-fluid-xs {
+    font-size: calc(0.75rem + (0.875 - 0.75) * var(--fluid-bp));
+  }
+  
+  .text-fluid-sm {
+    font-size: calc(0.875rem + (1 - 0.875) * var(--fluid-bp));
+  }
+  
+  .text-fluid-base {
+    font-size: calc(1rem + (1.125 - 1) * var(--fluid-bp));
+  }
+  
+  .text-fluid-lg {
+    font-size: calc(1.125rem + (1.25 - 1.125) * var(--fluid-bp));
+  }
+  
+  .text-fluid-xl {
+    font-size: calc(1.25rem + (1.5 - 1.25) * var(--fluid-bp));
+  }
+  
+  .text-fluid-2xl {
+    font-size: calc(1.5rem + (2 - 1.5) * var(--fluid-bp));
+  }
+  
+  .text-fluid-3xl {
+    font-size: calc(1.875rem + (2.5 - 1.875) * var(--fluid-bp));
+  }
+  
+  .text-fluid-4xl {
+    font-size: calc(2.25rem + (3 - 2.25) * var(--fluid-bp));
+  }
+  
+  .text-fluid-5xl {
+    font-size: calc(3rem + (4 - 3) * var(--fluid-bp));
+  }
+  
+  .text-fluid-6xl {
+    font-size: calc(3.75rem + (5 - 3.75) * var(--fluid-bp));
+  }
+  
+  .text-fluid-7xl {
+    font-size: calc(4.5rem + (6 - 4.5) * var(--fluid-bp));
+  }
+}
+
+@layer utilities {
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Animation Utilities */
+  .animate-reveal {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+    transition: all 0.8s cubic-bezier(0.25, 0.25, 0.25, 0.75);
+  }
+  
+  .animate-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  
+  .animate-reveal-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: all 0.8s cubic-bezier(0.25, 0.25, 0.25, 0.75);
+  }
+  
+  .animate-reveal-left.revealed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .animate-reveal-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: all 0.8s cubic-bezier(0.25, 0.25, 0.25, 0.75);
+  }
+  
+  .animate-reveal-right.revealed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .animate-scale-in {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.6s cubic-bezier(0.25, 0.25, 0.25, 0.75);
+  }
+  
+  .animate-scale-in.revealed {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  /* Interactive Elements */
+  .interactive-element {
+    transition: all 0.3s cubic-bezier(0.25, 0.25, 0.25, 0.75);
+  }
+  
+  .interactive-element:hover {
+    transform: translateY(-4px) scale(1.02);
+  }
+  
+  .interactive-element:active {
+    transform: translateY(-2px) scale(0.98);
+  }
+  
+  /* Kinetic Text Effects */
+  .kinetic-text {
+    display: inline-block;
+    transition: all 0.3s cubic-bezier(0.25, 0.25, 0.25, 0.75);
+  }
+  
+  .kinetic-text:hover {
+    letter-spacing: 0.05em;
+    transform: translateY(-2px);
+  }
+  
+  /* Enhanced Focus States */
+  .focus-enhanced:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(184, 80, 66, 0.3);
+    transform: scale(1.02);
+  }
+  
+  /* Parallax Container */
+  .parallax-container {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .parallax-element {
+    will-change: transform;
+  }
+}
+
+/* Advanced Animations */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: -200px 0;
+    }
+    100% {
+      background-position: calc(200px + 100%) 0;
+    }
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 0.25, 0.25, 0.75);
+  }
+  
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s cubic-bezier(0.25, 0.25, 0.25, 0.75);
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s cubic-bezier(0.25, 0.25, 0.25, 0.75);
+  }
+  
+  .animate-scale-in-anim {
+    animation: scaleIn 0.6s cubic-bezier(0.25, 0.25, 0.25, 0.75);
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200px 100%;
+  }
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  body {
+    cursor: auto;
+  }
+}
