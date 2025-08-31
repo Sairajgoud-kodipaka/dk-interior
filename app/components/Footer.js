@@ -1,4 +1,9 @@
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+
 const Footer = () => {
+  const router = useRouter()
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
     if (element) {
@@ -6,17 +11,29 @@ const Footer = () => {
     }
   }
 
+  const handleNavigation = (href) => {
+    if (href.startsWith('/')) {
+      // External page navigation
+      router.push(href)
+    } else if (href.startsWith('#')) {
+      // Scroll to section on same page
+      scrollToSection(href.substring(1))
+    }
+  }
+
   return (
     <footer className="bg-[#0f1115] text-white py-12">
-              <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="md:col-span-2">
-            <img
-              src="/logo.png"
-              alt="DK Interiors Logo"
-              className="h-16 w-auto mb-6 object-contain"
-            />
+            <Link href="/">
+              <img
+                src="/dk Interior - Logo w.png"
+                alt="DK Interiors Logo"
+                className="h-20 w-auto mb-6 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-200"
+              />
+            </Link>
             <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
               Transforming spaces with innovative design solutions. 
               Your trusted partner for premium interior fitouts across India.
@@ -24,11 +41,11 @@ const Footer = () => {
             <div className="space-y-3 text-gray-300">
               <div className="flex items-center space-x-3">
                 <span className="text-[#B85042]">📧</span>
-                <span>info@dkinteriors.com</span>
+                <span>dkinterior17@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3">
-                <span className="text-[#B85042]">📞</span>
-                <span>+91 99757 60266</span>
+                <span className="text-[#B85042]">📱</span>
+                <span>+91 98858 09472</span>
               </div>
               <div className="flex items-start space-x-3">
                 <span className="text-[#B85042] mt-1">📍</span>
@@ -42,44 +59,20 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-6 text-[#B85042] border-b-2 border-[#B85042] pb-2">Services</h3>
             <ul className="space-y-3">
               <li>
-                <button 
-                  onClick={() => scrollToSection('services')}
+                <Link 
+                  href="/fitout-solutions"
                   className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline"
                 >
-                  Retail Fitouts
-                </button>
+                  Fit-out Solutions
+                </Link>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection('services')}
-                  className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline"
-                >
-                  Commercial Spaces
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => scrollToSection('services')}
+                <Link 
+                  href="/residential-design"
                   className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline"
                 >
                   Residential Design
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => scrollToSection('services')}
-                  className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline"
-                >
-                  Project Management
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => scrollToSection('services')}
-                  className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline"
-                >
-                  Design Consultation
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
@@ -89,12 +82,12 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-6 text-[#B85042] border-b-2 border-[#B85042] pb-2">Company</h3>
             <ul className="space-y-3">
               <li>
-                <button 
-                  onClick={() => scrollToSection('about')}
+                <Link 
+                  href="/about"
                   className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline"
                 >
                   About Us
-                </button>
+                </Link>
               </li>
               <li>
                 <button 
@@ -105,12 +98,12 @@ const Footer = () => {
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection('factory')}
+                <Link 
+                  href="/factory"
                   className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline"
                 >
                   Factory
-                </button>
+                </Link>
               </li>
               <li>
                 <button 

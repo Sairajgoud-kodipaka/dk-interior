@@ -163,7 +163,7 @@ const ContactForm = () => {
                 <div>
                   <h4 className="font-semibold text-[#0f1115] mb-1">Email</h4>
                   <p className="text-[#6b7280] hover:text-[#B85042] transition-colors duration-200">
-                    sairajgoudkodipaka@gmail.com
+                    dkinterior17@gmail.com
                   </p>
                 </div>
               </div>
@@ -173,9 +173,9 @@ const ContactForm = () => {
                   <Phone className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-[#0f1115] mb-1">Phone</h4>
+                  <h4 className="font-semibold text-[#0f1115] mb-1">Mobile</h4>
                   <p className="text-[#6b7280] hover:text-[#B85042] transition-colors duration-200">
-                    +91 99757 60266
+                    +91 98858 09472
                   </p>
                 </div>
               </div>

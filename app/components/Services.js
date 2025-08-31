@@ -12,40 +12,18 @@ const Services = () => {
 
   const services = [
     {
-      icon: "🏠",
-      title: "Interior Design",
-      description: "Comprehensive interior design solutions tailored to transform your vision into reality with unmatched expertise and attention to detail",
-      highlight: "Premium Design"
-    },
-    {
       icon: "🏗️",
       title: "Fit-out Solutions",
-      description: "Complete fit-out services for retail, commercial, and residential spaces, ensuring precision and quality at every step",
-      highlight: "End-to-End"
+      description: "Transform retail, commercial, and corporate spaces with our comprehensive fit-out services. From jewelry stores to office interiors, we deliver precision craftsmanship and innovative design solutions.",
+      highlight: "End-to-End",
+      redirectTo: "/fitout-solutions"
     },
     {
-      icon: "🏭",
-      title: "In-House Production",
-      description: "State-of-the-art factory with advanced machinery for custom furniture, partitions, and interior elements",
-      highlight: "Quality Control"
-    },
-    {
-      icon: "⚡",
-      title: "Project Management",
-      description: "Professional project management ensuring timely delivery, budget adherence, and exceptional results",
-      highlight: "On-Time Delivery"
-    },
-    {
-      icon: "🔧",
-      title: "Maintenance & Support",
-      description: "24/7 post-sales support, maintenance services, and long-term care for your interior investments",
-      highlight: "24/7 Support"
-    },
-    {
-      icon: "🎨",
-      title: "Custom Solutions",
-      description: "Tailor-made interior solutions that reflect your brand identity and meet specific requirements",
-      highlight: "Bespoke Design"
+      icon: "🏠",
+      title: "Residential Design",
+      description: "Create your dream home with bespoke interior design. We transform houses into personalized sanctuaries, from kitchens to bedrooms, ensuring every space reflects your unique style and lifestyle.",
+      highlight: "Premium Design",
+      redirectTo: "/residential-design"
     }
   ]
 
@@ -56,9 +34,15 @@ const Services = () => {
   }, [isInView])
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+    if (sectionId.startsWith('/')) {
+      // External page navigation
+      window.location.href = sectionId
+    } else {
+      // Scroll to section on same page
+      const element = document.getElementById(sectionId)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
     }
   }
 
@@ -79,88 +63,101 @@ const Services = () => {
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Comprehensive interior design and fit-out solutions for retail, commercial, and residential spaces. 
-            From concept to completion, we deliver excellence at every step.
+            Discover our comprehensive range of interior solutions. From retail fit-outs to residential transformations, 
+            we bring your vision to life with precision craftsmanship and innovative design.
           </p>
         </motion.div>
 
         {/* Enhanced Services Grid */}
         <div 
           ref={gridRef}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto"
         >
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className={`group bg-white/80 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl border border-gray-200/50 interactive-element overflow-hidden relative ${
+              className={`group bg-white/90 backdrop-blur-sm p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-xl border border-gray-200/50 interactive-element overflow-hidden relative ${
                 gridVisible ? 'animate-reveal revealed' : 'animate-reveal'
-              }`}
+              } ${index === 0 ? 'lg:col-span-1' : 'lg:col-span-1'}`}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1, ease: "easeOut" }}
+              transition={{ duration: 0.8, delay: index * 0.2, ease: "easeOut" }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.02, y: -5 }}
+              whileHover={{ scale: 1.02, y: -4 }}
             >
               {/* Card background gradient on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#B85042]/5 to-[#A14237]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#B85042]/5 via-[#B85042]/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               
               {/* Content */}
               <div className="relative z-10">
-                {/* Icon container with enhanced styling */}
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#B85042] to-[#A14237] rounded-2xl flex items-center justify-center text-white mb-4 sm:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
-                  <span className="text-2xl sm:text-3xl">{service.icon}</span>
-                </div>
-                
-                {/* Highlight badge */}
-                <div className="inline-block bg-[#B85042]/10 text-[#B85042] text-xs font-semibold px-2 sm:px-3 py-1 rounded-full mb-3 sm:mb-4">
-                  {service.highlight}
+                {/* Header Section with Icon and Badge */}
+                <div className="flex items-start justify-between mb-4">
+                  {/* Icon container with enhanced styling */}
+                  <div className="w-14 h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-[#B85042] to-[#A14237] rounded-xl flex items-center justify-center text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
+                    <span className="text-2xl lg:text-3xl">{service.icon}</span>
+                  </div>
+                  
+                  {/* Highlight badge */}
+                  <div className="inline-block bg-[#B85042]/10 text-[#B85042] text-xs font-semibold px-3 py-1.5 rounded-full border border-[#B85042]/20">
+                    {service.highlight}
+                  </div>
                 </div>
                 
                 {/* Title */}
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 kinetic-text group-hover:text-[#B85042] transition-colors duration-300">
+                <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-3 kinetic-text group-hover:text-[#B85042] transition-colors duration-300">
                   {service.title}
                 </h3>
                 
                 {/* Description */}
-                <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 sm:mb-6 group-hover:text-gray-800 transition-colors duration-300">
+                <p className="text-sm lg:text-base text-gray-600 leading-relaxed mb-5 group-hover:text-gray-800 transition-colors duration-300">
                   {service.description}
                 </p>
                 
-                {/* Learn more arrow */}
-                <div 
-                  onClick={() => scrollToSection('contact')}
-                  className="flex items-center text-[#B85042] font-semibold group-hover:translate-x-2 transition-transform duration-300 cursor-pointer hover:text-[#A14237] p-2 -m-2"
+                {/* CTA Button */}
+                <button 
+                  onClick={() => scrollToSection(service.redirectTo)}
+                  className="w-full bg-gradient-to-r from-[#B85042] to-[#A14237] text-white px-5 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 cursor-pointer group-hover:shadow-xl border-0 focus:outline-none focus:ring-2 focus:ring-[#B85042] focus:ring-offset-2"
                 >
-                  <span className="text-xs sm:text-sm mr-2">Learn More</span>
-                  <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
-                </div>
+                  <span className="flex items-center justify-center">
+                    <span className="mr-2">Learn More</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                  </span>
+                </button>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Services CTA */}
+        {/* Services CTA - Enhanced Layout */}
         <motion.div 
-          className="text-center mt-20"
+          className="text-center mt-16 lg:mt-20"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <div className="bg-gradient-to-r from-[#B85042]/10 to-white/50 backdrop-blur-sm border border-[#B85042]/20 rounded-2xl p-12">
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Ready to Transform Your Space?
+          <div className="bg-gradient-to-r from-[#B85042]/10 via-white/50 to-[#B85042]/10 backdrop-blur-sm border border-[#B85042]/20 rounded-2xl p-8 lg:p-12 max-w-4xl mx-auto">
+            <h3 className="text-2xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Ready to Start Your Project?
             </h3>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
-              Let's discuss your project requirements and create exceptional interior experiences together. 
-              Our team of experts is ready to bring your vision to life.
+            <p className="text-base lg:text-lg text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed">
+              Explore our detailed service pages to understand our process, view our portfolio, and get inspired. 
+              Each service offers comprehensive information and showcases our expertise in that specific area.
             </p>
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="bg-gradient-to-r from-[#B85042] to-[#A14237] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 cursor-pointer"
-            >
-              Get Started Today
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button 
+                onClick={() => scrollToSection('/fitout-solutions')}
+                className="bg-gradient-to-r from-[#B85042] to-[#A14237] text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 cursor-pointer text-base min-w-[180px]"
+              >
+                Explore Fit-out Solutions
+              </button>
+              <button 
+                onClick={() => scrollToSection('/residential-design')}
+                className="border-2 border-[#B85042] text-[#B85042] px-8 py-4 rounded-xl font-semibold hover:bg-[#B85042] hover:text-white transition-all duration-300 transform hover:scale-105 cursor-pointer text-base min-w-[180px]"
+              >
+                View Residential Design
+              </button>
+            </div>
           </div>
         </motion.div>
       </div>

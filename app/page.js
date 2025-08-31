@@ -3,10 +3,9 @@
 import { useState, useEffect } from 'react'
 import NavBar from './components/NavBar'
 import Hero from './components/Hero'
-import About from './components/About'
 import Services from './components/Services'
-import Factory from './components/Factory'
 import OurWork from './components/OurWork'
+import WhyWorkWithUs from './components/WhyWorkWithUs'
 import TrustedBrands from './components/TrustedBrands'
 import ContactForm from './components/ContactForm'
 import Footer from './components/Footer'
@@ -43,12 +42,60 @@ export default function App() {
       
       {/* Main Content */}
       <main className="relative">
+        {/* Hero Section - Main introduction */}
         <Hero />
-        <About />
+        
+        {/* Services Section - Overview with CTAs to internal pages */}
         <Services />
-        <Factory />
+        
+        {/* Factory Section - Showcase manufacturing capabilities */}
+        <section id="factory" className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Our State-of-the-Art Factory
+              </h2>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+                Discover our 27,000+ SFT manufacturing facility equipped with advanced machinery for precision fit-outs and custom furniture.
+              </p>
+              <button 
+                onClick={() => window.location.href = '/factory'}
+                className="bg-[#B85042] hover:bg-[#A14237] text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              >
+                Visit Our Factory
+              </button>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <div className="text-center">
+                <div className="text-4xl mb-4">🏭</div>
+                <h3 className="text-xl font-bold mb-2">Advanced Machinery</h3>
+                <p className="text-gray-300">5+ specialized machines for precision cutting, edge banding, and finishing</p>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl mb-4">⚡</div>
+                <h3 className="text-xl font-bold mb-2">In-House Production</h3>
+                <p className="text-gray-300">100% control over quality, timelines, and customization</p>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl mb-4">🎯</div>
+                <h3 className="text-xl font-bold mb-2">Quality Assurance</h3>
+                <p className="text-gray-300">Rigorous testing and inspection at every stage</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        {/* Our Work Section - Portfolio showcase */}
         <OurWork />
+        
+        {/* Why Work With Us Section - Trust factors */}
+        <WhyWorkWithUs />
+        
+        {/* Trusted Brands Section - Client showcase */}
         <TrustedBrands />
+        
+        {/* Contact Section - Get in touch */}
         <ContactForm />
       </main>
       
