@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
+import { useRouter } from 'next/navigation'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 import Hero from '../components/Hero'
@@ -10,6 +11,7 @@ export default function AboutPage() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
+  const router = useRouter()
 
   useEffect(() => {
     setIsLoaded(true)
@@ -286,19 +288,15 @@ export default function AboutPage() {
                   Partner with DK Interiors to create exceptional interior spaces that reflect your brand's 
                   vision and exceed your expectations. Let's discuss your project requirements.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a
-                    href="/contact"
+                <div className="flex justify-center">
+                  <button
+                    onClick={() => {
+                      router.push('/#contact');
+                    }}
                     className="inline-block bg-[#B85042] text-white font-bold py-4 px-8 rounded-xl hover:bg-[#A14237] transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-[#B85042]/30"
                   >
                     Start Your Project
-                  </a>
-                  <a
-                    href="/contact"
-                    className="inline-block bg-white text-[#B85042] font-bold py-4 px-8 rounded-xl border-2 border-[#B85042] hover:bg-[#B85042] hover:text-white transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-[#B85042]/30"
-                  >
-                    Schedule Consultation
-                  </a>
+                  </button>
                 </div>
               </div>
             </motion.div>

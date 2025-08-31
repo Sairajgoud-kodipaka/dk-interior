@@ -101,9 +101,7 @@ const WhyWorkWithUs = () => {
         <div className={`text-center mt-16 transition-all duration-1000 delay-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
-          <button className="bg-[#B85042] hover:bg-[#B85042]/90 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#B85042] focus:ring-offset-2">
-            Start Your Project
-          </button>
+          
         </div>
       </div>
     </section>

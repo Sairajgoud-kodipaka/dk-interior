@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { ArrowLeft, CheckCircle, Star, Users, Clock, Award, Store, Building2, Gem, Briefcase } from 'lucide-react'
 import NavBar from '../components/NavBar'
 import Hero from '../components/Hero'
@@ -10,6 +11,7 @@ import Footer from '../components/Footer'
 
 const FitoutSolutions = () => {
   const [isLoaded, setIsLoaded] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
     setIsLoaded(true)
@@ -180,18 +182,22 @@ const FitoutSolutions = () => {
                   Let's discuss your fit-out project and create something extraordinary together.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link
-                    href="/contact"
+                  <button
+                    onClick={() => {
+                      router.push('/#contact');
+                    }}
                     className="inline-block bg-white text-[#B85042] font-semibold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-lg"
                   >
                     Get Free Quote
-                  </Link>
-                  <Link
-                    href="/our-work"
+                  </button>
+                  <button
+                    onClick={() => {
+                      router.push('/#our-work');
+                    }}
                     className="inline-block border-2 border-white text-white font-semibold py-4 px-8 rounded-xl hover:bg-white hover:text-[#B85042] transition-all duration-300 hover:scale-105"
                   >
                     View Our Work
-                  </Link>
+                  </button>
                 </div>
               </div>
             </motion.div>

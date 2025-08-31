@@ -2,12 +2,14 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
+import { useRouter } from 'next/navigation'
 
 const OurWork = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [hoveredProject, setHoveredProject] = useState(null)
   const sectionRef = useRef(null)
+  const router = useRouter()
 
   const categories = [
     { id: 'all', name: 'All Projects', count: 12 },
@@ -291,9 +293,14 @@ const OurWork = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
             
-              <button className="border-2 border-[#B85042] text-[#B85042] px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#B85042] hover:text-white transition-all duration-300 transform hover:scale-105">
+              <button 
+                onClick={() => {
+                  router.push('/#contact');
+                }}
+                className="border-2 border-[#B85042] text-[#B85042] px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#B85042] hover:text-white transition-all duration-300 transform hover:scale-105"
+              >
                 Schedule Consultation
-            </button>
+              </button>
           </div>
         </div>
         </motion.div>

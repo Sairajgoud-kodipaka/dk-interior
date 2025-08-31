@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { ArrowLeft, Home, Palette, Ruler, Heart, Shield, Clock, Users, Bed, ChefHat, ShowerHead, BookOpen, Baby } from 'lucide-react'
 import NavBar from '../components/NavBar'
 import Hero from '../components/Hero'
@@ -10,6 +11,7 @@ import Footer from '../components/Footer'
 
 const ResidentialDesign = () => {
   const [isLoaded, setIsLoaded] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
     setIsLoaded(true)
@@ -247,18 +249,22 @@ const ResidentialDesign = () => {
                   Let's transform your living space into something extraordinary that reflects your unique style and personality.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link
-                    href="/contact"
+                  <button
+                    onClick={() => {
+                      router.push('/#contact');
+                    }}
                     className="inline-block bg-white text-[#B85042] font-semibold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-lg"
                   >
                     Start Your Project
-                  </Link>
-                  <Link
-                    href="/our-work"
+                  </button>
+                  <button
+                    onClick={() => {
+                      router.push('/#our-work');
+                    }}
                     className="inline-block border-2 border-white text-white font-semibold py-4 px-8 rounded-xl hover:bg-white hover:text-[#B85042] transition-all duration-300 hover:scale-105"
                   >
-                    View Our Portfolio
-                  </Link>
+                    View Our Work
+                  </button>
                 </div>
               </div>
             </motion.div>
