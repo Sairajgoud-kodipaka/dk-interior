@@ -1,153 +1,168 @@
 'use client'
 
-import { Home, Building2, Store, Palette, Hammer, Users, ArrowRight } from 'lucide-react'
-import { useScrollReveal, useStaggerReveal } from '@/lib/animations'
+import { useState, useEffect, useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
 
 const Services = () => {
-  const [titleRef, titleVisible] = useScrollReveal({ threshold: 0.3 })
-  const [subtitleRef, subtitleVisible] = useScrollReveal({ threshold: 0.3 })
-  const [gridRef, gridVisible] = useStaggerReveal(6, { threshold: 0.1 })
+  const [activeService, setActiveService] = useState(0)
+  const gridRef = useRef(null)
+  const isInView = useInView(gridRef, { once: true, threshold: 0.1 })
+  const [gridVisible, setGridVisible] = useState(false)
 
   const services = [
     {
-      icon: <Store className="w-8 h-8" />,
-      title: "Retail Fitouts",
-      description: "Creating compelling retail environments that drive sales and enhance customer experience with strategic layout design.",
-      highlight: "500+ Retail Projects"
+      icon: "🏠",
+      title: "Interior Design",
+      description: "Comprehensive interior design solutions tailored to transform your vision into reality with unmatched expertise and attention to detail",
+      highlight: "Premium Design"
     },
     {
-      icon: <Building2 className="w-8 h-8" />,
-      title: "Commercial Spaces",
-      description: "Modern office designs that boost productivity and reflect your company culture through innovative workspace solutions.",
-      highlight: "Corporate Excellence"
+      icon: "🏗️",
+      title: "Fit-out Solutions",
+      description: "Complete fit-out services for retail, commercial, and residential spaces, ensuring precision and quality at every step",
+      highlight: "End-to-End"
     },
     {
-      icon: <Home className="w-8 h-8" />,
-      title: "Residential Design",
-      description: "Personalized home interiors that combine comfort, style, and functionality to create your perfect living space.",
-      highlight: "Luxury Living"
+      icon: "🏭",
+      title: "In-House Production",
+      description: "State-of-the-art factory with advanced machinery for custom furniture, partitions, and interior elements",
+      highlight: "Quality Control"
     },
     {
-      icon: <Palette className="w-8 h-8" />,
-      title: "Design Consultation",
-      description: "Expert guidance on space planning, color schemes, and design direction to bring your vision to life.",
-      highlight: "Expert Guidance"
-    },
-    {
-      icon: <Hammer className="w-8 h-8" />,
+      icon: "⚡",
       title: "Project Management",
-      description: "End-to-end project execution with timely delivery and quality assurance throughout the entire process.",
+      description: "Professional project management ensuring timely delivery, budget adherence, and exceptional results",
       highlight: "On-Time Delivery"
     },
     {
-      icon: <Users className="w-8 h-8" />,
+      icon: "🔧",
+      title: "Maintenance & Support",
+      description: "24/7 post-sales support, maintenance services, and long-term care for your interior investments",
+      highlight: "24/7 Support"
+    },
+    {
+      icon: "🎨",
       title: "Custom Solutions",
-      description: "Tailored design solutions that meet your specific requirements and budget with personalized attention.",
+      description: "Tailor-made interior solutions that reflect your brand identity and meet specific requirements",
       highlight: "Bespoke Design"
     }
   ]
 
-  return (
-    <section id="services" className="py-24 bg-gradient-to-br from-[#f5f4f2] via-[#f5f4f2] to-[#f0efed] relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute top-1/4 left-0 w-72 h-72 bg-[#B85042]/5 rounded-full blur-3xl transform -translate-x-36" />
-      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-[#B85042]/3 rounded-full blur-3xl transform translate-x-48" />
-      
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          {/* Enhanced Section Header */}
-          <div className="text-center mb-20">
-            <div 
-              ref={titleRef}
-              className={`mb-6 ${titleVisible ? 'animate-reveal revealed' : 'animate-reveal'}`}
-            >
-              <h2 className="text-fluid-4xl lg:text-fluid-5xl font-bold text-[#0f1115] kinetic-text">
-                Our{' '}
-                <span className="bg-gradient-to-r from-[#B85042] to-[#A14237] bg-clip-text text-transparent">
-                  Services
-                </span>
-              </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-[#B85042] to-[#A14237] mx-auto rounded-full mt-4" />
-            </div>
-            
-            <div 
-              ref={subtitleRef}
-              className={`${subtitleVisible ? 'animate-reveal revealed' : 'animate-reveal'}`}
-              style={{ animationDelay: '0.2s' }}
-            >
-              <p className="text-fluid-lg text-[#6b7280] max-w-4xl mx-auto leading-relaxed font-medium">
-                Comprehensive interior design solutions tailored to transform your vision into reality 
-                with unmatched expertise and attention to detail
-              </p>
-            </div>
-          </div>
+  useEffect(() => {
+    if (isInView) {
+      setGridVisible(true)
+    }
+  }, [isInView])
 
-          {/* Enhanced Services Grid */}
-          <div 
-            ref={gridRef}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className={`group bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-2xl border border-[#6b7280]/10 interactive-element overflow-hidden relative ${
-                  gridVisible ? 'animate-reveal revealed' : 'animate-reveal'
-                }`}
-                style={{ animationDelay: `${0.1 * (index + 1)}s` }}
-              >
-                {/* Card background gradient on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#B85042]/5 to-[#A14237]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                {/* Content */}
-                <div className="relative z-10">
-                  {/* Icon container with enhanced styling */}
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#B85042] to-[#A14237] rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
-                    {service.icon}
-                  </div>
-                  
-                  {/* Highlight badge */}
-                  <div className="inline-block bg-[#B85042]/10 text-[#B85042] text-xs font-semibold px-3 py-1 rounded-full mb-4">
-                    {service.highlight}
-                  </div>
-                  
-                  {/* Title */}
-                  <h3 className="text-fluid-xl font-bold text-[#0f1115] mb-4 kinetic-text group-hover:text-[#B85042] transition-colors duration-300">
-                    {service.title}
-                  </h3>
-                  
-                  {/* Description */}
-                  <p className="text-[#6b7280] leading-relaxed mb-6 group-hover:text-[#0f1115] transition-colors duration-300">
-                    {service.description}
-                  </p>
-                  
-                  {/* Learn more arrow */}
-                  <div className="flex items-center text-[#B85042] font-semibold group-hover:translate-x-2 transition-transform duration-300">
-                    <span className="text-sm mr-2">Learn More</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </div>
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  return (
+    <section id="services" className="py-20 bg-gradient-to-br from-white via-gray-50 to-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <motion.div 
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-[#B85042] to-gray-700">
+              Our Services
+            </span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Comprehensive interior design and fit-out solutions for retail, commercial, and residential spaces. 
+            From concept to completion, we deliver excellence at every step.
+          </p>
+        </motion.div>
+
+        {/* Enhanced Services Grid */}
+        <div 
+          ref={gridRef}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+        >
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              className={`group bg-white/80 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl border border-gray-200/50 interactive-element overflow-hidden relative ${
+                gridVisible ? 'animate-reveal revealed' : 'animate-reveal'
+              }`}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.1, ease: "easeOut" }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02, y: -5 }}
+            >
+              {/* Card background gradient on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#B85042]/5 to-[#A14237]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              {/* Content */}
+              <div className="relative z-10">
+                {/* Icon container with enhanced styling */}
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#B85042] to-[#A14237] rounded-2xl flex items-center justify-center text-white mb-4 sm:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
+                  <span className="text-2xl sm:text-3xl">{service.icon}</span>
                 </div>
                 
-                {/* Decorative corner element */}
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#B85042]/10 to-transparent rounded-bl-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                {/* Highlight badge */}
+                <div className="inline-block bg-[#B85042]/10 text-[#B85042] text-xs font-semibold px-2 sm:px-3 py-1 rounded-full mb-3 sm:mb-4">
+                  {service.highlight}
+                </div>
+                
+                {/* Title */}
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 kinetic-text group-hover:text-[#B85042] transition-colors duration-300">
+                  {service.title}
+                </h3>
+                
+                {/* Description */}
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 sm:mb-6 group-hover:text-gray-800 transition-colors duration-300">
+                  {service.description}
+                </p>
+                
+                {/* Learn more arrow */}
+                <div 
+                  onClick={() => scrollToSection('contact')}
+                  className="flex items-center text-[#B85042] font-semibold group-hover:translate-x-2 transition-transform duration-300 cursor-pointer hover:text-[#A14237] p-2 -m-2"
+                >
+                  <span className="text-xs sm:text-sm mr-2">Learn More</span>
+                  <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
+                </div>
               </div>
-            ))}
-          </div>
-          
-          {/* Call-to-action section */}
-          <div className="text-center mt-16">
-            <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-[#6b7280]/10 shadow-lg max-w-2xl mx-auto">
-              <h3 className="text-fluid-xl font-bold text-[#0f1115] mb-4">
-                Ready to Transform Your Space?
-              </h3>
-              <p className="text-[#6b7280] mb-6 leading-relaxed">
-                Let's discuss your project and create something extraordinary together
-              </p>
-              <button className="bg-gradient-to-r from-[#B85042] to-[#A14237] hover:from-[#A14237] hover:to-[#8F3A2E] text-white px-8 py-3 rounded-full font-semibold interactive-element focus-enhanced">
-                Get Started Today
-              </button>
-            </div>
-          </div>
+            </motion.div>
+          ))}
         </div>
+
+        {/* Services CTA */}
+        <motion.div 
+          className="text-center mt-20"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          <div className="bg-gradient-to-r from-[#B85042]/10 to-white/50 backdrop-blur-sm border border-[#B85042]/20 rounded-2xl p-12">
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              Ready to Transform Your Space?
+            </h3>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+              Let's discuss your project requirements and create exceptional interior experiences together. 
+              Our team of experts is ready to bring your vision to life.
+            </p>
+            <button 
+              onClick={() => scrollToSection('contact')}
+              className="bg-gradient-to-r from-[#B85042] to-[#A14237] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 cursor-pointer"
+            >
+              Get Started Today
+            </button>
+          </div>
+        </motion.div>
       </div>
     </section>
   )

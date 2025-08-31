@@ -119,7 +119,7 @@ const ContactForm = () => {
 
   return (
     <section id="contact" className="py-20 bg-[#f5f4f2]">
-      <div className="container mx-auto px-6">
+              <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-[#0f1115] mb-6">
             Contact Us
@@ -129,7 +129,7 @@ const ContactForm = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
@@ -160,7 +160,7 @@ const ContactForm = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-[#0f1115] mb-1">Phone</h4>
-                  <p className="text-[#6b7280]">+91 98765 43210</p>
+                  <p className="text-[#6b7280]">+91 99757 60266</p>
                 </div>
               </div>
 
@@ -169,12 +169,37 @@ const ContactForm = () => {
                   <MapPin className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-[#0f1115] mb-1">Location</h4>
+                  <h4 className="font-semibold text-[#0f1115] mb-1">Factory Location</h4>
                   <p className="text-[#6b7280]">
-                    123 Design Street,<br />
-                    Interior District, Mumbai 400001
+                    VAILAL VILLAGE, JINNARAM MANDAL,<br />
+                    SANGAREDDY DISTRICT, TELANGANA STATE
                   </p>
                 </div>
+              </div>
+            </div>
+
+            {/* Mini Map */}
+            <div className="bg-white p-6 rounded-lg border border-[#6b7280]/10">
+              <h4 className="font-semibold text-[#0f1115] mb-3">Our Factory Location</h4>
+              <div className="bg-[#f5f4f2] rounded-lg p-4 text-center">
+                <div className="w-full h-32 bg-gradient-to-br from-[#B85042]/20 to-[#A14237]/20 rounded-lg flex items-center justify-center mb-3">
+                  <MapPin className="w-8 h-8 text-[#B85042]" />
+                </div>
+                <p className="text-sm text-[#6b7280]">
+                  <strong>VAILAL VILLAGE, JINNARAM MANDAL</strong><br />
+                  SANGAREDDY DISTRICT, TELANGANA STATE<br />
+                  <span className="text-[#B85042] font-semibold">27,000+ SFT Facility</span>
+                </p>
+                <button 
+                  onClick={() => {
+                    const address = "VAILAL VILLAGE, JINNARAM MANDAL, SANGAREDDY DISTRICT, TELANGANA STATE";
+                    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+                    window.open(googleMapsUrl, '_blank');
+                  }}
+                  className="mt-3 text-[#B85042] text-sm font-medium hover:underline cursor-pointer hover:text-[#A14237] transition-colors duration-200"
+                >
+                  View on Google Maps →
+                </button>
               </div>
             </div>
 
@@ -222,6 +247,10 @@ const ContactForm = () => {
                         : 'border-[#6b7280]/30 focus:border-[#B85042] focus:ring-[#B85042]'
                   }`}
                   placeholder="Enter your full name"
+                  style={{ 
+                    '::placeholder': { color: '#9CA3AF' },
+                    '::-webkit-input-placeholder': { color: '#9CA3AF' }
+                  }}
                 />
                 {errors.fullName && (
                   <p id="fullName-error" className="mt-1 text-sm text-red-600" role="alert">
@@ -252,6 +281,10 @@ const ContactForm = () => {
                         : 'border-[#6b7280]/30 focus:border-[#B85042] focus:ring-[#B85042]'
                   }`}
                   placeholder="Enter your email address"
+                  style={{ 
+                    '::placeholder': { color: '#9CA3AF' },
+                    '::-webkit-input-placeholder': { color: '#9CA3AF' }
+                  }}
                 />
                 {errors.email && (
                   <p id="email-error" className="mt-1 text-sm text-red-600" role="alert">
@@ -282,6 +315,10 @@ const ContactForm = () => {
                         : 'border-[#6b7280]/30 focus:border-[#B85042] focus:ring-[#B85042]'
                   }`}
                   placeholder="Tell us about your project..."
+                  style={{ 
+                    '::placeholder': { color: '#9CA3AF' },
+                    '::-webkit-input-placeholder': { color: '#9CA3AF' }
+                  }}
                 />
                 {errors.message && (
                   <p id="message-error" className="mt-1 text-sm text-red-600" role="alert">

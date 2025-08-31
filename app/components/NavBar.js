@@ -38,6 +38,24 @@ const NavBar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        setIsOpen(false)
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = 'hidden'
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = 'unset'
+    }
+  }, [isOpen])
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
     if (element) {
@@ -49,7 +67,7 @@ const NavBar = () => {
   return (
     <>
       <nav className="sticky top-0 z-50 bg-[#f5f4f2]/95 backdrop-blur-sm border-b border-[#6b7280]/20">
-        <div className="container mx-auto px-6 py-4">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center">
@@ -81,10 +99,12 @@ const NavBar = () => {
             <Button
               variant="ghost"
               size="sm"
-              className="md:hidden"
+              className="md:hidden p-2"
               onClick={() => setIsOpen(true)}
               aria-controls="mobile-menu"
               aria-expanded={isOpen}
+              aria-label="Open mobile menu"
+              aria-haspopup="true"
             >
               <Menu className="h-6 w-6" />
               <span className="sr-only">Open menu</span>
@@ -95,15 +115,16 @@ const NavBar = () => {
 
       {/* Mobile Sidebar */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 md:hidden">
+        <div className="fixed inset-0 z-[9999] md:hidden">
           {/* Backdrop */}
           <div
             className="fixed inset-0 bg-black/50 backdrop-blur-sm"
             onClick={() => setIsOpen(false)}
+            aria-hidden="true"
           />
           
           {/* Sidebar */}
-          <div className="fixed right-0 top-0 h-full w-80 max-w-full bg-white shadow-xl transform transition-transform duration-300 ease-in-out">
+                      <div className="fixed right-0 top-0 h-full w-80 max-w-[85vw] bg-white shadow-xl transform transition-transform duration-300 ease-in-out">
             <div className="flex items-center justify-between p-6 border-b">
               <img
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7W1N74WxkHAhjXRyAx0pAKvu1HCXEU.png"
@@ -115,13 +136,14 @@ const NavBar = () => {
                 size="sm"
                 onClick={() => setIsOpen(false)}
                 className="p-2"
+                aria-label="Close mobile menu"
               >
                 <X className="h-5 w-5" />
                 <span className="sr-only">Close menu</span>
               </Button>
             </div>
             
-            <nav className="p-6">
+            <nav className="p-6" role="navigation" aria-label="Mobile navigation">
               <ul className="space-y-4">
                 {sections.map((section) => (
                   <li key={section.id}>
@@ -132,6 +154,7 @@ const NavBar = () => {
                           ? 'text-[#B85042] bg-[#B85042]/10'
                           : 'text-[#0f1115]'
                       }`}
+                      aria-current={activeSection === section.id ? 'page' : undefined}
                     >
                       {section.name}
                     </button>
