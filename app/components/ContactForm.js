@@ -5,10 +5,18 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
-import { toast } from 'sonner'
-import { Send, Mail, Phone, MapPin } from 'lucide-react'
+import { 
+  Dialog, 
+  DialogContent, 
+  DialogHeader, 
+  DialogTitle, 
+  DialogDescription 
+} from '@/components/ui/dialog'
+import { useToast } from '@/components/CustomToast'
+import { Send, Mail, Phone, MapPin, CheckCircle, X } from 'lucide-react'
 
 const ContactForm = () => {
+  const { error: showError, success: showSuccess } = useToast()
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -17,7 +25,7 @@ const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errors, setErrors] = useState({})
   const [submitError, setSubmitError] = useState('')
-  const [submitSuccess, setSubmitSuccess] = useState(false)
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -67,7 +75,6 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setSubmitError('')
-    setSubmitSuccess(false)
     
     if (!validateForm()) {
       // Focus first error field
@@ -92,9 +99,10 @@ const ContactForm = () => {
 
       if (response.ok) {
         const data = await response.json()
-        setSubmitSuccess(true)
-        toast.success('Thank you! Your message has been sent successfully.')
+        showSuccess('Message Sent!', 'Your message has been sent successfully. We\'ll get back to you within 24 hours.')
+        setShowSuccessDialog(true)
         setFormData({ fullName: '', email: '', message: '' })
+        setErrors({})
       } else {
         let errorMessage = 'Failed to send message. Please try again.'
         try {
@@ -105,21 +113,25 @@ const ContactForm = () => {
           errorMessage = `Server error (${response.status}). Please try again.`
         }
         setSubmitError(errorMessage)
-        toast.error(errorMessage)
+        showError('Submission Failed', errorMessage)
       }
     } catch (error) {
       console.error('Contact form error:', error)
       const errorMessage = 'Network error. Please check your connection and try again.'
       setSubmitError(errorMessage)
-      toast.error(errorMessage)
+      showError('Network Error', errorMessage)
     } finally {
       setIsSubmitting(false)
     }
   }
 
+  const closeSuccessDialog = () => {
+    setShowSuccessDialog(false)
+  }
+
   return (
-    <section id="contact" className="py-20 bg-[#f5f4f2]">
-              <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-20 bg-gradient-to-br from-[#f5f4f2] to-[#e8e6e3]">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-[#0f1115] mb-6">
             Contact Us
@@ -144,33 +156,37 @@ const ContactForm = () => {
             </div>
 
             <div className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="bg-[#B85042] p-3 rounded-lg">
+              <div className="flex items-start space-x-4 group">
+                <div className="bg-gradient-to-br from-[#B85042] to-[#A14237] p-3 rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
                   <Mail className="w-5 h-5 text-white" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-[#0f1115] mb-1">Email</h4>
-                  <p className="text-[#6b7280]">info@dkinteriors.com</p>
+                  <p className="text-[#6b7280] hover:text-[#B85042] transition-colors duration-200">
+                    sairajgoudkodipaka@gmail.com
+                  </p>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4">
-                <div className="bg-[#B85042] p-3 rounded-lg">
+              <div className="flex items-start space-x-4 group">
+                <div className="bg-gradient-to-br from-[#B85042] to-[#A14237] p-3 rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
                   <Phone className="w-5 h-5 text-white" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-[#0f1115] mb-1">Phone</h4>
-                  <p className="text-[#6b7280]">+91 99757 60266</p>
+                  <p className="text-[#6b7280] hover:text-[#B85042] transition-colors duration-200">
+                    +91 99757 60266
+                  </p>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4">
-                <div className="bg-[#B85042] p-3 rounded-lg">
+              <div className="flex items-start space-x-4 group">
+                <div className="bg-gradient-to-br from-[#B85042] to-[#A14237] p-3 rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
                   <MapPin className="w-5 h-5 text-white" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-[#0f1115] mb-1">Factory Location</h4>
-                  <p className="text-[#6b7280]">
+                  <p className="text-[#6b7280] hover:text-[#B85042] transition-colors duration-200">
                     VAILAL VILLAGE, JINNARAM MANDAL,<br />
                     SANGAREDDY DISTRICT, TELANGANA STATE
                   </p>
@@ -178,55 +194,30 @@ const ContactForm = () => {
               </div>
             </div>
 
-            {/* Mini Map */}
-            <div className="bg-white p-6 rounded-lg border border-[#6b7280]/10">
-              <h4 className="font-semibold text-[#0f1115] mb-3">Our Factory Location</h4>
-              <div className="bg-[#f5f4f2] rounded-lg p-4 text-center">
-                <div className="w-full h-32 bg-gradient-to-br from-[#B85042]/20 to-[#A14237]/20 rounded-lg flex items-center justify-center mb-3">
-                  <MapPin className="w-8 h-8 text-[#B85042]" />
-                </div>
-                <p className="text-sm text-[#6b7280]">
-                  <strong>VAILAL VILLAGE, JINNARAM MANDAL</strong><br />
-                  SANGAREDDY DISTRICT, TELANGANA STATE<br />
-                  <span className="text-[#B85042] font-semibold">27,000+ SFT Facility</span>
-                </p>
-                <button 
-                  onClick={() => {
-                    const address = "VAILAL VILLAGE, JINNARAM MANDAL, SANGAREDDY DISTRICT, TELANGANA STATE";
-                    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
-                    window.open(googleMapsUrl, '_blank');
-                  }}
-                  className="mt-3 text-[#B85042] text-sm font-medium hover:underline cursor-pointer hover:text-[#A14237] transition-colors duration-200"
-                >
-                  View on Google Maps →
-                </button>
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg border border-[#6b7280]/10">
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-[#6b7280]/10 shadow-lg">
               <h4 className="font-semibold text-[#0f1115] mb-3">Business Hours</h4>
               <div className="space-y-2 text-[#6b7280]">
                 <div className="flex justify-between">
                   <span>Monday - Friday</span>
-                  <span>9:00 AM - 6:00 PM</span>
+                  <span className="font-medium">9:00 AM - 6:00 PM</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Saturday</span>
-                  <span>10:00 AM - 4:00 PM</span>
+                  <span className="font-medium">10:00 AM - 4:00 PM</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Sunday</span>
-                  <span>Closed</span>
+                  <span className="font-medium text-[#B85042]">Closed</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white p-8 rounded-lg shadow-sm border border-[#6b7280]/10">
+          <div className="bg-white/90 backdrop-blur-sm p-8 rounded-xl shadow-xl border border-[#6b7280]/10">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <Label htmlFor="fullName" className="text-[#0f1115] font-medium">
+                <Label htmlFor="fullName" className="text-[#0f1115] font-medium text-sm">
                   Full Name *
                 </Label>
                 <Input
@@ -239,28 +230,23 @@ const ContactForm = () => {
                   aria-required="true"
                   aria-invalid={errors.fullName ? 'true' : 'false'}
                   aria-describedby={errors.fullName ? 'fullName-error' : undefined}
-                  className={`mt-2 transition-all duration-300 ${
+                  className={`mt-2 transition-all duration-300 border-2 ${
                     errors.fullName 
-                      ? 'border-red-500 focus:border-red-500 focus:ring-red-500' 
-                      : submitSuccess && formData.fullName
-                        ? 'border-green-500 focus:border-green-500 focus:ring-green-500'
-                        : 'border-[#6b7280]/30 focus:border-[#B85042] focus:ring-[#B85042]'
-                  }`}
+                      ? 'border-red-400 focus:border-red-500 focus:ring-red-500/20' 
+                      : 'border-[#6b7280]/20 focus:border-[#B85042] focus:ring-[#B85042]/20'
+                  } rounded-lg px-4 py-3 text-[#0f1115] placeholder-[#9CA3AF] focus:outline-none focus:ring-4`}
                   placeholder="Enter your full name"
-                  style={{ 
-                    '::placeholder': { color: '#9CA3AF' },
-                    '::-webkit-input-placeholder': { color: '#9CA3AF' }
-                  }}
                 />
                 {errors.fullName && (
-                  <p id="fullName-error" className="mt-1 text-sm text-red-600" role="alert">
+                  <p id="fullName-error" className="mt-2 text-sm text-red-500 flex items-center gap-2" role="alert">
+                    <X className="w-4 h-4" />
                     {errors.fullName}
                   </p>
                 )}
               </div>
 
               <div>
-                <Label htmlFor="email" className="text-[#0f1115] font-medium">
+                <Label htmlFor="email" className="text-[#0f1115] font-medium text-sm">
                   Email Address *
                 </Label>
                 <Input
@@ -273,28 +259,23 @@ const ContactForm = () => {
                   aria-required="true"
                   aria-invalid={errors.email ? 'true' : 'false'}
                   aria-describedby={errors.email ? 'email-error' : undefined}
-                  className={`mt-2 transition-all duration-300 ${
+                  className={`mt-2 transition-all duration-300 border-2 ${
                     errors.email 
-                      ? 'border-red-500 focus:border-red-500 focus:ring-red-500' 
-                      : submitSuccess && formData.email
-                        ? 'border-green-500 focus:border-green-500 focus:ring-green-500'
-                        : 'border-[#6b7280]/30 focus:border-[#B85042] focus:ring-[#B85042]'
-                  }`}
+                      ? 'border-red-400 focus:border-red-500 focus:ring-red-500/20' 
+                      : 'border-[#6b7280]/20 focus:border-[#B85042] focus:ring-[#B85042]/20'
+                  } rounded-lg px-4 py-3 text-[#0f1115] placeholder-[#9CA3AF] focus:outline-none focus:ring-4`}
                   placeholder="Enter your email address"
-                  style={{ 
-                    '::placeholder': { color: '#9CA3AF' },
-                    '::-webkit-input-placeholder': { color: '#9CA3AF' }
-                  }}
                 />
                 {errors.email && (
-                  <p id="email-error" className="mt-1 text-sm text-red-600" role="alert">
+                  <p id="email-error" className="mt-2 text-sm text-red-500 flex items-center gap-2" role="alert">
+                    <X className="w-4 h-4" />
                     {errors.email}
                   </p>
                 )}
               </div>
 
               <div>
-                <Label htmlFor="message" className="text-[#0f1115] font-medium">
+                <Label htmlFor="message" className="text-[#0f1115] font-medium text-sm">
                   Message *
                 </Label>
                 <Textarea
@@ -307,21 +288,16 @@ const ContactForm = () => {
                   aria-required="true"
                   aria-invalid={errors.message ? 'true' : 'false'}
                   aria-describedby={errors.message ? 'message-error' : undefined}
-                  className={`mt-2 resize-none transition-all duration-300 ${
+                  className={`mt-2 resize-none transition-all duration-300 border-2 ${
                     errors.message 
-                      ? 'border-red-500 focus:border-red-500 focus:ring-red-500' 
-                      : submitSuccess && formData.message
-                        ? 'border-green-500 focus:border-green-500 focus:ring-green-500'
-                        : 'border-[#6b7280]/30 focus:border-[#B85042] focus:ring-[#B85042]'
-                  }`}
+                      ? 'border-red-400 focus:border-red-500 focus:ring-red-500/20' 
+                      : 'border-[#6b7280]/20 focus:border-[#B85042] focus:ring-[#B85042]/20'
+                  } rounded-lg px-4 py-3 text-[#0f1115] placeholder-[#9CA3AF] focus:outline-none focus:ring-4`}
                   placeholder="Tell us about your project..."
-                  style={{ 
-                    '::placeholder': { color: '#9CA3AF' },
-                    '::-webkit-input-placeholder': { color: '#9CA3AF' }
-                  }}
                 />
                 {errors.message && (
-                  <p id="message-error" className="mt-1 text-sm text-red-600" role="alert">
+                  <p id="message-error" className="mt-2 text-sm text-red-500 flex items-center gap-2" role="alert">
+                    <X className="w-4 h-4" />
                     {errors.message}
                   </p>
                 )}
@@ -329,28 +305,12 @@ const ContactForm = () => {
 
               {/* Inline error message */}
               {submitError && (
-                <div className="p-4 bg-red-50 border border-red-200 rounded-lg" role="alert">
-                  <div className="flex items-center">
+                <div className="p-4 bg-red-50/80 border-2 border-red-200 rounded-lg backdrop-blur-sm" role="alert">
+                  <div className="flex items-center gap-3">
                     <div className="flex-shrink-0">
-                      <svg className="w-5 h-5 text-red-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                      </svg>
+                      <X className="w-5 h-5 text-red-500" />
                     </div>
-                    <p className="ml-3 text-sm text-red-800">{submitError}</p>
-                  </div>
-                </div>
-              )}
-
-              {/* Success message */}
-              {submitSuccess && (
-                <div className="p-4 bg-green-50 border border-green-200 rounded-lg" role="alert">
-                  <div className="flex items-center">
-                    <div className="flex-shrink-0">
-                      <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <p className="ml-3 text-sm text-green-800">Message sent successfully! We'll get back to you soon.</p>
+                    <p className="text-sm text-red-700 font-medium">{submitError}</p>
                   </div>
                 </div>
               )}
@@ -359,7 +319,8 @@ const ContactForm = () => {
                 type="submit"
                 disabled={isSubmitting}
                 aria-busy={isSubmitting}
-                className="w-full bg-gradient-to-r from-[#B85042] to-[#A14237] hover:from-[#A14237] hover:to-[#8F3A2E] text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] focus:ring-4 focus:ring-[#B85042]/20"
+
+                className="w-full bg-gradient-to-r from-[#B85042] to-[#A14237] hover:from-[#A14237] hover:to-[#8F3A2E] text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] focus:ring-4 focus:ring-[#B85042]/20 shadow-lg hover:shadow-xl"
               >
                 {isSubmitting ? (
                   <div className="flex items-center justify-center space-x-2">
@@ -377,6 +338,31 @@ const ContactForm = () => {
           </div>
         </div>
       </div>
+
+      {/* Success Dialog */}
+      <Dialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
+        <DialogContent className="sm:max-w-md bg-white/95 backdrop-blur-md border-2 border-[#B85042]/20 shadow-2xl">
+          <DialogHeader className="text-center">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-green-100 to-green-200">
+              <CheckCircle className="h-8 w-8 text-green-600" />
+            </div>
+            <DialogTitle className="text-2xl font-bold text-[#0f1115]">
+              Message Sent Successfully!
+            </DialogTitle>
+            <DialogDescription className="text-[#6b7280] text-lg mt-2">
+              Thank you for reaching out to us. We've received your message and will get back to you within 24 hours.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="mt-6 text-center">
+            <Button
+              onClick={closeSuccessDialog}
+              className="bg-gradient-to-r from-[#B85042] to-[#A14237] hover:from-[#A14237] hover:to-[#8F3A2E] text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 focus:ring-4 focus:ring-[#B85042]/20 shadow-lg"
+            >
+              Got it, thanks!
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   )
 }

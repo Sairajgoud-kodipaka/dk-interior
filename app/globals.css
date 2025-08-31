@@ -99,6 +99,37 @@
     font-size: calc(1.125rem + (1.25 - 1.125) * var(--fluid-bp));
   }
   
+  /* Toast Animations */
+  @keyframes slide-in-from-right {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slide-out-to-right {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+  
+  .animate-in {
+    animation: slide-in-from-right 0.3s ease-out;
+  }
+  
+  .slide-in-from-right-full {
+    animation: slide-in-from-right 0.3s ease-out;
+  }
+  
   .text-fluid-xl {
     font-size: calc(1.25rem + (1.5 - 1.25) * var(--fluid-bp));
   }
@@ -544,15 +575,6 @@
     filter: brightness(1.5);
   }
   
-  /* Custom Cursor Styles */
-  .cursor-none {
-    cursor: none;
-  }
-  
-  .cursor-none * {
-    cursor: none;
-  }
-  
   /* Kinetic Animation Keyframes */
   @keyframes kineticReveal {
     0% {
@@ -652,5 +674,22 @@
   
   .btn-premium:hover::before {
     left: 100%;
+  }
+  
+  /* Footer Animations */
+  .footer-link {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .footer-link:hover {
+    @apply transform translate-x-1;
+  }
+  
+  .footer-section {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .footer-section:hover {
+    @apply transform scale-105;
   }
 }

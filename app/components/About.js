@@ -207,9 +207,7 @@ const About = () => {
               Let's collaborate to create something extraordinary together. 
               Your vision, our expertise.
             </p>
-            <button className="bg-white text-[#B85042] px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-              Start Your Project
-            </button>
+            
                 </div>
         </motion.div>
       </div>

@@ -13,29 +13,38 @@ const Footer = () => {
           {/* Company Info */}
           <div className="md:col-span-2">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7W1N74WxkHAhjXRyAx0pAKvu1HCXEU.png"
+              src="/logo.png"
               alt="DK Interiors Logo"
-              className="h-12 w-auto mb-4 object-contain filter brightness-0 invert"
+              className="h-16 w-auto mb-6 object-contain"
             />
-            <p className="text-[#6b7280] mb-4 max-w-md">
+            <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
               Transforming spaces with innovative design solutions. 
               Your trusted partner for premium interior fitouts across India.
             </p>
-            <div className="text-[#6b7280]">
-              <p>📧 info@dkinteriors.com</p>
-              <p>📞 +91 99757 60266</p>
-              <p>📍 VAILAL VILLAGE, JINNARAM MANDAL, SANGAREDDY DISTRICT, TELANGANA STATE</p>
+            <div className="space-y-3 text-gray-300">
+              <div className="flex items-center space-x-3">
+                <span className="text-[#B85042]">📧</span>
+                <span>info@dkinteriors.com</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <span className="text-[#B85042]">📞</span>
+                <span>+91 99757 60266</span>
+              </div>
+              <div className="flex items-start space-x-3">
+                <span className="text-[#B85042] mt-1">📍</span>
+                <span className="text-sm leading-relaxed">VAILAL VILLAGE, JINNARAM MANDAL, SANGAREDDY DISTRICT, TELANGANA STATE</span>
+              </div>
             </div>
           </div>
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-[#B85042]">Services</h3>
-            <ul className="space-y-2 text-[#6b7280]">
+            <h3 className="text-xl font-bold mb-6 text-[#B85042] border-b-2 border-[#B85042] pb-2">Services</h3>
+            <ul className="space-y-3">
               <li>
                 <button 
                   onClick={() => scrollToSection('services')}
-                  className="hover:text-white transition-colors duration-200 cursor-pointer"
+                  className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline"
                 >
                   Retail Fitouts
                 </button>
@@ -43,7 +52,7 @@ const Footer = () => {
               <li>
                 <button 
                   onClick={() => scrollToSection('services')}
-                  className="hover:text-white transition-colors duration-200 cursor-pointer"
+                  className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline"
                 >
                   Commercial Spaces
                 </button>
@@ -51,7 +60,7 @@ const Footer = () => {
               <li>
                 <button 
                   onClick={() => scrollToSection('services')}
-                  className="hover:text-white transition-colors duration-200 cursor-pointer"
+                  className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline"
                 >
                   Residential Design
                 </button>
@@ -59,7 +68,7 @@ const Footer = () => {
               <li>
                 <button 
                   onClick={() => scrollToSection('services')}
-                  className="hover:text-white transition-colors duration-200 cursor-pointer"
+                  className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline"
                 >
                   Project Management
                 </button>
@@ -67,7 +76,7 @@ const Footer = () => {
               <li>
                 <button 
                   onClick={() => scrollToSection('services')}
-                  className="hover:text-white transition-colors duration-200 cursor-pointer"
+                  className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline"
                 >
                   Design Consultation
                 </button>
@@ -77,12 +86,12 @@ const Footer = () => {
 
           {/* Company */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-[#B85042]">Company</h3>
-            <ul className="space-y-2 text-[#6b7280]">
+            <h3 className="text-xl font-bold mb-6 text-[#B85042] border-b-2 border-[#B85042] pb-2">Company</h3>
+            <ul className="space-y-3">
               <li>
                 <button 
                   onClick={() => scrollToSection('about')}
-                  className="hover:text-white transition-colors duration-200 cursor-pointer"
+                  className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline"
                 >
                   About Us
                 </button>
@@ -90,7 +99,7 @@ const Footer = () => {
               <li>
                 <button 
                   onClick={() => scrollToSection('our-work')}
-                  className="hover:text-white transition-colors duration-200 cursor-pointer"
+                  className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline"
                 >
                   Our Work
                 </button>
@@ -98,7 +107,7 @@ const Footer = () => {
               <li>
                 <button 
                   onClick={() => scrollToSection('factory')}
-                  className="hover:text-white transition-colors duration-200 cursor-pointer"
+                  className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline"
                 >
                   Factory
                 </button>
@@ -106,7 +115,7 @@ const Footer = () => {
               <li>
                 <button 
                   onClick={() => scrollToSection('contact')}
-                  className="hover:text-white transition-colors duration-200 cursor-pointer"
+                  className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline"
                 >
                   Contact
                 </button>
@@ -114,7 +123,7 @@ const Footer = () => {
               <li>
                 <button 
                   onClick={() => scrollToSection('trusted-brands')}
-                  className="hover:text-white transition-colors duration-200 cursor-pointer"
+                  className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline"
                 >
                   Our Clients
                 </button>
@@ -123,8 +132,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-[#6b7280]/20 mt-8 pt-8 text-center">
-          <p className="text-[#6b7280]">
+        <div className="border-t border-gray-700 mt-10 pt-8 text-center">
+          <p className="text-gray-300 text-base">
             © {new Date().getFullYear()} DK Interiors — The Fitout Pro. All rights reserved.
           </p>
         </div>

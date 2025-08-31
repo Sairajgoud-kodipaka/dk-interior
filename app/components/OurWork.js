@@ -294,9 +294,7 @@ const OurWork = () => {
               Let's create something extraordinary together. Your vision, our expertise.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-[#B85042] text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#A14237] transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-                Start Your Project
-              </button>
+            
               <button className="border-2 border-[#B85042] text-[#B85042] px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#B85042] hover:text-white transition-all duration-300 transform hover:scale-105">
                 Schedule Consultation
             </button>

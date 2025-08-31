@@ -72,7 +72,7 @@ const NavBar = () => {
             {/* Logo */}
             <div className="flex items-center">
               <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7W1N74WxkHAhjXRyAx0pAKvu1HCXEU.png"
+                src="/logo.png"
                 alt="DK Interiors Logo"
                 className="h-8 w-auto object-contain"
               />
@@ -127,7 +127,7 @@ const NavBar = () => {
                       <div className="fixed right-0 top-0 h-full w-80 max-w-[85vw] bg-white shadow-xl transform transition-transform duration-300 ease-in-out">
             <div className="flex items-center justify-between p-6 border-b">
               <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-7W1N74WxkHAhjXRyAx0pAKvu1HCXEU.png"
+                src="/logo.png"
                 alt="DK Interiors Logo"
                 className="h-8 w-auto object-contain"
               />
