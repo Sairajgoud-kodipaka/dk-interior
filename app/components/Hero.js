@@ -148,9 +148,16 @@ const Hero = ({
           className="mb-12 transition-all duration-1000 ease-out opacity-100 translate-y-0"
           style={{ transitionDelay: '0.8s' }}
         >
-          <p className="text-base sm:text-lg md:text-xl text-white/95 max-w-4xl mx-auto leading-relaxed font-normal px-8 py-8 rounded-2xl glass-effect backdrop-blur-sm">
-            {customSubtitle}
-          </p>
+          <div className="text-base sm:text-lg md:text-xl text-white/95 max-w-4xl mx-auto leading-relaxed font-normal px-8 py-8 rounded-2xl glass-effect backdrop-blur-sm">
+            {customSubtitle.includes('\n') ? (
+              <>
+                <p className="mb-2">{customSubtitle.split('\n')[0]}</p>
+                <p>{customSubtitle.split('\n')[1]}</p>
+              </>
+            ) : (
+              <p>{customSubtitle}</p>
+            )}
+          </div>
         </div>
 
         {/* Enhanced CTA Button - Optional */}

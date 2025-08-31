@@ -57,6 +57,35 @@
     scroll-behavior: smooth;
   }
   
+  /* Mobile-specific improvements */
+  @media (max-width: 640px) {
+    /* Better touch targets */
+    button, a, [role="button"] {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    /* Improved scrolling on mobile */
+    body {
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Better text rendering on mobile */
+    * {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+  
+  /* Tablet-specific improvements */
+  @media (min-width: 641px) and (max-width: 1023px) {
+    /* Optimize for tablet touch */
+    button, a, [role="button"] {
+      min-height: 40px;
+      min-width: 40px;
+    }
+  }
+  
   /* Enhanced Placeholder Styling */
   input::placeholder,
   textarea::placeholder {

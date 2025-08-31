@@ -186,58 +186,44 @@ const ResidentialDesign = () => {
             </motion.div>
 
             <div className="max-w-6xl mx-auto">
-              <div className="relative">
-                {/* Connection Line */}
-                <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#B85042] to-transparent hidden lg:block" />
-               
-                <div className="space-y-12">
-                  {[
-                    {
-                      step: "01",
-                      title: "Initial Consultation",
-                      description: "We meet to understand your vision, lifestyle, and requirements for your dream home."
-                    },
-                    {
-                      step: "02",
-                      title: "Concept Development",
-                      description: "Our designers create initial concepts and mood boards that capture your style preferences."
-                    },
-                    {
-                      step: "03",
-                      title: "Detailed Design",
-                      description: "Comprehensive design plans with 3D visualizations, material selections, and cost estimates."
-                    },
-                    {
-                      step: "04",
-                      title: "Fabrication",
-                      description: "Skilled craftsmen bring your designs to life in our state-of-the-art factory."
-                    },
-                    {
-                      step: "05",
-                      title: "Installation",
-                      description: "Professional installation team ensures perfect fit and finish in your home."
-                    }
-                  ].map((step, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      className={`flex items-center space-x-8 ${
-                        index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                      }`}
-                    >
-                      <div className="flex-shrink-0 w-16 h-16 bg-[#B85042] text-white rounded-full flex items-center justify-center font-bold text-lg relative z-10">
-                        {step.step}
-                      </div>
-                      <div className={`flex-1 ${index % 2 === 0 ? 'lg:text-left' : 'lg:text-right'}`}>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-3">{step.title}</h3>
-                        <p className="text-gray-600 leading-relaxed">{step.description}</p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {[
+                  {
+                    step: "1",
+                    title: "Initial Consultation",
+                    description: "We meet to understand your vision, lifestyle, and requirements for your dream home."
+                  },
+                  {
+                    step: "2",
+                    title: "Concept Development",
+                    description: "Our designers create initial concepts and mood boards that capture your style preferences."
+                  },
+                  {
+                    step: "3",
+                    title: "Detailed Design",
+                    description: "Comprehensive design plans with 3D visualizations, material selections, and cost estimates."
+                  },
+                  {
+                    step: "4",
+                    title: "Fabrication",
+                    description: "Skilled craftsmen bring your designs to life in our state-of-the-art factory."
+                  }
+                ].map((step, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="text-center"
+                  >
+                    <div className="w-16 h-16 bg-[#B85042] rounded-full flex items-center justify-center mx-auto mb-6">
+                      <span className="text-white text-xl font-bold">{step.step}</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">{step.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{step.description}</p>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </div>
