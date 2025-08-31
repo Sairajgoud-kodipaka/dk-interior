@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 
 const Hero = ({ 
   customTitle = "Transforming Spaces and Creating Experiences",
-  customSubtitle = "We design and build beautiful interiors for homes, offices, and stores. Your vision, our expertise.",
+  customSubtitle = "We design and build beautiful interiors for homes, offices, and stores.\nYour vision, our expertise.",
   showCTA = true,
   ctaText = "Explore Our Work",
   onCTAClick

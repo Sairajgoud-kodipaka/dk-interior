@@ -83,7 +83,7 @@ const NavBar = () => {
   return (
     <>
       <nav className="sticky top-0 z-30 bg-[#f5f4f2]/95 backdrop-blur-sm border-b border-[#6b7280]/20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center">
@@ -91,7 +91,7 @@ const NavBar = () => {
                 <img
                   src="/dk Interior - Logo.png"
                   alt="DK Interiors Logo"
-                  className="h-20 w-20 object-cover cursor-pointer hover:opacity-80 transition-opacity duration-200"
+                  className="h-16 w-16 object-cover cursor-pointer hover:opacity-80 transition-opacity duration-200"
                   onError={(e) => {
                     e.target.src = "/logo.svg"
                   }}

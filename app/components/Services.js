@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Building2, Home } from 'lucide-react'
 
 const Services = () => {
   const [activeService, setActiveService] = useState(0)
@@ -12,14 +12,14 @@ const Services = () => {
 
   const services = [
     {
-      icon: "🏗️",
+      icon: <Building2 className="w-8 h-8 text-white" />,
       title: "Fit-out Solutions",
       description: "Transform retail, commercial, and corporate spaces with our comprehensive fit-out services. From jewelry stores to office interiors, we deliver precision craftsmanship and innovative design solutions.",
       highlight: "End-to-End",
       redirectTo: "/fitout-solutions"
     },
     {
-      icon: "🏠",
+      icon: <Home className="w-8 h-8 text-white" />,
       title: "Residential Design",
       description: "Create your dream home with bespoke interior design. We transform houses into personalized sanctuaries, from kitchens to bedrooms, ensuring every space reflects your unique style and lifestyle.",
       highlight: "Premium Design",
@@ -94,7 +94,7 @@ const Services = () => {
                 <div className="flex items-start justify-between mb-4">
                   {/* Icon container with enhanced styling */}
                   <div className="w-14 h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-[#B85042] to-[#A14237] rounded-xl flex items-center justify-center text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
-                    <span className="text-2xl lg:text-3xl">{service.icon}</span>
+                    {service.icon}
                   </div>
                   
                   {/* Highlight badge */}

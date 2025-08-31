@@ -1,6 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { Factory, Zap, Target } from 'lucide-react'
 import NavBar from './components/NavBar'
 import Hero from './components/Hero'
 import Services from './components/Services'
@@ -58,27 +60,33 @@ export default function App() {
               <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
                 Discover our 27,000+ SFT manufacturing facility equipped with advanced machinery for precision fit-outs and custom furniture.
               </p>
-              <button 
-                onClick={() => window.location.href = '/factory'}
-                className="bg-[#B85042] hover:bg-[#A14237] text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              <Link 
+                href="/factory"
+                className="inline-block bg-[#B85042] hover:bg-[#A14237] text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg"
               >
                 Visit Our Factory
-              </button>
+              </Link>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               <div className="text-center">
-                <div className="text-4xl mb-4">🏭</div>
+                <div className="flex justify-center mb-4">
+                  <Factory className="w-12 h-12 text-[#B85042]" />
+                </div>
                 <h3 className="text-xl font-bold mb-2">Advanced Machinery</h3>
                 <p className="text-gray-300">5+ specialized machines for precision cutting, edge banding, and finishing</p>
               </div>
               <div className="text-center">
-                <div className="text-4xl mb-4">⚡</div>
+                <div className="flex justify-center mb-4">
+                  <Zap className="w-12 h-12 text-[#B85042]" />
+                </div>
                 <h3 className="text-xl font-bold mb-2">In-House Production</h3>
                 <p className="text-gray-300">100% control over quality, timelines, and customization</p>
               </div>
               <div className="text-center">
-                <div className="text-4xl mb-4">🎯</div>
+                <div className="flex justify-center mb-4">
+                  <Target className="w-12 h-12 text-[#B85042]" />
+                </div>
                 <h3 className="text-xl font-bold mb-2">Quality Assurance</h3>
                 <p className="text-gray-300">Rigorous testing and inspection at every stage</p>
               </div>

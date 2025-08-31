@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowLeft, Home, Palette, Ruler, Heart, Shield, Clock, Users } from 'lucide-react'
+import { ArrowLeft, Home, Palette, Ruler, Heart, Shield, Clock, Users, Bed, ChefHat, ShowerHead, BookOpen, Baby } from 'lucide-react'
 import NavBar from '../components/NavBar'
 import Hero from '../components/Hero'
 import Footer from '../components/Footer'
@@ -17,32 +17,32 @@ const ResidentialDesign = () => {
 
   const services = [
     {
-      icon: "🏠",
+      icon: <Home className="w-12 h-12 text-[#B85042]" />,
       title: "Living Spaces",
       description: "Transform your living room, dining area, and family spaces into warm, inviting environments that reflect your lifestyle."
     },
     {
-      icon: "🛏️",
+      icon: <Bed className="w-12 h-12 text-[#B85042]" />,
       title: "Bedrooms",
       description: "Create peaceful sanctuaries with custom wardrobes, storage solutions, and elegant bedroom furniture."
     },
     {
-      icon: "🍳",
+      icon: <ChefHat className="w-12 h-12 text-[#B85042]" />,
       title: "Kitchens",
       description: "Modern kitchen designs with premium materials, smart storage, and beautiful finishes that make cooking a joy."
     },
     {
-      icon: "🚿",
+      icon: <ShowerHead className="w-12 h-12 text-[#B85042]" />,
       title: "Bathrooms",
       description: "Luxurious bathroom designs with premium fixtures, elegant tiles, and spa-like atmospheres."
     },
     {
-      icon: "📚",
+      icon: <BookOpen className="w-12 h-12 text-[#B85042]" />,
       title: "Home Offices",
       description: "Productive workspaces designed for comfort, functionality, and professional aesthetics."
     },
     {
-      icon: "🧒",
+      icon: <Baby className="w-12 h-12 text-[#B85042]" />,
       title: "Children's Rooms",
       description: "Fun, safe, and inspiring spaces that grow with your children and encourage creativity."
     }
@@ -116,7 +116,7 @@ const ResidentialDesign = () => {
                   viewport={{ once: true }}
                   className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl shadow-black/5 border border-white/20 hover:shadow-2xl transition-all duration-300 hover:scale-105"
                 >
-                  <div className="text-4xl mb-4">{service.icon}</div>
+                  <div className="flex justify-center mb-4">{service.icon}</div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{service.description}</p>
                 </motion.div>

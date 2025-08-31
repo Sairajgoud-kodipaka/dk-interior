@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowLeft, CheckCircle, Star, Users, Clock, Award } from 'lucide-react'
+import { ArrowLeft, CheckCircle, Star, Users, Clock, Award, Store, Building2, Gem, Briefcase } from 'lucide-react'
 import NavBar from '../components/NavBar'
 import Hero from '../components/Hero'
 import Footer from '../components/Footer'
@@ -17,22 +17,22 @@ const FitoutSolutions = () => {
 
   const features = [
     {
-      icon: "🏪",
+      icon: <Store className="w-12 h-12 text-[#B85042]" />,
       title: "Retail Fit-outs",
       description: "Complete retail space transformations including jewelry stores, lifestyle boutiques, and corporate showrooms."
     },
     {
-      icon: "🏢",
+      icon: <Building2 className="w-12 h-12 text-[#B85042]" />,
       title: "Commercial Spaces",
       description: "Office interiors, conference rooms, and corporate environments designed for productivity and style."
     },
     {
-      icon: "💎",
+      icon: <Gem className="w-12 h-12 text-[#B85042]" />,
       title: "Jewelry Stores",
       description: "Specialized fit-outs for jewelry retailers with premium display systems and security features."
     },
     {
-      icon: "👔",
+      icon: <Briefcase className="w-12 h-12 text-[#B85042]" />,
       title: "Lifestyle Brands",
       description: "Modern fit-outs for fashion, accessories, and lifestyle product retailers."
     }
@@ -110,7 +110,7 @@ const FitoutSolutions = () => {
                   viewport={{ once: true }}
                   className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl shadow-black/5 border border-white/20 hover:shadow-2xl transition-all duration-300 hover:scale-105"
                 >
-                  <div className="text-4xl mb-4">{feature.icon}</div>
+                  <div className="flex justify-center mb-4">{feature.icon}</div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{feature.description}</p>
                 </motion.div>

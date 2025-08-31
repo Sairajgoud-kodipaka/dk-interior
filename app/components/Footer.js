@@ -16,8 +16,16 @@ const Footer = () => {
       // External page navigation
       router.push(href)
     } else if (href.startsWith('#')) {
-      // Scroll to section on same page
-      scrollToSection(href.substring(1))
+      // Internal section navigation
+      if (window.location.pathname === '/') {
+        // Already on home page, scroll to section
+        scrollToSection(href.substring(1))
+      } else {
+        // On different page, navigate to home page first, then scroll
+        router.push('/')
+        // Set a flag to scroll after navigation
+        sessionStorage.setItem('scrollToSection', href)
+      }
     }
   }
 
@@ -91,7 +99,7 @@ const Footer = () => {
               </li>
               <li>
                 <button 
-                  onClick={() => scrollToSection('our-work')}
+                  onClick={() => handleNavigation('#our-work')}
                   className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline"
                 >
                   Our Work
@@ -107,7 +115,7 @@ const Footer = () => {
               </li>
               <li>
                 <button 
-                  onClick={() => scrollToSection('contact')}
+                  onClick={() => handleNavigation('#contact')}
                   className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline"
                 >
                   Contact
@@ -115,10 +123,10 @@ const Footer = () => {
               </li>
               <li>
                 <button 
-                  onClick={() => scrollToSection('trusted-brands')}
+                  onClick={() => handleNavigation('#trusted-brands')}
                   className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline"
                 >
-                  Our Clients
+                  Brands
                 </button>
               </li>
             </ul>

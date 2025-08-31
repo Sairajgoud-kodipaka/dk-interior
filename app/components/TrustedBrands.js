@@ -126,7 +126,7 @@ const TrustedBrands = () => {
                 />
                 <div className="hidden w-20 h-20 mx-auto bg-gray-700 rounded-lg items-center justify-center text-gray-400">
                   <div className="text-center">
-                    <div className="text-2xl">🏢</div>
+                    <div className="text-2xl font-bold text-white">B</div>
                   </div>
                 </div>
               </div>

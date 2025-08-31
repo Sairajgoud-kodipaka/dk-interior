@@ -118,7 +118,6 @@ export default function AboutPage() {
             >
               <div className="bg-white rounded-3xl p-10 lg:p-16 border border-gray-200 shadow-sm">
                 
-                
                 <div className="max-w-4xl mx-auto">
                   <div className="prose prose-lg prose-gray max-w-none">
                     <div className="text-center mb-8">
@@ -152,6 +151,68 @@ export default function AboutPage() {
                         retail, jewellery, lifestyle, and corporate spaces. The firm proudly collaborates with renowned brands like 
                         PMJ Jewels, Manyavar, Raymond, Anu Jewellers, and more — delivering interiors that combine craftsmanship 
                         with modern innovation.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Our Design Process */}
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate={isVisible ? 'visible' : 'hidden'}
+              className="mb-20"
+            >
+              <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-10 lg:p-16 border border-gray-200">
+                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-12">
+                  Our Design Process
+                </h2>
+                
+                <div className="max-w-6xl mx-auto">
+                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-[#B85042] rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span className="text-white text-xl font-bold">1</span>
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-4">Discovery & Consultation</h3>
+                      <p className="text-gray-600 leading-relaxed">
+                        We begin with a comprehensive consultation to understand your vision, requirements, and objectives. 
+                        This phase involves site analysis, budget assessment, and timeline planning.
+                      </p>
+                    </div>
+                    
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-[#B85042] rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span className="text-white text-xl font-bold">2</span>
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-4">Concept Development</h3>
+                      <p className="text-gray-600 leading-relaxed">
+                        Our design team creates initial concepts and mood boards that align with your brand identity. 
+                        We present multiple options for your review and feedback.
+                      </p>
+                    </div>
+                    
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-[#B85042] rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span className="text-white text-xl font-bold">3</span>
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-4">Detailed Planning</h3>
+                      <p className="text-gray-600 leading-relaxed">
+                        Once the concept is approved, we develop detailed technical drawings, material specifications, 
+                        and project timelines to ensure precise execution.
+                      </p>
+                    </div>
+                    
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-[#B85042] rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span className="text-white text-xl font-bold">4</span>
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-4">Execution & Delivery</h3>
+                      <p className="text-gray-600 leading-relaxed">
+                        Our skilled craftsmen bring the design to life with meticulous attention to detail. 
+                        We maintain regular communication and ensure timely project completion.
                       </p>
                     </div>
                   </div>
