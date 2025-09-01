@@ -6,12 +6,9 @@ export default function PerformanceOptimizer() {
   useEffect(() => {
     // Preload critical resources
     const preloadCriticalResources = () => {
-      // Only preload favicon which is actually used
-      const faviconLink = document.createElement('link')
-      faviconLink.rel = 'preload'
-      faviconLink.href = '/favicon.ico'
-      faviconLink.as = 'image'
-      document.head.appendChild(faviconLink)
+      // Only preload resources that are actually used immediately
+      // Remove favicon preload as it's not critical for initial render
+      // The favicon will load naturally when needed
     }
 
     // Optimize images loading

@@ -9,12 +9,12 @@ export default function manifest() {
     theme_color: '#B85042',
     icons: [
       {
-        src: '/dk Interior - Logo.png',
+        src: '/optimized/dk Interior - Logo.png',
         sizes: '192x192',
         type: 'image/png',
       },
       {
-        src: '/dk Interior - Logo.png',
+        src: '/optimized/dk Interior - Logo.png',
         sizes: '512x512',
         type: 'image/png',
       },

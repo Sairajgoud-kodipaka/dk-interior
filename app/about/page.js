@@ -1,7 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Store, Building2, Gem, Briefcase } from 'lucide-react'
 import NavBar from '../components/NavBar'
@@ -11,8 +10,6 @@ import Hero from '../components/Hero'
 export default function AboutPage() {
   const [isLoaded, setIsLoaded] = useState(false)
   const router = useRouter()
-  const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, threshold: 0.1 })
 
   const handleNavigation = (href) => {
     if (href.startsWith('/')) {
@@ -101,32 +98,19 @@ export default function AboutPage() {
 
       <main className="relative">
         <section
-          ref={sectionRef}
           id="about"
           className="relative py-20 lg:py-32 bg-white overflow-hidden"
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             {/* Company Overview */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              viewport={{ once: true }}
-              className="text-center mb-20"
-            >
+            <div className="text-center mb-20">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-8 leading-tight">
                 The Story of <span className="text-[#B85042]">DK Interiors</span>
               </h1>
-            </motion.div>
+            </div>
 
             {/* Company Journey - Journal Style */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              viewport={{ once: true }}
-              className="mb-20"
-            >
+            <div className="mb-20">
               <div className="bg-white rounded-3xl p-10 lg:p-16 border border-gray-200 shadow-sm">
                 
                 <div className="max-w-6xl mx-auto">
@@ -193,16 +177,10 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Company Stats Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-              viewport={{ once: true }}
-              className="mb-20"
-            >
+            <div className="mb-20">
               <div className="bg-gradient-to-br from-[#B85042] to-[#A14237] rounded-3xl p-10 lg:p-16 text-white">
                 <h2 className="text-3xl lg:text-4xl font-bold text-center mb-12">
                   Our Achievements
@@ -224,16 +202,10 @@ export default function AboutPage() {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Our Design Process */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-              viewport={{ once: true }}
-              className="mb-20"
-            >
+            <div className="mb-20">
               <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-10 lg:p-16 border border-gray-200">
                 <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-12">
                   Our Design Process
@@ -287,16 +259,10 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Core Values */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-              viewport={{ once: true }}
-              className="mb-20"
-            >
+            <div className="mb-20">
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-12">
                 Our Core Values
               </h2>
@@ -312,16 +278,10 @@ export default function AboutPage() {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
             {/* Areas of Expertise */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.0, ease: "easeOut" }}
-              viewport={{ once: true }}
-              className="mb-20"
-            >
+            <div className="mb-20">
               <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-10 lg:p-16 border border-gray-200 shadow-xl">
                 <div className="text-center mb-12">
                   <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
@@ -363,16 +323,10 @@ export default function AboutPage() {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* CTA Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
+            <div className="text-center">
               <div className="bg-white rounded-3xl p-10 lg:p-16 border border-gray-200 shadow-sm">
                 <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
                   Ready to Transform Your Space?
@@ -396,7 +350,7 @@ export default function AboutPage() {
                   </button>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
       </main>
