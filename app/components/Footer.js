@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Mail, Phone, MapPin } from 'lucide-react'
@@ -130,7 +132,7 @@ const Footer = () => {
               <li>
                 <button 
                   onClick={() => handleNavigation('#our-work')}
-                  className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline block py-1 w-full text-left"
+                  className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer hover:underline block py-1 w-full text-left"
                 >
                   Our Work
                 </button>
@@ -146,7 +148,7 @@ const Footer = () => {
               <li>
                 <button 
                   onClick={() => handleNavigation('#contact')}
-                  className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline block py-1 w-full text-left"
+                  className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer hover:underline block py-1 w-full text-left"
                 >
                   Contact
                 </button>
@@ -154,7 +156,7 @@ const Footer = () => {
               <li>
                 <button 
                   onClick={() => handleNavigation('#trusted-brands')}
-                  className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline block py-1 w-full text-left"
+                  className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer hover:underline block py-1 w-full text-left"
                 >
                   Brands
                 </button>
