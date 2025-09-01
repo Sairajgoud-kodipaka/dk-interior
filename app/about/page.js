@@ -156,7 +156,7 @@ export default function AboutPage() {
                     {/* Founder's Image Section - Centered, refined frame (no glow) */}
                     <div className="flex flex-col items-center mb-12">
                       <div className="relative">
-                        <div className="rounded-2xl bg-[#1F1A17] p-3 sm:p-4 shadow-2xl ring-1 ring-[#3B2F2F]">
+                        <div className="rounded-3xl bg-[#1F1A17] p-3 sm:p-2.5 shadow-2xl ring-1 ring-[#3B2F2F]">
                           <img
                             src="/dk.jpg"
                             alt="Mr. Dinesh Kumar - Founder & Owner of DK Interiors"
