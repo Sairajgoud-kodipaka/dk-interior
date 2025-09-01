@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { useRouter } from 'next/navigation'
@@ -424,6 +425,7 @@ const OurWork = () => {
               onClick={prevProject}
               className="bg-white hover:bg-gray-50 text-gray-600 hover:text-[#B85042] p-2 sm:p-3 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 border border-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={currentIndex === 0}
+              aria-label="Previous projects"
             >
               <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
@@ -432,6 +434,7 @@ const OurWork = () => {
               onClick={nextProject}
               className="bg-white hover:bg-gray-50 text-gray-600 hover:text-[#B85042] p-2 sm:p-3 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 border border-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={currentIndex >= Math.max(0, projects.length - itemsPerView)}
+              aria-label="Next projects"
             >
               <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
@@ -461,10 +464,15 @@ const OurWork = () => {
               >
                                 {/* Project Image */}
                 <div className="relative h-36 sm:h-40 md:h-48 lg:h-56 overflow-hidden">
-                  <img
+                  <Image
                     src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    alt={`${project.title} - ${project.subtitle}`}
+                    fill
+                    sizes="(max-width: 640px) 85vw, (max-width: 768px) 288px, (max-width: 1024px) 320px, 384px"
+                    className="object-cover transition-transform duration-300 hover:scale-105"
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                   />
                   <div className="absolute top-2 left-2 sm:top-3 sm:left-3 md:top-4 md:left-4">
                     <span className="bg-[#B85042] text-white px-2 py-1 rounded-full text-xs font-medium">
@@ -505,6 +513,7 @@ const OurWork = () => {
             <button
               onClick={closeModal}
               className="absolute top-4 right-4 z-10 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-2 rounded-full transition-all duration-300"
+              aria-label="Close modal"
             >
               <X className="w-6 h-6" />
             </button>
@@ -515,6 +524,7 @@ const OurWork = () => {
                 <button
                   onClick={prevImage}
                   className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-3 rounded-full transition-all duration-300"
+                  aria-label="Previous image"
                 >
                   <ChevronLeft className="w-6 h-6" />
                 </button>
@@ -522,6 +532,7 @@ const OurWork = () => {
                 <button
                   onClick={nextImage}
                   className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-3 rounded-full transition-all duration-300"
+                  aria-label="Next image"
                 >
                   <ChevronRight className="w-6 h-6" />
                 </button>
@@ -535,10 +546,15 @@ const OurWork = () => {
               onTouchMove={onModalTouchMove}
               onTouchEnd={onModalTouchEnd}
             >
-              <img
+              <Image
                 src={selectedProject.images[modalImageIndex]}
                 alt={`${selectedProject.title} - Image ${modalImageIndex + 1}`}
+                width={1200}
+                height={800}
                 className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+                priority={modalImageIndex === 0}
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
               />
               
               {/* Image Counter - hidden on mobile, visible on sm+ */}
@@ -565,7 +581,13 @@ const OurWork = () => {
                         style={{ scrollSnapAlign: 'start' }}
                         aria-label={`Show image ${idx + 1}`}
                       >
-                        <img src={img} alt="thumb" className="w-full h-full object-cover" />
+                        <Image 
+                          src={img} 
+                          alt={`${selectedProject.title} thumbnail ${idx + 1}`} 
+                          width={80}
+                          height={56}
+                          className="w-full h-full object-cover" 
+                        />
                         {idx === modalImageIndex && (
                           <span className="absolute inset-0 ring-2 ring-white/80 rounded-lg"></span>
                         )}

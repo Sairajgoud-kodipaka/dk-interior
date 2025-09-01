@@ -1,16 +1,36 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { Factory, Zap, Target } from 'lucide-react'
 import NavBar from './components/NavBar'
 import Hero from './components/Hero'
 import Services from './components/Services'
-import OurWork from './components/OurWork'
 import WhyWorkWithUs from './components/WhyWorkWithUs'
 import TrustedBrands from './components/TrustedBrands'
 import ContactForm from './components/ContactForm'
 import Footer from './components/Footer'
+
+// Lazy load heavy components
+const OurWork = dynamic(() => import('./components/OurWork'), {
+  loading: () => (
+    <div className="py-12 sm:py-16 lg:py-24 bg-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 lg:mb-16">
+          <div className="h-12 bg-gray-200 rounded-lg animate-pulse mb-4"></div>
+          <div className="h-6 bg-gray-200 rounded-lg animate-pulse max-w-2xl mx-auto"></div>
+        </div>
+        <div className="flex gap-4 overflow-hidden">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="flex-shrink-0 w-80 h-96 bg-gray-200 rounded-lg animate-pulse"></div>
+          ))}
+        </div>
+      </div>
+    </div>
+  ),
+  ssr: false
+})
 
 export default function App() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -134,7 +154,23 @@ export default function App() {
         </section>
         
         {/* Our Work Section - Portfolio showcase */}
-        <OurWork />
+        <Suspense fallback={
+          <div className="py-12 sm:py-16 lg:py-24 bg-white">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-12 lg:mb-16">
+                <div className="h-12 bg-gray-200 rounded-lg animate-pulse mb-4"></div>
+                <div className="h-6 bg-gray-200 rounded-lg animate-pulse max-w-2xl mx-auto"></div>
+              </div>
+              <div className="flex gap-4 overflow-hidden">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="flex-shrink-0 w-80 h-96 bg-gray-200 rounded-lg animate-pulse"></div>
+                ))}
+              </div>
+            </div>
+          </div>
+        }>
+          <OurWork />
+        </Suspense>
         
     
         

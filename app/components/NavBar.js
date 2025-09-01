@@ -99,7 +99,7 @@ const NavBar = () => {
                 <img
                   src="/dk Interior - Logo.png"
                   alt="DK Interiors Logo"
-                  className="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 object-cover cursor-pointer hover:opacity-80 transition-opacity duration-200"
+                  className="h-16 w-16 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-200"
                   onError={(e) => {
                     e.target.src = "/logo.svg"
                   }}
@@ -170,14 +170,14 @@ const NavBar = () => {
             <Button
               variant="ghost"
               size="sm"
-              className="lg:hidden p-2 sm:p-3"
+              className="lg:hidden p-2 sm:p-3 focus:outline-none focus:ring-0 focus:ring-offset-0 hover:bg-transparent"
               onClick={() => setIsOpen(true)}
               aria-controls="mobile-menu"
               aria-expanded={isOpen}
               aria-label="Open mobile menu"
               aria-haspopup="true"
             >
-              <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
+              <Menu className="h-5 w-5 sm:h-6 sm:w-6 text-[#0f1115]" />
               <span className="sr-only">Open menu</span>
             </Button>
           </div>
@@ -212,7 +212,7 @@ const NavBar = () => {
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsOpen(false)}
-                className="p-2 hover:bg-[#B85042]/10 rounded-full"
+                className="p-2 hover:bg-[#B85042]/10 rounded-full focus:outline-none focus:ring-0 focus:ring-offset-0"
                 aria-label="Close mobile menu"
               >
                 <X className="h-5 w-5 text-gray-600" />

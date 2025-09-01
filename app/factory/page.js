@@ -15,27 +15,57 @@ export default function FactoryPage() {
   const machines = [
     {
       name: "MAXWOOD Panel Saw - MPS 3200",
-      description: "High-precision cutting machine for processing large wooden boards, plywood, MDF, and laminates. Ensures straight & accurate cuts with smooth finishing for premium interior fitouts.",
+      description: "High-precision cutting machine for processing large wooden boards, plywood, MDF, and laminates. Ensures straight & accurate cuts with smooth finishing, large cutting capacity for big panels (3200 mm), and heavy-duty sliding table for stability & efficiency. Ideal for mass production of furniture & fit-outs.",
+      features: [
+        "Straight & accurate cuts with smooth finishing",
+        "Large cutting capacity for big panels (3200 mm)",
+        "Heavy-duty sliding table for stability & efficiency",
+        "Ideal for mass production of furniture & fit-outs"
+      ],
       image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/MPS3200.jpg-irOObkC1XFXXuKU38KR7xn74o3bHjZ.jpeg"
     },
     {
       name: "Hunnyimpex HI-400 - Auto Edge Bander",
-      description: "Next-generation machine for precise and automated edge finishing. Offers automatic feeding & trimming for faster production with high accuracy in edge gluing & finishing.",
+      description: "Next-generation machine for precise and automated edge finishing. Perfect for large-scale projects where speed and precision matter most. Offers automatic feeding & trimming for faster production with high accuracy in edge gluing & finishing.",
+      features: [
+        "Automatic feeding & trimming for faster production",
+        "High accuracy in edge gluing & finishing",
+        "Works with multiple edge materials - PVC, ABS, veneer, melamine",
+        "Polished, premium finish for high-end furniture & interiors"
+      ],
       image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Hi-400-Auto-Edge-Bander.jpg-PCLtwrbqRRyeZxs4ZubejuT7dZ00AA.jpeg"
     },
     {
       name: "CAC Compressor - CTB 600",
-      description: "High-performance air compressor built to power heavy-duty factory operations. Provides continuous compressed air supply for multiple machines with energy-efficient operation.",
+      description: "High-performance air compressor built to power heavy-duty factory operations. The backbone of smooth factory operations — powering every machine with precision air support. Provides continuous compressed air supply for multiple machines with energy-efficient operation.",
+      features: [
+        "Continuous compressed air supply for multiple machines",
+        "Energy-efficient operation with reliable output",
+        "Low maintenance & high durability",
+        "Ensures uninterrupted production flow across cutting, pressing & finishing lines"
+      ],
       image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CAC-bSe6a7QMTwCnLRbFjw33cSrDb9JWSc.png"
     },
     {
       name: "Hunnyimpex HI-90R - Edge Bander",
-      description: "Fully automatic edge banding machine designed for premium furniture finishing. Delivers seamless edge binding on plywood, MDF, particle board & laminates with strong adhesive bonding.",
+      description: "Fully automatic edge banding machine designed for premium furniture finishing. Essential tool in an in-house production line, enabling top-quality finishes before further processing. Delivers seamless edge binding on plywood, MDF, particle board & laminates with strong adhesive bonding.",
+      features: [
+        "Seamless edge binding on plywood, MDF, particle board & laminates",
+        "Strong adhesive bonding for durability",
+        "Smooth, chip-free finish that enhances aesthetics",
+        "High speed & consistency, ideal for large-scale fit-out production"
+      ],
       image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/hunny-impex-hi-90-r-bf7TVUNMl2ox6X9BdJVNLOocdJ0Dmu.webp"
     },
     {
       name: "JAI Wood Planner",
-      description: "Precision woodworking machine used for surfacing, thicknessing, and planing wooden boards to achieve smooth, uniform, and accurate finishes for carpentry and furniture work.",
+      description: "Precision woodworking machine used for surfacing, thicknessing, and planing wooden boards to achieve smooth, uniform, and accurate finishes. Ensures flat and even surfaces for carpentry and furniture work with heavy-duty build for long-term industrial use.",
+      features: [
+        "Ensures flat and even surfaces for carpentry and furniture work",
+        "Heavy-duty build for long-term industrial use",
+        "Provides high accuracy in shaping and finishing wood",
+        "Ideal for custom furniture & detailed fit-out projects"
+      ],
       image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/combiplaners-j-303-new.jpg-sRAhUmdhvMVA5bYmnZBq5nH7ZgHnca.jpeg"
     }
   ]
@@ -47,8 +77,8 @@ export default function FactoryPage() {
       
       {/* Hero Section */}
       <Hero 
-        customTitle="Our Factory"
-        customSubtitle="Discover our state-of-the-art manufacturing facility where quality meets innovation"
+        customTitle="State-of-the-art machinery for precision cutting & finishing"
+        customSubtitle="Complete edge-banding & panel processing in our own facility. Controlled quality, faster timelines, and cost efficiency. From raw panel to final polish – everything under one roof."
         showCTA={false}
       />
       
@@ -85,9 +115,24 @@ export default function FactoryPage() {
                     <h3 className="text-lg font-bold text-white mb-3 line-clamp-2">
                       {machine.name}
                     </h3>
-                    <p className="text-gray-300 text-sm leading-relaxed line-clamp-4">
+                    <p className="text-gray-300 text-sm leading-relaxed mb-4">
                       {machine.description}
                     </p>
+                    
+                    {/* Features List */}
+                    {machine.features && (
+                      <div className="space-y-2">
+                        <h4 className="text-sm font-semibold text-[#B85042] mb-2">Key Features:</h4>
+                        <ul className="space-y-1">
+                          {machine.features.map((feature, featureIndex) => (
+                            <li key={featureIndex} className="text-xs text-gray-400 flex items-start">
+                              <span className="text-[#B85042] mr-2 mt-1">•</span>
+                              <span className="leading-relaxed">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -104,43 +149,20 @@ export default function FactoryPage() {
                 </p>
               </div>
               
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+              <div className="max-w-2xl mx-auto">
                 {/* Address Information */}
-                <div className="bg-white/5 rounded-xl p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="text-2xl mr-3">📍</div>
-                    <h4 className="text-xl font-bold text-white">Our Factory Address</h4>
+                <div className="bg-white/5 rounded-xl p-8 text-center">
+                  <div className="flex items-center justify-center mb-6">
+                    <div className="text-3xl mr-3">📍</div>
+                    <h4 className="text-2xl font-bold text-white">Our Factory Address</h4>
                   </div>
-                  <div className="text-gray-300 space-y-3">
-                    <p className="text-lg">
+                  <div className="text-gray-300 space-y-4">
+                    <p className="text-xl">
                       <strong>DK Interiors Factory</strong>
                     </p>
-                    <p>Vailal Village, Jinnaram Mandal</p>
-                    <p>Sangareddy District, Telangana</p>
-                    <p className="text-[#B85042] font-semibold">22,000+ SFT Facility</p>
-                  </div>
-                  <a 
-                    href="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d13023.576139473751!2d78.35329834419751!3d17.61252014281202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e1!3m2!1sen!2sin!4v1756696083032!5m2!1sen!2sin"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center mt-4 text-[#B85042] hover:text-[#A73E3A] transition-colors duration-300"
-                  >
-                    View on Google Maps →
-                  </a>
-                </div>
-                
-                {/* Google Maps Embed */}
-                <div className="bg-white/5 rounded-xl p-6">
-                  <h4 className="text-xl font-bold text-white mb-4">Interactive Map</h4>
-                  <div className="aspect-video w-full rounded-lg overflow-hidden shadow-lg">
-                    <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d13023.576139473751!2d78.35329834419751!3d17.61252014281202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e1!3m2!1sen!2sin!4v1756696083032!5m2!1sen!2sin"
-                      className="w-full h-full border-0"
-                      loading="lazy"
-                      allowFullScreen=""
-                      referrerPolicy="no-referrer-when-downgrade"
-                      title="DK Interiors Factory Location"
-                    />
+                    <p className="text-lg">Vailal Village, Jinnaram Mandal</p>
+                    <p className="text-lg">Sangareddy District, Telangana</p>
+                    <p className="text-[#B85042] font-semibold text-xl">22,000+ SFT Facility</p>
                   </div>
                 </div>
               </div>
@@ -159,7 +181,7 @@ export default function FactoryPage() {
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-[#B85042] mb-2">5</div>
-                  <div className="text-gray-300 text-sm">Machines</div>
+                  <div className="text-gray-300 text-sm">State-of-the-art machinery for precision cutting & finishing</div>
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-[#B85042] mb-2">100%</div>

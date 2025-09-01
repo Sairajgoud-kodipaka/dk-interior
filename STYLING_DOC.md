@@ -17,7 +17,7 @@
 ### Logo Specifications
 - **Primary Logo**: `dk Interior - Logo.png` - Used in navbar, sidebar, and light backgrounds
 - **White Logo**: `dk Interior - Logo w.png` - Used in footer and dark backgrounds
-- **Logo Size**: 20px height (h-5 in Tailwind) for consistent branding
+- **Logo Size**: 64px height (h-16 in Tailwind) for consistent branding
 - **Logo Format**: PNG with transparent background
 - **Brand Colors**: Primary #B85042 (Brick Red), Secondary #0f1115 (Dark Charcoal)
 
@@ -117,8 +117,8 @@
 ```jsx
 // NavBar
 <nav className="sticky top-0 z-50 bg-[#f5f4f2]/95 backdrop-blur-sm border-b border-[#6b7280]/20">
-  {/* Logo: 20px height */}
-  <img src="/dk Interior - Logo.png" className="h-5 w-auto object-contain" />
+  {/* Logo: 64px height */}
+  <img src="/dk Interior - Logo.png" className="h-16 w-16 object-contain" />
   
   {/* Navigation Links */}
   <button className="text-sm font-medium hover:text-[#B85042] focus:ring-2 focus:ring-[#B85042]">
@@ -128,8 +128,8 @@
 
 // Mobile Sidebar
 <div className="fixed right-0 top-0 h-full w-80 max-w-[85vw] bg-white shadow-xl">
-  {/* Logo: 20px height */}
-  <img src="/dk Interior - Logo.png" className="h-5 w-auto object-contain" />
+  {/* Logo: 64px height */}
+  <img src="/dk Interior - Logo.png" className="h-16 w-auto object-contain" />
 </div>
 ```
 
@@ -165,8 +165,8 @@
 ### Footer
 ```jsx
 <footer className="bg-[#0f1115] text-white py-12">
-  {/* Logo: 20px height */}
-  <img src="/dk Interior - Logo w.png" className="h-5 w-auto mb-6 object-contain" />
+  {/* Logo: 64px height */}
+  <img src="/dk Interior - Logo w.png" className="h-16 w-auto mb-6 object-contain" />
   
   {/* Footer Links */}
   <button className="text-gray-300 hover:text-white transition-colors duration-200">
@@ -350,7 +350,7 @@ xl: 1280px   /* Extra large devices */
 - **File Names**:
   - `dk Interior - Logo.png` - Primary logo for light backgrounds
   - `dk Interior - Logo w.png` - White logo for dark backgrounds
-- **Dimensions**: 20px height (h-5 in Tailwind)
+- **Dimensions**: 64px height (h-16 in Tailwind)
 - **Format**: PNG with transparent background
 - **Aspect Ratio**: Maintained with `w-auto`
 
@@ -360,20 +360,20 @@ xl: 1280px   /* Extra large devices */
 <img 
   src="/dk Interior - Logo.png" 
   alt="DK Interiors Logo"
-  className="h-5 w-auto object-contain"
+  className="h-16 w-16 object-contain"
 />
 
 // Footer (Dark Background)
 <img 
   src="/dk Interior - Logo w.png" 
   alt="DK Interiors Logo"
-  className="h-5 w-auto object-contain"
+  className="h-16 w-auto object-contain"
 />
 ```
 
 ### Logo Guidelines
-- **Minimum Size**: 20px height for consistency
-- **Maximum Size**: Scale appropriately for different contexts
+- **Standard Size**: 64px height (h-16) for consistency
+- **Responsive**: Maintain aspect ratio with w-auto for flexible layouts
 - **Spacing**: Maintain adequate whitespace around logos
 - **Background**: Ensure sufficient contrast for visibility
 - **Fallback**: Include fallback logo (logo.svg) for error handling

@@ -2,6 +2,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 
 const Hero = ({ 
@@ -85,6 +86,7 @@ const Hero = ({
           muted
           loop
           playsInline
+          preload="metadata"
           className="w-full h-full object-cover transition-all duration-1000"
           onLoadedData={handleVideoLoad}
           style={{
@@ -93,6 +95,7 @@ const Hero = ({
           }}
         >
           <source src="/Luxury_Lobby_Video_Generation (1).mp4" type="video/mp4" />
+          <track kind="captions" srcLang="en" label="English captions" />
         </video>
         
         {/* Enhanced Video Overlay - Multiple layers for depth */}

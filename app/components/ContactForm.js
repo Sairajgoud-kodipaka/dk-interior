@@ -203,23 +203,7 @@ const ContactForm = () => {
               </div>
             </div>
 
-            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-[#6b7280]/10 shadow-lg">
-              <h4 className="font-semibold text-[#0f1115] mb-3">Business Hours</h4>
-              <div className="space-y-2 text-[#6b7280]">
-                <div className="flex justify-between">
-                  <span>Monday - Friday</span>
-                  <span className="font-medium">9:00 AM - 6:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Saturday</span>
-                  <span className="font-medium">10:00 AM - 4:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Sunday</span>
-                  <span className="font-medium text-[#B85042]">Closed</span>
-                </div>
-              </div>
-            </div>
+           
           </div>
 
           {/* Contact Form */}
