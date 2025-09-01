@@ -1,9 +1,5 @@
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-})
-
 const nextConfig = {
-  output: process.env.ANALYZE === 'true' ? undefined : 'standalone',
+  output: 'standalone',
   
   // Performance optimizations
   poweredByHeader: false,
@@ -144,4 +140,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withBundleAnalyzer(nextConfig);
+module.exports = nextConfig;

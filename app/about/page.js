@@ -66,7 +66,7 @@ export default function AboutPage() {
   const companyStats = [
     { number: "25+", label: "Years of Experience" },
     { number: "300+", label: "Projects Completed" },
-    { number: "4LAc+", label: "SFT Handled" },
+    { number: "4 Lakh+", label: "Sq. Ft. Executed" },
     { number: "100%", label: "Client Satisfaction" }
   ]
 
