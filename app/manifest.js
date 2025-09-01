@@ -2,7 +2,7 @@ export default function manifest() {
   return {
     name: 'DK Interiors - The Fitout Pro',
     short_name: 'DK Interiors',
-    description: 'Premium interior design and fitout solutions for retail, commercial, and residential spaces.',
+    description: 'Premium interior design and fit-out solutions for retail, commercial, and residential spaces.',
     start_url: '/',
     display: 'standalone',
     background_color: '#f5f4f2',

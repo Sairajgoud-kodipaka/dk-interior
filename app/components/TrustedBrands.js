@@ -5,30 +5,33 @@ import { motion } from 'framer-motion'
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
 
 const TrustedBrands = () => {
+  // Force cache busting with timestamp
+  const cacheBuster = Date.now()
+  
   const brands = [
     {
       name: "PMJ Jewels",
-      logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-yABqjo2j1QpO2YN88jemoO6ycZ1Q1m.png",
+      logo: `/brands/pmj-jewels.png?v=${cacheBuster}`,
       category: "Premium Jewellery"
     },
     {
       name: "Soi Ombré",
-      logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-jngAkFy7nwqECDsCXgLEKcktszXBjW.png",
+      logo: `/brands/images.png?v=${cacheBuster}`,
       category: "Luxury Lifestyle"
     },
     {
       name: "Raymond",
-      logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/RAYMOND.NS_BIG-02a3e63e-JHILOg6YXmycWVWKqRFlor7YkE7WIB.png",
+      logo: `/brands/RAYMOND.NS_BIG-02a3e63e.png?v=${cacheBuster}`,
       category: "Textiles & Lifestyle"
     },
     {
       name: "Manyavar",
-      logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/images-GKLJ6IyRYqGMfY9LyXPQoF9FmydGBJ.png",
+      logo: `/brands/manyavar.png?v=${cacheBuster}`,
       category: "Ethnic Wear"
     },
     {
       name: "Anu Jewellers",
-      logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/anu.jpg-l6DqoQoROqFS7ru0wnt2LFcwVdMPer.jpeg",
+      logo: `/brands/anu.jpg?v=${cacheBuster}`,
       category: "Jewellery Retail"
     }
   ]

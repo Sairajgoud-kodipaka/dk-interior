@@ -39,10 +39,10 @@ export default function TermsPage() {
               <section className="mb-8">
                 <h2 className="text-2xl font-bold text-[#0f1115] mb-4">Services</h2>
                 <p className="text-[#6b7280] leading-relaxed mb-4">
-                  DK Interiors provides interior design and fitout solutions including:
+                  DK Interiors provides interior design and fit-out solutions including:
                 </p>
                 <ul className="list-disc list-inside text-[#6b7280] space-y-2 mb-4">
-                  <li>Retail fitout solutions</li>
+                  <li>Retail fit-out solutions</li>
                   <li>Commercial space design</li>
                   <li>Residential interior design</li>
                   <li>Factory manufacturing services</li>

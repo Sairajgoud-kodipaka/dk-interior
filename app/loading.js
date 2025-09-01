@@ -23,12 +23,7 @@ export default function Loading() {
           <p className="text-sm text-[#6b7280]">Preparing your experience</p>
         </div>
         
-        {/* Progress Dots */}
-        <div className="flex justify-center space-x-2 mt-6">
-          <div className="w-2 h-2 bg-[#B85042] rounded-full animate-bounce" />
-          <div className="w-2 h-2 bg-[#B85042] rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
-          <div className="w-2 h-2 bg-[#B85042] rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
-        </div>
+        
       </div>
     </div>
   )

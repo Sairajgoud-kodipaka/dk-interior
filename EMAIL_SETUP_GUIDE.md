@@ -1,4 +1,4 @@
-# 📧 Email Service Setup Guide - DK Interior Website
+# 📧 Email Service Setup Guide - DK Interiors Website
 
 ## 🚀 Overview
 
@@ -44,10 +44,10 @@ In `app/lib/emailService.js`, update the `from` email addresses:
 
 ```javascript
 // Line 25: Update with your verified domain
-from: 'DK Interior <noreply@yourdomain.com>',
+from: 'DK Interiors <noreply@yourdomain.com>',
 
 // Line 45: Update with your verified domain  
-from: 'DK Interior Website <noreply@yourdomain.com>',
+from: 'DK Interiors Website <noreply@yourdomain.com>',
 ```
 
 ## 🧪 Testing the Email Service
@@ -67,7 +67,7 @@ This will send a test email to verify your configuration.
 ## 📧 Email Templates Features
 
 ### **Customer Confirmation Email**
-- ✅ Professional branding with DK Interior colors
+- ✅ Professional branding with DK Interiors colors
 - ✅ Customer's submitted information
 - ✅ Clear next steps and timeline
 - ✅ Contact information and business hours

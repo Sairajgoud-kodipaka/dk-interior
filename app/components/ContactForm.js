@@ -158,7 +158,7 @@ const ContactForm = () => {
                 Get In Touch
               </h3>
               <p className="text-[#6b7280] leading-relaxed mb-8">
-                We'd love to hear about your project. Whether it's a complete fitout, 
+                We'd love to hear about your project. Whether it's a complete fit-out, 
                 renovation, or consultation, our team is here to help you create 
                 exceptional spaces.
               </p>

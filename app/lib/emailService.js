@@ -14,7 +14,7 @@ export const sendCustomerConfirmation = async (data) => {
     const emailData = customerConfirmationEmail(data)
     
     const result = await resend.emails.send({
-      from: 'DK Interior <noreply@yourdomain.com>', // Update with your verified domain
+      from: 'DK Interiors <noreply@yourdomain.com>', // Update with your verified domain
       to: [data.email],
       subject: emailData.subject,
       html: emailData.html,
@@ -38,7 +38,7 @@ export const sendAdminNotification = async (data) => {
     const emailData = adminNotificationEmail(data)
     
     const result = await resend.emails.send({
-      from: 'DK Interior Website <noreply@yourdomain.com>', // Update with your verified domain
+      from: 'DK Interiors Website <noreply@yourdomain.com>', // Update with your verified domain
       to: ['dkinterior17@gmail.com'], // Admin email address
       subject: emailData.subject,
       html: emailData.html,
@@ -97,9 +97,9 @@ export const testEmailService = async () => {
     }
     
     const result = await resend.emails.send({
-      from: 'DK Interior <noreply@yourdomain.com>',
+      from: 'DK Interiors <noreply@yourdomain.com>',
       to: ['dkinterior17@gmail.com'],
-      subject: '🧪 Email Service Test - DK Interior Website',
+      subject: '🧪 Email Service Test - DK Interiors Website',
       html: `
         <h1>Email Service Test</h1>
         <p>This is a test email to verify that your email service is working correctly.</p>

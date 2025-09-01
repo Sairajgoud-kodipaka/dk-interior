@@ -1,7 +1,7 @@
 # Performance Optimization Guide
 
 ## Overview
-This guide documents the performance optimizations implemented to address the PageSpeed Insights issues identified in the DK Interior website.
+This guide documents the performance optimizations implemented to address the PageSpeed Insights issues identified in the DK Interiors website.
 
 ## Issues Addressed
 

@@ -22,7 +22,7 @@ export default function FactoryPage() {
         "Heavy-duty sliding table for stability & efficiency",
         "Ideal for mass production of furniture & fit-outs"
       ],
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/MPS3200.jpg-irOObkC1XFXXuKU38KR7xn74o3bHjZ.jpeg"
+      image: "/factory/MPS3200.jpg"
     },
     {
       name: "Hunnyimpex HI-400 - Auto Edge Bander",
@@ -33,7 +33,7 @@ export default function FactoryPage() {
         "Works with multiple edge materials - PVC, ABS, veneer, melamine",
         "Polished, premium finish for high-end furniture & interiors"
       ],
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Hi-400-Auto-Edge-Bander.jpg-PCLtwrbqRRyeZxs4ZubejuT7dZ00AA.jpeg"
+      image: "/factory/Hi-400-Auto-Edge-Bander.jpg"
     },
     {
       name: "CAC Compressor - CTB 600",
@@ -44,7 +44,7 @@ export default function FactoryPage() {
         "Low maintenance & high durability",
         "Ensures uninterrupted production flow across cutting, pressing & finishing lines"
       ],
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CAC-bSe6a7QMTwCnLRbFjw33cSrDb9JWSc.png"
+      image: "/factory/CAC.png"
     },
     {
       name: "Hunnyimpex HI-90R - Edge Bander",
@@ -55,7 +55,7 @@ export default function FactoryPage() {
         "Smooth, chip-free finish that enhances aesthetics",
         "High speed & consistency, ideal for large-scale fit-out production"
       ],
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/hunny-impex-hi-90-r-bf7TVUNMl2ox6X9BdJVNLOocdJ0Dmu.webp"
+      image: "/factory/hunny-impex-hi-90-r.webp"
     },
     {
       name: "JAI Wood Planner",
@@ -66,7 +66,7 @@ export default function FactoryPage() {
         "Provides high accuracy in shaping and finishing wood",
         "Ideal for custom furniture & detailed fit-out projects"
       ],
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/combiplaners-j-303-new.jpg-sRAhUmdhvMVA5bYmnZBq5nH7ZgHnca.jpeg"
+      image: "/factory/combiplaners-j-303-new.jpg"
     }
   ]
 

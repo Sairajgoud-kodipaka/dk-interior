@@ -149,6 +149,14 @@ const NavBar = () => {
                         </Link>
                       </div>
                     </div>
+                  ) : section.id === 'contact' ? (
+                    // Contact button with special styling
+                    <button
+                      onClick={() => handleNavigation(section)}
+                      className="bg-[#B85042] hover:bg-[#A14237] text-white font-semibold px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#B85042] focus:ring-offset-2 shadow-lg hover:shadow-xl"
+                    >
+                      {section.name}
+                    </button>
                   ) : (
                     // Regular navigation item
                     <button
@@ -271,6 +279,15 @@ const NavBar = () => {
                             </Link>
                           </div>
                         </div>
+                      ) : section.id === 'contact' ? (
+                        // Contact button with special styling for mobile
+                        <button
+                          onClick={() => handleNavigation(section)}
+                          className="flex items-center justify-center w-full bg-[#B85042] hover:bg-[#A14237] text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#B85042] focus:ring-offset-2 shadow-lg hover:shadow-xl"
+                        >
+                          <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 mr-3" />
+                          {section.name}
+                        </button>
                       ) : (
                         // Regular navigation item
                         <button

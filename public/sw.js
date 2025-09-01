@@ -1,6 +1,6 @@
-const CACHE_NAME = 'dk-interiors-v1'
-const STATIC_CACHE = 'dk-interiors-static-v1'
-const DYNAMIC_CACHE = 'dk-interiors-dynamic-v1'
+const CACHE_NAME = 'dk-interiors-v2'
+const STATIC_CACHE = 'dk-interiors-static-v2'
+const DYNAMIC_CACHE = 'dk-interiors-dynamic-v2'
 
 // Assets to cache immediately
 const STATIC_ASSETS = [

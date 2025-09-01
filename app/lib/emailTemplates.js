@@ -1,14 +1,14 @@
-// Email templates for DK Interior contact form
+// Email templates for DK Interiors contact form
 
 export const customerConfirmationEmail = (data) => ({
-  subject: 'Thank you for contacting DK Interior - We\'ll get back to you soon!',
+  subject: 'Thank you for contacting DK Interiors - We\'ll get back to you soon!',
   html: `
     <!DOCTYPE html>
     <html lang="en">
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Thank you for contacting DK Interior</title>
+      <title>Thank you for contacting DK Interiors</title>
       <style>
         body {
           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -101,7 +101,7 @@ export const customerConfirmationEmail = (data) => ({
           Dear <strong>${data.fullName}</strong>,
         </div>
         
-        <p>Thank you for reaching out to DK Interior! We're thrilled that you're considering us for your interior design and fitout project.</p>
+        <p>Thank you for reaching out to DK Interiors! We're thrilled that you're considering us for your interior design and fit-out project.</p>
         
         <div class="details">
           <h3 style="margin-top: 0; color: #B85042;">Your Message Details:</h3>
@@ -143,22 +143,22 @@ export const customerConfirmationEmail = (data) => ({
         <p>We're committed to delivering exceptional results and creating spaces that exceed your expectations. Your vision is our priority!</p>
         
         <p>Best regards,<br>
-        <strong>The DK Interior Team</strong></p>
+        <strong>The DK Interiors Team</strong></p>
       </div>
       
       <div class="footer">
-        <p>© 2024 DK Interior. All rights reserved.</p>
+        <p>© 2024 DK Interiors. All rights reserved.</p>
         <p>VAILAL VILLAGE, JINNARAM MANDAL, SANGAREDDY DISTRICT, TELANGANA STATE</p>
       </div>
     </body>
     </html>
   `,
   text: `
-Thank you for contacting DK Interior!
+Thank you for contacting DK Interiors!
 
 Dear ${data.fullName},
 
-Thank you for reaching out to DK Interior! We're thrilled that you're considering us for your interior design and fitout project.
+Thank you for reaching out to DK Interiors! We're thrilled that you're considering us for your interior design and fit-out project.
 
 Your Message Details:
 - Name: ${data.fullName}
@@ -180,15 +180,15 @@ Need to reach us quickly?
 We're committed to delivering exceptional results and creating spaces that exceed your expectations. Your vision is our priority!
 
 Best regards,
-The DK Interior Team
+The DK Interiors Team
 
-© 2024 DK Interior. All rights reserved.
+© 2024 DK Interiors. All rights reserved.
 VAILAL VILLAGE, JINNARAM MANDAL, SANGAREDDY DISTRICT, TELANGANA STATE
   `
 })
 
 export const adminNotificationEmail = (data) => ({
-  subject: '🚨 New Contact Form Submission - DK Interior Website',
+  subject: '🚨 New Contact Form Submission - DK Interiors Website',
   html: `
     <!DOCTYPE html>
     <html lang="en">
@@ -297,7 +297,7 @@ export const adminNotificationEmail = (data) => ({
     <body>
       <div class="header">
         <h1>🚨 New Contact Form Submission</h1>
-        <p>DK Interior Website - Immediate Action Required</p>
+        <p>DK Interiors Website - Immediate Action Required</p>
       </div>
       
       <div class="content">
@@ -333,7 +333,7 @@ export const adminNotificationEmail = (data) => ({
         </div>
         
         <div class="action-buttons">
-          <a href="mailto:${data.email}?subject=Re: Your DK Interior Inquiry&body=Dear ${data.fullName},%0D%0A%0D%0AThank you for contacting DK Interior! We're excited about your project.%0D%0A%0D%0AI'll be in touch within 24 hours to discuss your requirements in detail.%0D%0A%0D%0ABest regards,%0D%0AThe DK Interior Team" class="action-btn">📧 Reply via Email</a>
+          <a href="mailto:${data.email}?subject=Re: Your DK Interiors Inquiry&body=Dear ${data.fullName},%0D%0A%0D%0AThank you for contacting DK Interiors! We're excited about your project.%0D%0A%0D%0AI'll be in touch within 24 hours to discuss your requirements in detail.%0D%0A%0D%0ABest regards,%0D%0AThe DK Interiors Team" class="action-btn">📧 Reply via Email</a>
           <a href="tel:${data.mobileNumber.replace(/[+\-\s]/g, '')}" class="action-btn">📱 Call Customer</a>
         </div>
         
@@ -361,14 +361,14 @@ export const adminNotificationEmail = (data) => ({
       </div>
       
       <div class="footer">
-        <p>© 2024 DK Interior. This is an automated notification from your website.</p>
-        <p>Website: Your DK Interior Website</p>
+        <p>© 2024 DK Interiors. This is an automated notification from your website.</p>
+        <p>Website: Your DK Interiors Website</p>
       </div>
     </body>
     </html>
   `,
   text: `
-🚨 NEW CONTACT FORM SUBMISSION - DK Interior Website
+🚨 NEW CONTACT FORM SUBMISSION - DK Interiors Website
 
 A new customer has submitted a contact form on your website. Please respond within 24 hours.
 
@@ -388,7 +388,7 @@ IMMEDIATE ACTIONS REQUIRED:
 4. Schedule site visit if needed
 
 QUICK LINKS:
-- Reply via Email: mailto:${data.email}?subject=Re: Your DK Interior Inquiry
+- Reply via Email: mailto:${data.email}?subject=Re: Your DK Interiors Inquiry
 - Call Customer: ${data.mobileNumber.replace(/[+\-\s]/g, '')}
 
 Form submitted at: ${new Date().toLocaleString('en-IN', { 
@@ -401,6 +401,6 @@ Form submitted at: ${new Date().toLocaleString('en-IN', {
   second: '2-digit'
 })}
 
-© 2024 DK Interior. This is an automated notification from your website.
+© 2024 DK Interiors. This is an automated notification from your website.
   `
 })

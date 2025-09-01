@@ -44,7 +44,7 @@ const Footer = () => {
             </Link>
             <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 max-w-md leading-relaxed">
               Transforming spaces with innovative design solutions. 
-              Your trusted partner for premium interior fitouts across India.
+              Your trusted partner for premium interior fit-outs across India.
             </p>
             <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-300">
               <div className="flex items-center space-x-3">
