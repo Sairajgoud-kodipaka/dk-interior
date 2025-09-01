@@ -77,7 +77,7 @@ export default function FactoryPage() {
       
       {/* Hero Section */}
       <Hero 
-        customTitle="State-of-the-art machinery for precision cutting & finishing"
+        customTitle="Our Factory"
         customSubtitle="Complete edge-banding & panel processing in our own facility. Controlled quality, faster timelines, and cost efficiency. From raw panel to final polish – everything under one roof."
         showCTA={false}
       />

@@ -8,9 +8,15 @@
         "dev:webpack": "next dev --hostname 0.0.0.0 --port 3000",
         "build": "next build",
         "build:analyze": "cross-env ANALYZE=true next build",
+        "build:production": "NODE_ENV=production next build",
         "start": "next start",
+        "start:production": "NODE_ENV=production next start",
         "lint": "next lint",
-        "lint:fix": "next lint --fix"
+        "lint:fix": "next lint --fix",
+        "perf:check": "node scripts/performance-check.js",
+        "perf:lighthouse": "lighthouse http://localhost:3000 --output=html --output-path=./lighthouse-report.html",
+        "perf:optimize-images": "node scripts/optimize-images.js",
+        "clean": "rm -rf .next && rm -rf node_modules/.cache"
     },
     "dependencies": {
         "@hookform/resolvers": "^5.1.1",
@@ -73,6 +79,7 @@
         "cross-env": "^7.0.3",
         "globals": "^16.2.0",
         "postcss": "^8",
+        "sharp": "^0.34.3",
         "tailwindcss": "^3.4.1"
     },
     "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"

@@ -2,6 +2,8 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import { ToastProvider } from '@/components/CustomToast'
 import PerformanceMonitor from '@/components/PerformanceMonitor'
+import PerformanceOptimizer from '@/components/PerformanceOptimizer'
+import ErrorBoundary from '@/components/ErrorBoundary'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -37,10 +39,13 @@ export default function RootLayout({ children }) {
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
       </head>
       <body className="font-sans antialiased bg-[#f5f4f2] text-[#0f1115]">
-        <PerformanceMonitor />
-        <ToastProvider>
-          {children}
-        </ToastProvider>
+        <ErrorBoundary>
+          <PerformanceOptimizer />
+          <PerformanceMonitor />
+          <ToastProvider>
+            {children}
+          </ToastProvider>
+        </ErrorBoundary>
       </body>
     </html>
   )

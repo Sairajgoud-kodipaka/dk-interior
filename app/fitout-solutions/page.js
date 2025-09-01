@@ -127,7 +127,7 @@ const FitoutSolutions = () => {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
               {features.map((feature, index) => (
                 <motion.div
                   key={index}
@@ -135,11 +135,11 @@ const FitoutSolutions = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl shadow-black/5 border border-white/20 hover:shadow-2xl transition-all duration-300 hover:scale-105"
+                  className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 lg:p-8 shadow-xl shadow-black/5 border border-white/20 hover:shadow-2xl transition-all duration-300 hover:scale-105 h-full flex flex-col"
                 >
                   <div className="flex justify-center mb-4">{feature.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600 leading-relaxed flex-grow">{feature.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -164,8 +164,8 @@ const FitoutSolutions = () => {
               </p>
             </motion.div>
 
-            <div className="max-w-6xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="max-w-7xl mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8">
                 {process.map((step, index) => (
                   <motion.div
                     key={index}
@@ -175,12 +175,12 @@ const FitoutSolutions = () => {
                     viewport={{ once: true }}
                     className="relative"
                   >
-                    <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl shadow-black/5 border border-white/20">
+                    <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 lg:p-8 shadow-xl shadow-black/5 border border-white/20 h-full flex flex-col">
                       <div className="absolute -top-4 -left-4 w-12 h-12 bg-[#B85042] text-white rounded-full flex items-center justify-center font-bold text-lg">
                         {step.step}
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-4 mt-4">{step.title}</h3>
-                      <p className="text-gray-600 leading-relaxed">{step.description}</p>
+                      <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-3 mt-4">{step.title}</h3>
+                      <p className="text-gray-600 leading-relaxed flex-grow">{step.description}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -206,16 +206,16 @@ const FitoutSolutions = () => {
                 <p className="text-xl text-white/90 mb-8">
                   Let's discuss your fit-out project and create something extraordinary together.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <button
                     onClick={() => handleNavigation('#contact')}
-                    className="inline-block bg-white text-[#B85042] font-semibold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    className="w-full sm:w-auto bg-white text-[#B85042] font-semibold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-lg"
                   >
                     Get Free Quote
                   </button>
                   <button
                     onClick={() => handleNavigation('#our-work')}
-                    className="inline-block border-2 border-white text-white font-semibold py-4 px-8 rounded-xl hover:bg-white hover:text-[#B85042] transition-all duration-300 hover:scale-105"
+                    className="w-full sm:w-auto border-2 border-white text-white font-semibold py-4 px-8 rounded-xl hover:bg-white hover:text-[#B85042] transition-all duration-300 hover:scale-105"
                   >
                     View Our Work
                   </button>

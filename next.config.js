@@ -4,36 +4,83 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const nextConfig = {
   output: process.env.ANALYZE === 'true' ? undefined : 'standalone',
+  
+  // Performance optimizations
+  poweredByHeader: false,
+  generateEtags: false,
+  
   // Enable image optimization
   images: {
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 60,
+    minimumCacheTTL: 31536000, // 1 year
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    unoptimized: false,
   },
+  
   // Enable compression
   compress: true,
+  
   // Enable SWC minification
   swcMinify: true,
+  
+  // Experimental features for performance
   experimental: {
-    // Remove if not using Server Components
     serverComponentsExternalPackages: ['mongodb'],
-    // Enable modern JavaScript features
     esmExternals: true,
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
+    },
   },
+  
+  // Webpack optimizations
   webpack(config, { dev, isServer }) {
+    // Fix webpack module loading issues
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+      net: false,
+      tls: false,
+    }
+    
+    // Optimize bundle splitting
     if (!dev && !isServer) {
-      // Production optimizations
       config.optimization = {
         ...config.optimization,
         splitChunks: {
           chunks: 'all',
+          minSize: 20000,
+          maxSize: 244000,
           cacheGroups: {
+            default: {
+              minChunks: 2,
+              priority: -20,
+              reuseExistingChunk: true,
+            },
             vendor: {
               test: /[\\/]node_modules[\\/]/,
               name: 'vendors',
+              priority: -10,
+              chunks: 'all',
+            },
+            framer: {
+              test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
+              name: 'framer-motion',
+              priority: 20,
+              chunks: 'all',
+            },
+            lucide: {
+              test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
+              name: 'lucide-react',
+              priority: 20,
               chunks: 'all',
             },
             common: {
@@ -41,24 +88,28 @@ const nextConfig = {
               minChunks: 2,
               chunks: 'all',
               enforce: true,
+              priority: -5,
             },
           },
         },
-      };
+      }
     }
     
+    // Development optimizations
     if (dev) {
-      // Reduce CPU/memory from file watching
       config.watchOptions = {
-        poll: 2000, // check every 2 seconds
-        aggregateTimeout: 300, // wait before rebuilding
-        ignored: ['**/node_modules'],
-      };
+        poll: 1000,
+        aggregateTimeout: 300,
+        ignored: ['**/node_modules', '**/.git', '**/.next'],
+      }
     }
-    return config;
+    
+    return config
   },
+  
+  // Optimize on-demand entries
   onDemandEntries: {
-    maxInactiveAge: 10000,
+    maxInactiveAge: 25 * 1000,
     pagesBufferLength: 2,
   },
   async headers() {

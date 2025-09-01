@@ -8,11 +8,10 @@ import NavBar from './components/NavBar'
 import Hero from './components/Hero'
 import Services from './components/Services'
 import WhyWorkWithUs from './components/WhyWorkWithUs'
-import TrustedBrands from './components/TrustedBrands'
 import ContactForm from './components/ContactForm'
 import Footer from './components/Footer'
 
-// Lazy load heavy components
+// Lazy load heavy components with optimized loading states
 const OurWork = dynamic(() => import('./components/OurWork'), {
   loading: () => (
     <div className="py-12 sm:py-16 lg:py-24 bg-white">
@@ -24,6 +23,25 @@ const OurWork = dynamic(() => import('./components/OurWork'), {
         <div className="flex gap-4 overflow-hidden">
           {[1, 2, 3].map((i) => (
             <div key={i} className="flex-shrink-0 w-80 h-96 bg-gray-200 rounded-lg animate-pulse"></div>
+          ))}
+        </div>
+      </div>
+    </div>
+  ),
+  ssr: false
+})
+
+// Lazy load other heavy components
+const TrustedBrands = dynamic(() => import('./components/TrustedBrands'), {
+  loading: () => (
+    <div className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8">
+          <div className="h-8 bg-gray-200 rounded-lg animate-pulse max-w-md mx-auto"></div>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          {[1, 2, 3, 4, 5, 6].map((i) => (
+            <div key={i} className="h-16 bg-gray-200 rounded-lg animate-pulse"></div>
           ))}
         </div>
       </div>
