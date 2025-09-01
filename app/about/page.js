@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
+import { Store, Gem, Building2, Coffee, Home, BarChart3 } from 'lucide-react'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 import Hero from '../components/Hero'
@@ -66,7 +67,7 @@ export default function AboutPage() {
   const companyStats = [
     { number: "25+", label: "Years of Experience" },
     { number: "300+", label: "Projects Completed" },
-    { number: "4 Lakh+", label: "Sq. Ft. Delivered" },
+    { number: "4\u00A0Lakh+", label: "Sq. Ft. Delivered" },
     { number: "100%", label: "Client Satisfaction" }
   ]
 
@@ -90,12 +91,42 @@ export default function AboutPage() {
   ]
 
   const expertiseAreas = [
-    "Luxury Retail Fit-outs",
-    "Jewellery Showrooms", 
-    "Corporate Offices",
-    "Hospitality Spaces",
-    "Residential Interiors",
-    "Exhibition Stands"
+    {
+      title: "Luxury Retail Fit-outs",
+      icon: Store,
+      description: "Premium retail spaces that enhance brand presence and customer experience",
+      color: "from-blue-500 to-blue-600"
+    },
+    {
+      title: "Jewellery Showrooms", 
+      icon: Gem,
+      description: "Secure, elegant spaces designed to showcase precious collections",
+      color: "from-amber-500 to-amber-600"
+    },
+    {
+      title: "Corporate Offices",
+      icon: Building2,
+      description: "Modern workspaces that boost productivity and reflect company values",
+      color: "from-slate-500 to-slate-600"
+    },
+    {
+      title: "Hospitality Spaces",
+      icon: Coffee,
+      description: "Welcoming environments that create memorable guest experiences",
+      color: "from-green-500 to-green-600"
+    },
+    {
+      title: "Residential Interiors",
+      icon: Home,
+      description: "Personalized living spaces that reflect individual style and comfort",
+      color: "from-purple-500 to-purple-600"
+    },
+    {
+      title: "Exhibition Stands",
+      icon: BarChart3,
+      description: "Eye-catching displays that maximize brand visibility and engagement",
+      color: "from-red-500 to-red-600"
+    }
   ]
 
   return (
@@ -332,21 +363,53 @@ export default function AboutPage() {
               animate={isVisible ? 'visible' : 'hidden'}
               className="mb-20"
             >
-              <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-10 lg:p-16 border border-gray-200">
-                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-8">
-                  Areas of Expertise
-                </h2>
-                <p className="text-xl text-center text-gray-600 mb-12 max-w-3xl mx-auto">
-                  We specialize in creating exceptional interior spaces across diverse sectors, 
-                  delivering innovative solutions that enhance brand value and customer experience.
-                </p>
+              <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-10 lg:p-16 border border-gray-200 shadow-xl">
+                <motion.div
+                  variants={itemVariants}
+                  className="text-center mb-12"
+                >
+                  <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                    Areas of Expertise
+                  </h2>
+                  <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    We specialize in creating exceptional interior spaces across diverse sectors, 
+                    delivering innovative solutions that enhance brand value and customer experience.
+                  </p>
+                </motion.div>
                 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {expertiseAreas.map((area, index) => (
-                    <div key={index} className="bg-white rounded-xl p-6 text-center border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 hover:border-[#B85042]/30">
-                      <div className="text-gray-900 font-semibold text-lg">{area}</div>
-                    </div>
-                  ))}
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {expertiseAreas.map((area, index) => {
+                    const IconComponent = area.icon
+                    return (
+                      <motion.div
+                        key={index}
+                        variants={itemVariants}
+                        className="group relative bg-white rounded-2xl p-8 text-center border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-[#B85042]/30 overflow-hidden"
+                        style={{ transitionDelay: `${index * 100}ms` }}
+                      >
+                        {/* Background gradient overlay */}
+                        <div className={`absolute inset-0 bg-gradient-to-br ${area.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+                        
+                        {/* Icon container */}
+                        <div className={`relative flex items-center justify-center w-16 h-16 bg-gradient-to-br ${area.color} rounded-2xl mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                          <IconComponent className="w-8 h-8 text-white" />
+                        </div>
+                        
+                        {/* Content */}
+                        <div className="relative">
+                          <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-[#B85042] transition-colors duration-300">
+                            {area.title}
+                          </h3>
+                          <p className="text-gray-600 leading-relaxed text-sm">
+                            {area.description}
+                          </p>
+                        </div>
+                        
+                        {/* Decorative element */}
+                        <div className="absolute top-4 right-4 w-2 h-2 bg-[#B85042] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      </motion.div>
+                    )
+                  })}
                 </div>
               </div>
             </motion.div>

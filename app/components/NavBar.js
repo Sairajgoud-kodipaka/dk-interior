@@ -312,14 +312,7 @@ const NavBar = () => {
               <div className="mt-8 pt-6 border-t border-gray-200">
                 <div className="text-center">
                   <p className="text-sm sm:text-base text-gray-500 mb-3">Need immediate assistance?</p>
-                  <Link
-                    href="tel:+919885809472"
-                    className="inline-flex items-center justify-center w-full bg-[#B85042] text-white px-6 py-4 rounded-xl font-semibold hover:bg-[#A14237] transition-all duration-200 hover:scale-105"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                    Call Now
-                  </Link>
+                 
                 </div>
               </div>
             </nav>
