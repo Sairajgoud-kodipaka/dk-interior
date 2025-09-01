@@ -29,6 +29,20 @@ const Footer = () => {
     }
   }
 
+  const handleEmailClick = () => {
+    window.location.href = 'mailto:dkinterior17@gmail.com?subject=Inquiry from DK Interiors Website&body=Hello, I am interested in your interior design services. Please contact me to discuss my project requirements.'
+  }
+
+  const handlePhoneClick = () => {
+    window.location.href = 'tel:+919885809472'
+  }
+
+  const handleAddressClick = () => {
+    const address = "Survey No.169, Vavilala Village, Jinnaram Mandal, Sangareddy, Hyderabad, Telangana -502319"
+    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`
+    window.open(googleMapsUrl, '_blank')
+  }
+
   return (
     <footer className="bg-[#0f1115] text-white py-8 sm:py-10 md:py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,15 +63,30 @@ const Footer = () => {
             <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-300">
               <div className="flex items-center space-x-3">
                 <span className="text-[#B85042] text-lg sm:text-xl">📧</span>
-                <span className="break-all">dkinterior17@gmail.com</span>
+                <button 
+                  onClick={handleEmailClick}
+                  className="break-all text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer hover:underline text-left"
+                >
+                  dkinterior17@gmail.com
+                </button>
               </div>
               <div className="flex items-center space-x-3">
                 <span className="text-[#B85042] text-lg sm:text-xl">📱</span>
-                <span>+91 98858 09472</span>
+                <button 
+                  onClick={handlePhoneClick}
+                  className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer hover:underline text-left"
+                >
+                  +91 98858 09472
+                </button>
               </div>
               <div className="flex items-start space-x-3">
                 <span className="text-[#B85042] mt-1 text-lg sm:text-xl">📍</span>
-                <span className="text-xs sm:text-sm leading-relaxed">Survey No.169, Vavilala Village, Jinnaram Mandal, Sangareddy, Hyderabad, Telangana -502319</span>
+                <button 
+                  onClick={handleAddressClick}
+                  className="text-xs sm:text-sm leading-relaxed text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer hover:underline text-left"
+                >
+                  Survey No.169, Vavilala Village, Jinnaram Mandal, Sangareddy, Hyderabad, Telangana -502319
+                </button>
               </div>
             </div>
           </div>

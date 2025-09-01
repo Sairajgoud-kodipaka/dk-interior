@@ -95,10 +95,8 @@ export default function AboutPage() {
       title: "Retail Fit-outs",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 7h18v14H3z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 7l9-4 9 4" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7v14" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 7v14" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 7h18v14H3z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 7l9-4 9 4" />
         </svg>
       ),
       description: "Complete retail space transformations including jewelry stores, lifestyle boutiques, and corporate showrooms.",
@@ -108,13 +106,10 @@ export default function AboutPage() {
       title: "Commercial Spaces", 
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 7h18v14H3z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 11h2v2H7z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 11h2v2h-2z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11h2v2h-2z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 15h2v2H7z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 15h2v2h-2z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 15h2v2h-2z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 7h18v14H3z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M7 11h2v2H7z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M11 11h2v2h-2z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M15 11h2v2h-2z" />
         </svg>
       ),
       description: "Office interiors, conference rooms, and corporate environments designed for productivity and style.",
@@ -124,7 +119,7 @@ export default function AboutPage() {
       title: "Jewelry Stores",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2l3 9h6l-5 4 2 9-6-4-6 4 2-9-5-4h6l3-9z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 2l3 9h6l-5 4 2 9-6-4-6 4 2-9-5-4h6l3-9z" />
         </svg>
       ),
       description: "Specialized fit-outs for jewelry retailers with premium display systems and security features.",
@@ -134,10 +129,9 @@ export default function AboutPage() {
       title: "Lifestyle Brands",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 2v4" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 2v4" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 10h18" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M8 2v4" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 2v4" />
         </svg>
       ),
       description: "Modern fit-outs for fashion, accessories, and lifestyle product retailers.",
