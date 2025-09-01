@@ -6,26 +6,12 @@ export default function PerformanceOptimizer() {
   useEffect(() => {
     // Preload critical resources
     const preloadCriticalResources = () => {
-      // Preload critical fonts
-      const fontLink = document.createElement('link')
-      fontLink.rel = 'preload'
-      fontLink.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'
-      fontLink.as = 'style'
-      document.head.appendChild(fontLink)
-
-      // Preload critical images
-      const criticalImages = [
-        '/dk Interior - Logo.png',
-        '/dk Interior - Logo w.png'
-      ]
-      
-      criticalImages.forEach(src => {
-        const link = document.createElement('link')
-        link.rel = 'preload'
-        link.href = src
-        link.as = 'image'
-        document.head.appendChild(link)
-      })
+      // Only preload favicon which is actually used
+      const faviconLink = document.createElement('link')
+      faviconLink.rel = 'preload'
+      faviconLink.href = '/favicon.ico'
+      faviconLink.as = 'image'
+      document.head.appendChild(faviconLink)
     }
 
     // Optimize images loading
@@ -59,7 +45,7 @@ export default function PerformanceOptimizer() {
 
     // Service Worker registration for caching
     const registerServiceWorker = () => {
-      if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
+      if ('serviceWorker' in navigator && window.location.hostname !== 'localhost') {
         navigator.serviceWorker.register('/sw.js')
           .then(registration => {
             console.log('SW registered: ', registration)

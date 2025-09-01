@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { Mail, Phone, MapPin } from 'lucide-react'
 
 const Footer = () => {
   const router = useRouter()
@@ -62,7 +63,7 @@ const Footer = () => {
             </p>
             <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-300">
               <div className="flex items-center space-x-3">
-                <span className="text-[#B85042] text-lg sm:text-xl">📧</span>
+                <Mail className="w-5 h-5 text-[#B85042]" />
                 <button 
                   onClick={handleEmailClick}
                   className="break-all text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer hover:underline text-left"
@@ -71,7 +72,7 @@ const Footer = () => {
                 </button>
               </div>
               <div className="flex items-center space-x-3">
-                <span className="text-[#B85042] text-lg sm:text-xl">📱</span>
+                <Phone className="w-5 h-5 text-[#B85042]" />
                 <button 
                   onClick={handlePhoneClick}
                   className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer hover:underline text-left"
@@ -80,7 +81,7 @@ const Footer = () => {
                 </button>
               </div>
               <div className="flex items-start space-x-3">
-                <span className="text-[#B85042] mt-1 text-lg sm:text-xl">📍</span>
+                <MapPin className="w-5 h-5 text-[#B85042] mt-1" />
                 <button 
                   onClick={handleAddressClick}
                   className="text-xs sm:text-sm leading-relaxed text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer hover:underline text-left"

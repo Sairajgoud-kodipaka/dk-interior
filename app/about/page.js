@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { Store, Building2, Gem, Briefcase } from 'lucide-react'
+import Image from 'next/image'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 import Hero from '../components/Hero'
@@ -186,12 +187,15 @@ export default function AboutPage() {
                     <div className="flex flex-col items-center mb-12">
                       <div className="relative">
                         <div className="rounded-3xl bg-[#1F1A17] p-3 sm:p-2.5 shadow-2xl ring-1 ring-[#3B2F2F]">
-                          <img
+                          <Image
                             src="/dk.jpg"
                             alt="Mr. Dinesh Kumar - Founder & Owner of DK Interiors"
+                            width={256}
+                            height={256}
                             className="w-56 h-56 sm:w-64 sm:h-64 rounded-xl object-cover"
                             loading="lazy"
-                            decoding="async"
+                            placeholder="blur"
+                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                           />
                         </div>
                       </div>

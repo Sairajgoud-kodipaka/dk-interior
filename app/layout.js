@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
         <script dangerouslySetInnerHTML={{
           __html: `
             // Only clear caches in development
-            if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development' && 'caches' in window) {
+            if (typeof window !== 'undefined' && window.location.hostname === 'localhost' && 'caches' in window) {
               caches.keys().then(function(cacheNames) {
                 return Promise.all(
                   cacheNames.map(function(cacheName) {
@@ -56,7 +56,7 @@ export default function RootLayout({ children }) {
             }
             
             // Unregister service worker only in development
-            if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development' && 'serviceWorker' in navigator) {
+            if (typeof window !== 'undefined' && window.location.hostname === 'localhost' && 'serviceWorker' in navigator) {
               navigator.serviceWorker.getRegistrations().then(function(registrations) {
                 for(let registration of registrations) {
                   console.log('Unregistering service worker:', registration);

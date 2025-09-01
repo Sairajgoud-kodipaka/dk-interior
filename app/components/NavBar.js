@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { Menu, X, ChevronDown, Home, Info, Settings, Factory, Briefcase, Users, Phone } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
 const NavBar = () => {
@@ -96,13 +97,14 @@ const NavBar = () => {
             {/* Logo */}
             <div className="flex items-center">
                              <Link href="/">
-                 <img
-                   src={`/dk Interior - Logo.png?v=${Date.now()}`}
+                 <Image
+                   src="/dk Interior - Logo.png"
                    alt="DK Interiors Logo"
+                   width={80}
+                   height={80}
                    className="h-20 w-20 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-200"
-                   onError={(e) => {
-                     e.target.src = "/logo.svg"
-                   }}
+                   priority
+                   loading="eager"
                  />
                </Link>
             </div>
@@ -207,13 +209,14 @@ const NavBar = () => {
             {/* Header */}
             <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200 bg-white flex-shrink-0">
               <Link href="/" onClick={() => setIsOpen(false)}>
-                <img
-                  src={`/dk Interior - Logo.png?v=${Date.now()}`}
+                <Image
+                  src="/dk Interior - Logo.png"
                   alt="DK Interiors Logo"
+                  width={80}
+                  height={80}
                   className="h-20 w-auto object-contain cursor-pointer hover:opacity-80 transition-opacity duration-200"
-                  onError={(e) => {
-                    e.target.src = "/logo.svg"
-                  }}
+                  priority
+                  loading="eager"
                 />
               </Link>
               <Button

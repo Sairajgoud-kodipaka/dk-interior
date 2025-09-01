@@ -9,9 +9,8 @@ const STATIC_ASSETS = [
   '/factory',
   '/fitout-solutions',
   '/residential-design',
-  '/dk Interior - Logo.png',
-  '/dk Interior - Logo w.png',
-  '/manifest.json'
+  '/favicon.ico',
+  '/manifest.webmanifest'
 ]
 
 // Install event - cache static assets
@@ -22,6 +21,11 @@ self.addEventListener('install', (event) => {
         return cache.addAll(STATIC_ASSETS)
       })
       .then(() => {
+        return self.skipWaiting()
+      })
+      .catch((error) => {
+        console.error('Service worker install failed:', error)
+        // Continue with installation even if some assets fail to cache
         return self.skipWaiting()
       })
   )
