@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
-// Clean SVG icons for Areas of Expertise
+import { Store, Building2, Gem, Briefcase } from 'lucide-react'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 import Hero from '../components/Hero'
@@ -15,9 +15,11 @@ export default function AboutPage() {
   const router = useRouter()
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+      const element = document.getElementById(sectionId)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
     }
   }
 
@@ -27,14 +29,16 @@ export default function AboutPage() {
       router.push(href)
     } else if (href.startsWith('#')) {
       // Internal section navigation
-      if (window.location.pathname === '/') {
+      if (typeof window !== 'undefined' && window.location.pathname === '/') {
         // Already on home page, scroll to section
         scrollToSection(href.substring(1))
       } else {
         // On different page, navigate to home page first, then scroll
         router.push('/')
         // Set a flag to scroll after navigation
-        sessionStorage.setItem('scrollToSection', href)
+        if (typeof window !== 'undefined' && window.sessionStorage) {
+          sessionStorage.setItem('scrollToSection', href)
+        }
       }
     }
   }
@@ -44,14 +48,20 @@ export default function AboutPage() {
   }, [])
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setIsVisible(true)
-      },
-      { threshold: 0.1 }
-    )
-    if (sectionRef.current) observer.observe(sectionRef.current)
-    return () => observer.disconnect()
+    // Check if IntersectionObserver is available
+    if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setIsVisible(true)
+        },
+        { threshold: 0.1 }
+      )
+      if (sectionRef.current) observer.observe(sectionRef.current)
+      return () => observer.disconnect()
+    } else {
+      // Fallback for browsers without IntersectionObserver
+      setIsVisible(true)
+    }
   }, [])
 
   const containerVariants = {
@@ -93,47 +103,25 @@ export default function AboutPage() {
   const expertiseAreas = [
     {
       title: "Retail Fit-outs",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 7h18v14H3z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 7l9-4 9 4" />
-        </svg>
-      ),
+      icon: <Store className="w-8 h-8 text-white" />,
       description: "Complete retail space transformations including jewelry stores, lifestyle boutiques, and corporate showrooms.",
       color: "from-[#B85042] to-[#A14237]"
     },
     {
       title: "Commercial Spaces", 
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 7h18v14H3z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M7 11h2v2H7z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M11 11h2v2h-2z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M15 11h2v2h-2z" />
-        </svg>
-      ),
+      icon: <Building2 className="w-8 h-8 text-white" />,
       description: "Office interiors, conference rooms, and corporate environments designed for productivity and style.",
       color: "from-[#B85042] to-[#A14237]"
     },
     {
       title: "Jewelry Stores",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 2l3 9h6l-5 4 2 9-6-4-6 4 2-9-5-4h6l3-9z" />
-        </svg>
-      ),
+      icon: <Gem className="w-8 h-8 text-white" />,
       description: "Specialized fit-outs for jewelry retailers with premium display systems and security features.",
       color: "from-[#B85042] to-[#A14237]"
     },
     {
       title: "Lifestyle Brands",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M8 2v4" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 2v4" />
-        </svg>
-      ),
+      icon: <Briefcase className="w-8 h-8 text-white" />,
       description: "Modern fit-outs for fashion, accessories, and lifestyle product retailers.",
       color: "from-[#B85042] to-[#A14237]"
     }
@@ -202,6 +190,8 @@ export default function AboutPage() {
                             src="/dk.jpg"
                             alt="Mr. Dinesh Kumar - Founder & Owner of DK Interiors"
                             className="w-56 h-56 sm:w-64 sm:h-64 rounded-xl object-cover"
+                            loading="lazy"
+                            decoding="async"
                           />
                         </div>
                       </div>

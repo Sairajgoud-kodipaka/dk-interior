@@ -24,9 +24,6 @@ const nextConfig = {
   
   // Mobile optimizations
   trailingSlash: false,
-  generateBuildId: async () => {
-    return 'build-' + Date.now()
-  },
   
   // Experimental features for performance
   experimental: {
@@ -72,18 +69,6 @@ const nextConfig = {
               test: /[\\/]node_modules[\\/]/,
               name: 'vendors',
               priority: -10,
-              chunks: 'all',
-            },
-            framer: {
-              test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
-              name: 'framer-motion',
-              priority: 20,
-              chunks: 'all',
-            },
-            lucide: {
-              test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
-              name: 'lucide-react',
-              priority: 20,
               chunks: 'all',
             },
             common: {
