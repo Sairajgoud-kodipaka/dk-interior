@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
-import { Store, Gem, Building2, Coffee, Home, BarChart3 } from 'lucide-react'
+// Clean SVG icons for Areas of Expertise
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 import Hero from '../components/Hero'
@@ -92,40 +92,56 @@ export default function AboutPage() {
 
   const expertiseAreas = [
     {
-      title: "Luxury Retail Fit-outs",
-      icon: Store,
-      description: "Premium retail spaces that enhance brand presence and customer experience",
-      color: "from-blue-500 to-blue-600"
+      title: "Retail Fit-outs",
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 7h18v14H3z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 7l9-4 9 4" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7v14" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 7v14" />
+        </svg>
+      ),
+      description: "Complete retail space transformations including jewelry stores, lifestyle boutiques, and corporate showrooms.",
+      color: "from-[#B85042] to-[#A14237]"
     },
     {
-      title: "Jewellery Showrooms", 
-      icon: Gem,
-      description: "Secure, elegant spaces designed to showcase precious collections",
-      color: "from-amber-500 to-amber-600"
+      title: "Commercial Spaces", 
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 7h18v14H3z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 11h2v2H7z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 11h2v2h-2z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11h2v2h-2z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 15h2v2H7z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 15h2v2h-2z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 15h2v2h-2z" />
+        </svg>
+      ),
+      description: "Office interiors, conference rooms, and corporate environments designed for productivity and style.",
+      color: "from-[#B85042] to-[#A14237]"
     },
     {
-      title: "Corporate Offices",
-      icon: Building2,
-      description: "Modern workspaces that boost productivity and reflect company values",
-      color: "from-slate-500 to-slate-600"
+      title: "Jewelry Stores",
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2l3 9h6l-5 4 2 9-6-4-6 4 2-9-5-4h6l3-9z" />
+        </svg>
+      ),
+      description: "Specialized fit-outs for jewelry retailers with premium display systems and security features.",
+      color: "from-[#B85042] to-[#A14237]"
     },
     {
-      title: "Hospitality Spaces",
-      icon: Coffee,
-      description: "Welcoming environments that create memorable guest experiences",
-      color: "from-green-500 to-green-600"
-    },
-    {
-      title: "Residential Interiors",
-      icon: Home,
-      description: "Personalized living spaces that reflect individual style and comfort",
-      color: "from-purple-500 to-purple-600"
-    },
-    {
-      title: "Exhibition Stands",
-      icon: BarChart3,
-      description: "Eye-catching displays that maximize brand visibility and engagement",
-      color: "from-red-500 to-red-600"
+      title: "Lifestyle Brands",
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 2v4" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 2v4" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 10h18" />
+        </svg>
+      ),
+      description: "Modern fit-outs for fashion, accessories, and lifestyle product retailers.",
+      color: "from-[#B85042] to-[#A14237]"
     }
   ]
 
@@ -369,47 +385,44 @@ export default function AboutPage() {
                   className="text-center mb-12"
                 >
                   <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                    Areas of Expertise
-                  </h2>
+                  Areas of Expertise
+                </h2>
                   <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                    We specialize in creating exceptional interior spaces across diverse sectors, 
-                    delivering innovative solutions that enhance brand value and customer experience.
-                  </p>
+                  We specialize in creating exceptional interior spaces across diverse sectors, 
+                  delivering innovative solutions that enhance brand value and customer experience.
+                </p>
                 </motion.div>
                 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {expertiseAreas.map((area, index) => {
-                    const IconComponent = area.icon
-                    return (
-                      <motion.div
-                        key={index}
-                        variants={itemVariants}
-                        className="group relative bg-white rounded-2xl p-8 text-center border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-[#B85042]/30 overflow-hidden"
-                        style={{ transitionDelay: `${index * 100}ms` }}
-                      >
-                        {/* Background gradient overlay */}
-                        <div className={`absolute inset-0 bg-gradient-to-br ${area.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-                        
-                        {/* Icon container */}
-                        <div className={`relative flex items-center justify-center w-16 h-16 bg-gradient-to-br ${area.color} rounded-2xl mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                          <IconComponent className="w-8 h-8 text-white" />
-                        </div>
-                        
-                        {/* Content */}
-                        <div className="relative">
-                          <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-[#B85042] transition-colors duration-300">
-                            {area.title}
-                          </h3>
-                          <p className="text-gray-600 leading-relaxed text-sm">
-                            {area.description}
-                          </p>
-                        </div>
-                        
-                        {/* Decorative element */}
-                        <div className="absolute top-4 right-4 w-2 h-2 bg-[#B85042] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      </motion.div>
-                    )
-                  })}
+                                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                  {expertiseAreas.map((area, index) => (
+                    <motion.div
+                      key={index}
+                      variants={itemVariants}
+                      className="group relative bg-white rounded-2xl p-8 text-center border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-[#B85042]/30 overflow-hidden"
+                      style={{ transitionDelay: `${index * 100}ms` }}
+                    >
+                      {/* Background gradient overlay */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${area.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+                      
+                      {/* Icon container */}
+                      <div className={`relative flex items-center justify-center w-16 h-16 bg-gradient-to-br ${area.color} rounded-2xl mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                        {area.icon}
+                      </div>
+                      
+                      {/* Content */}
+                      <div className="relative">
+                        <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-[#B85042] transition-colors duration-300">
+                          {area.title}
+                        </h3>
+                        <p className="text-gray-600 leading-relaxed text-sm">
+                          {area.description}
+                        </p>
+                      </div>
+                      
+                      {/* Decorative element */}
+                      <div className="absolute top-4 right-4 w-2 h-2 bg-[#B85042] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
             </motion.div>

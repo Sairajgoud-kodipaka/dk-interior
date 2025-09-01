@@ -57,7 +57,7 @@ const Footer = () => {
               </div>
               <div className="flex items-start space-x-3">
                 <span className="text-[#B85042] mt-1 text-lg sm:text-xl">📍</span>
-                <span className="text-xs sm:text-sm leading-relaxed">VAILAL VILLAGE, JINNARAM MANDAL, SANGAREDDY DISTRICT, TELANGANA STATE</span>
+                <span className="text-xs sm:text-sm leading-relaxed">Survey No.169, Vavilala Village, Jinnaram Mandal, Sangareddy, Hyderabad, Telangana -502319</span>
               </div>
             </div>
           </div>

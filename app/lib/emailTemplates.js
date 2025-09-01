@@ -148,7 +148,7 @@ export const customerConfirmationEmail = (data) => ({
       
       <div class="footer">
         <p>© 2024 DK Interiors. All rights reserved.</p>
-        <p>VAILAL VILLAGE, JINNARAM MANDAL, SANGAREDDY DISTRICT, TELANGANA STATE</p>
+        <p>Survey No.169, Vavilala Village, Jinnaram Mandal, Sangareddy, Hyderabad, Telangana -502319</p>
       </div>
     </body>
     </html>
@@ -183,7 +183,7 @@ Best regards,
 The DK Interiors Team
 
 © 2024 DK Interiors. All rights reserved.
-VAILAL VILLAGE, JINNARAM MANDAL, SANGAREDDY DISTRICT, TELANGANA STATE
+Survey No.169, Vavilala Village, Jinnaram Mandal, Sangareddy, Hyderabad, Telangana -502319
   `
 })
 

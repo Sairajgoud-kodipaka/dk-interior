@@ -162,8 +162,8 @@ export default function FactoryPage() {
                       <p className="text-xl">
                         <strong>DK Interiors Factory</strong>
                       </p>
-                      <p className="text-lg">Vailal Village, Jinnaram Mandal</p>
-                      <p className="text-lg">Sangareddy District, Telangana</p>
+                      <p className="text-lg">Survey No.169, Vavilala Village, Jinnaram Mandal</p>
+                      <p className="text-lg">Sangareddy, Hyderabad, Telangana -502319</p>
                       <p className="text-[#B85042] font-semibold text-xl">22,000+ SFT Facility</p>
                     </div>
                   </div>
