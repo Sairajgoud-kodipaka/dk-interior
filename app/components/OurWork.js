@@ -3,8 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
-
-
+import { useRouter } from 'next/navigation'
 
 const OurWork = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -19,6 +18,7 @@ const OurWork = () => {
   const scrollContainerRef = useRef(null)
   const [itemsPerView, setItemsPerView] = useState(1)
   const [gapPx, setGapPx] = useState(12)
+  const router = useRouter()
 
   const projects = [
     {
@@ -578,6 +578,33 @@ const OurWork = () => {
           </div>
         </div>
       )}
+
+      {/* CTA Section */}
+      <motion.div
+        variants={itemVariants}
+        initial="hidden"
+        animate={isVisible ? "visible" : "hidden"}
+        className="text-center mt-20"
+      >
+        <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-xl shadow-black/5 border border-gray-100">
+          <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            Ready to Start Your Project?
+          </h3>
+          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            Let's create something extraordinary together. Your vision, our expertise.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button 
+              onClick={() => {
+                router.push('/#contact');
+              }}
+              className="border-2 border-[#B85042] text-[#B85042] px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#B85042] hover:text-white transition-all duration-300 transform hover:scale-105"
+            >
+              Schedule Consultation
+            </button>
+          </div>
+        </div>
+      </motion.div>
     </section>
     </>
   )

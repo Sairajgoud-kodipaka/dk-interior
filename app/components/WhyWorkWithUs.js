@@ -130,7 +130,6 @@ const WhyWorkWithUs = () => {
         }`}>
           <button  onClick={() => handleNavigation('#contact')} 
           className="bg-[#B85042] hover:bg-[#B85042]/90 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#B85042] focus:ring-offset-2">
-           
             Start Your Project
           </button>
         </div>

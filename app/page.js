@@ -51,6 +51,26 @@ export default function App() {
     }
   }, [])
 
+  // Handle hash-based scrolling when page loads
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Check if there's a hash in the URL
+      if (window.location.hash) {
+        // Wait for the page to fully load
+        setTimeout(() => {
+          const targetId = window.location.hash.substring(1)
+          const targetElement = document.getElementById(targetId)
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            })
+          }
+        }, 500) // Small delay to ensure all components are rendered
+      }
+    }
+  }, [])
+
   return (
     <div className={`min-h-screen ${isLoaded ? 'animate-fade-in-up' : 'opacity-0'}`}>
       {/* Navigation */}
@@ -59,7 +79,7 @@ export default function App() {
       {/* Main Content */}
       <main className="relative">
         {/* Hero Section - Main introduction */}
-        <Hero />
+        <Hero showCTA={false} />
         
         {/* Services Section - Overview with CTAs to internal pages */}
         <Services />

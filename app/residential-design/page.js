@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { ArrowLeft, Home, Palette, Ruler, Heart, Shield, Clock, Users, Bed, ChefHat, ShowerHead, BookOpen, Baby } from 'lucide-react'
 import NavBar from '../components/NavBar'
 import Hero from '../components/Hero'
@@ -282,12 +283,12 @@ const ResidentialDesign = () => {
                   >
                     Start Your Project
                   </button>
-                  <Link
-                    href="/our-work"
+                  <button
+                    onClick={() => handleNavigation('#our-work')}
                     className="inline-block border-2 border-white text-white font-semibold py-4 px-8 rounded-xl hover:bg-white hover:text-[#B85042] transition-all duration-300 hover:scale-105"
                   >
-                    View Our Portfolio
-                  </Link>
+                    View Our Work
+                  </button>
                 </div>
               </div>
             </motion.div>

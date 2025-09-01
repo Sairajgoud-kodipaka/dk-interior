@@ -202,7 +202,7 @@ const NavBar = () => {
                 <img
                   src="/dk Interior - Logo.png"
                   alt="DK Interiors Logo"
-                  className="h-8 w-auto object-contain cursor-pointer hover:opacity-80 transition-opacity duration-200"
+                  className="h-16 w-auto object-contain cursor-pointer hover:opacity-80 transition-opacity duration-200"
                   onError={(e) => {
                     e.target.src = "/logo.svg"
                   }}
