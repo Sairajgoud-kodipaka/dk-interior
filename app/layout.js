@@ -33,6 +33,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.variable}>
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -40,8 +41,8 @@ export default function RootLayout({ children }) {
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
         <script dangerouslySetInnerHTML={{
           __html: `
-            // Clear all caches on page load for development
-            if (typeof window !== 'undefined' && 'caches' in window) {
+            // Only clear caches in development
+            if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development' && 'caches' in window) {
               caches.keys().then(function(cacheNames) {
                 return Promise.all(
                   cacheNames.map(function(cacheName) {
@@ -54,8 +55,8 @@ export default function RootLayout({ children }) {
               });
             }
             
-            // Unregister service worker
-            if ('serviceWorker' in navigator) {
+            // Unregister service worker only in development
+            if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development' && 'serviceWorker' in navigator) {
               navigator.serviceWorker.getRegistrations().then(function(registrations) {
                 for(let registration of registrations) {
                   console.log('Unregistering service worker:', registration);

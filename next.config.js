@@ -22,19 +22,26 @@ const nextConfig = {
   // Enable SWC minification
   swcMinify: true,
   
+  // Mobile optimizations
+  trailingSlash: false,
+  generateBuildId: async () => {
+    return 'build-' + Date.now()
+  },
+  
   // Experimental features for performance
   experimental: {
     serverComponentsExternalPackages: ['mongodb'],
     esmExternals: true,
     optimizePackageImports: ['lucide-react', 'framer-motion'],
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
-      },
-    },
+    // Disable turbo for better mobile compatibility
+    // turbo: {
+    //   rules: {
+    //     '*.svg': {
+    //       loaders: ['@svgr/webpack'],
+    //       as: '*.js',
+    //     },
+    //   },
+    // },
   },
   
   // Webpack optimizations
