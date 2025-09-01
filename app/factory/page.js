@@ -117,10 +117,10 @@ export default function FactoryPage() {
                     </p>
                     <p>Vailal Village, Jinnaram Mandal</p>
                     <p>Sangareddy District, Telangana</p>
-                    <p className="text-[#B85042] font-semibold">27,000+ SFT Facility</p>
+                    <p className="text-[#B85042] font-semibold">22,000+ SFT Facility</p>
                   </div>
                   <a 
-                    href="https://www.google.com/maps?q=Vailal+Village,+Jinnaram+Mandal,+Sangareddy+District,+Telangana"
+                    href="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d13023.576139473751!2d78.35329834419751!3d17.61252014281202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e1!3m2!1sen!2sin!4v1756696083032!5m2!1sen!2sin"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center mt-4 text-[#B85042] hover:text-[#A73E3A] transition-colors duration-300"
@@ -134,7 +134,7 @@ export default function FactoryPage() {
                   <h4 className="text-xl font-bold text-white mb-4">Interactive Map</h4>
                   <div className="aspect-video w-full rounded-lg overflow-hidden shadow-lg">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15210.334848118217!2d78.353118!3d17.622492!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb8b0accb7d0ab%3A0xd023ce2b40c36967!2sillamma%20colony%20vailal%20village%20jinnaram%20mandal!5e0!3m2!1sen!2sus!4v1756618944871!5m2!1sen!2sus"
+                      src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d13023.576139473751!2d78.35329834419751!3d17.61252014281202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e1!3m2!1sen!2sin!4v1756696083032!5m2!1sen!2sin"
                       className="w-full h-full border-0"
                       loading="lazy"
                       allowFullScreen=""
@@ -150,11 +150,11 @@ export default function FactoryPage() {
             <div className="text-center">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div>
-                  <div className="text-3xl font-bold text-[#B85042] mb-2">20+</div>
+                  <div className="text-3xl font-bold text-[#B85042] mb-2">25+</div>
                   <div className="text-gray-300 text-sm">Years Experience</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-[#B85042] mb-2">27,000+</div>
+                  <div className="text-3xl font-bold text-[#B85042] mb-2">22,000+</div>
                   <div className="text-gray-300 text-sm">SFT Factory</div>
                 </div>
                 <div>

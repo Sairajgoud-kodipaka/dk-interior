@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
+import { useRouter } from 'next/navigation'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 import Hero from '../components/Hero'
@@ -10,6 +11,32 @@ export default function AboutPage() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
+  const router = useRouter()
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const handleNavigation = (href) => {
+    if (href.startsWith('/')) {
+      // External page navigation
+      router.push(href)
+    } else if (href.startsWith('#')) {
+      // Internal section navigation
+      if (window.location.pathname === '/') {
+        // Already on home page, scroll to section
+        scrollToSection(href.substring(1))
+      } else {
+        // On different page, navigate to home page first, then scroll
+        router.push('/')
+        // Set a flag to scroll after navigation
+        sessionStorage.setItem('scrollToSection', href)
+      }
+    }
+  }
 
   useEffect(() => {
     setIsLoaded(true)
@@ -37,9 +64,9 @@ export default function AboutPage() {
   }
 
   const companyStats = [
-    { number: "20+", label: "Years of Experience" },
-    { number: "500+", label: "Projects Completed" },
-    { number: "50+", label: "Premium Brands Served" },
+    { number: "25+", label: "Years of Experience" },
+    { number: "300+", label: "Projects Completed" },
+    { number: "4LAc+", label: "SFT Handled" },
     { number: "100%", label: "Client Satisfaction" }
   ]
 
@@ -118,12 +145,34 @@ export default function AboutPage() {
             >
               <div className="bg-white rounded-3xl p-10 lg:p-16 border border-gray-200 shadow-sm">
                 
-                <div className="max-w-4xl mx-auto">
+                <div className="max-w-6xl mx-auto">
                   <div className="prose prose-lg prose-gray max-w-none">
                     <div className="text-center mb-8">
                       <p className="text-xl text-[#B85042] font-semibold italic">
                         A journey that began at just 14 years of age…
                       </p>
+                    </div>
+                    
+                    {/* Founder's Image Section - Centered, refined frame (no glow) */}
+                    <div className="flex flex-col items-center mb-12">
+                      <div className="relative">
+                        <div className="rounded-2xl bg-[#1F1A17] p-3 sm:p-4 shadow-2xl ring-1 ring-[#3B2F2F]">
+                          <img
+                            src="/dk.jpg"
+                            alt="Mr. Dinesh Kumar - Founder & Owner of DK Interiors"
+                            className="w-56 h-56 sm:w-64 sm:h-64 rounded-xl object-cover"
+                          />
+                        </div>
+                      </div>
+                      <div className="mt-6 text-center">
+                        <h3 className="text-3xl lg:text-4xl font-extrabold text-gray-900">
+                          Mr. Dinesh Kumar
+                        </h3>
+                        <div className="h-1 w-24 bg-[#B85042] rounded-full mx-auto my-3"></div>
+                        <p className="text-base sm:text-lg text-gray-700 tracking-wide">
+                          Founder & Owner
+                        </p>
+                      </div>
                     </div>
                     
                     <div className="space-y-6 text-gray-700 leading-relaxed">
@@ -147,13 +196,44 @@ export default function AboutPage() {
                       </p>
                       
                       <p className="text-lg">
-                        Today, with 20+ years of collective experience, DK Interiors stands as a trusted fit-out partner for premium 
+                        Today, with 25+ years of collective experience, DK Interiors stands as a trusted fit-out partner for premium 
                         retail, jewellery, lifestyle, and corporate spaces. The firm proudly collaborates with renowned brands like 
                         PMJ Jewels, Manyavar, Raymond, Anu Jewellers, and more — delivering interiors that combine craftsmanship 
                         with modern innovation.
                       </p>
                     </div>
                   </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Company Stats Section */}
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate={isVisible ? 'visible' : 'hidden'}
+              className="mb-20"
+            >
+              <div className="bg-gradient-to-br from-[#B85042] to-[#A14237] rounded-3xl p-10 lg:p-16 text-white">
+                <h2 className="text-3xl lg:text-4xl font-bold text-center mb-12">
+                  Our Achievements
+                </h2>
+                
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                  {companyStats.map((stat, index) => (
+                    <motion.div
+                      key={index}
+                      variants={itemVariants}
+                      className="text-center"
+                    >
+                      <div className="text-4xl md:text-5xl font-bold mb-2">
+                        {stat.number}
+                      </div>
+                      <div className="text-sm md:text-base text-white/90">
+                        {stat.label}
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
             </motion.div>
@@ -287,18 +367,18 @@ export default function AboutPage() {
                   vision and exceed your expectations. Let's discuss your project requirements.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a
-                    href="/contact"
+                  <button
+                    onClick={() => handleNavigation('#contact')}
                     className="inline-block bg-[#B85042] text-white font-bold py-4 px-8 rounded-xl hover:bg-[#A14237] transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-[#B85042]/30"
                   >
                     Start Your Project
-                  </a>
-                  <a
-                    href="/contact"
+                  </button>
+                  <button
+                    onClick={() => handleNavigation('#contact')}
                     className="inline-block bg-white text-[#B85042] font-bold py-4 px-8 rounded-xl border-2 border-[#B85042] hover:bg-[#B85042] hover:text-white transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-[#B85042]/30"
                   >
                     Schedule Consultation
-                  </a>
+                  </button>
                 </div>
               </div>
             </motion.div>

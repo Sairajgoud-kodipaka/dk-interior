@@ -19,6 +19,20 @@ export default function App() {
     // Page load animation
     setIsLoaded(true)
     
+    // Handle cross-page navigation with scroll to section
+    if (typeof window !== 'undefined') {
+      const scrollToSection = sessionStorage.getItem('scrollToSection')
+      if (scrollToSection) {
+        sessionStorage.removeItem('scrollToSection')
+        setTimeout(() => {
+          const element = document.getElementById(scrollToSection.substring(1))
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' })
+          }
+        }, 100)
+      }
+    }
+    
     // Smooth scroll polyfill for better cross-browser support
     if (typeof window !== 'undefined') {
       const scrollElements = document.querySelectorAll('a[href^="#"]')
@@ -49,6 +63,11 @@ export default function App() {
         
         {/* Services Section - Overview with CTAs to internal pages */}
         <Services />
+
+          {/* Trusted Brands Section - Client showcase */}
+          <TrustedBrands />
+              {/* Why Work With Us Section - Trust factors */}
+        <WhyWorkWithUs />
         
         {/* Factory Section - Showcase manufacturing capabilities */}
         <section id="factory" className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
@@ -58,7 +77,7 @@ export default function App() {
                 Our State-of-the-Art Factory
               </h2>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-                Discover our 27,000+ SFT manufacturing facility equipped with advanced machinery for precision fit-outs and custom furniture.
+                Discover our 22,000+ SFT manufacturing facility equipped with advanced machinery for precision fit-outs and custom furniture.
               </p>
               <Link 
                 href="/factory"
@@ -74,7 +93,7 @@ export default function App() {
                   <Factory className="w-12 h-12 text-[#B85042]" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Advanced Machinery</h3>
-                <p className="text-gray-300">5+ specialized machines for precision cutting, edge banding, and finishing</p>
+                <p className="text-gray-300">5 specialized machines including MAXWOOD Panel Saw, Auto Edge Bander, and more</p>
               </div>
               <div className="text-center">
                 <div className="flex justify-center mb-4">
@@ -97,11 +116,9 @@ export default function App() {
         {/* Our Work Section - Portfolio showcase */}
         <OurWork />
         
-        {/* Why Work With Us Section - Trust factors */}
-        <WhyWorkWithUs />
+    
         
-        {/* Trusted Brands Section - Client showcase */}
-        <TrustedBrands />
+      
         
         {/* Contact Section - Get in touch */}
         <ContactForm />

@@ -20,7 +20,8 @@ const ContactForm = () => {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
-    message: ''
+    message: '',
+    mobileNumber: '' // Added mobileNumber to formData
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errors, setErrors] = useState({})
@@ -63,6 +64,15 @@ const ContactForm = () => {
         newErrors.email = 'Please enter a valid email address'
       }
     }
+
+    if (!formData.mobileNumber.trim()) {
+      newErrors.mobileNumber = 'Mobile number is required'
+    } else {
+      const mobileRegex = /^[0-9]{10}$/ // Assuming 10 digits for Indian numbers
+      if (!mobileRegex.test(formData.mobileNumber)) {
+        newErrors.mobileNumber = 'Please enter a valid 10-digit mobile number'
+      }
+    }
     
     if (!formData.message.trim()) {
       newErrors.message = 'Message is required'
@@ -101,7 +111,7 @@ const ContactForm = () => {
         const data = await response.json()
         showSuccess('Message Sent!', 'Your message has been sent successfully. We\'ll get back to you within 24 hours.')
         setShowSuccessDialog(true)
-        setFormData({ fullName: '', email: '', message: '' })
+        setFormData({ fullName: '', email: '', message: '', mobileNumber: '' }) // Clear mobile number on success
         setErrors({})
       } else {
         let errorMessage = 'Failed to send message. Please try again.'
@@ -116,7 +126,6 @@ const ContactForm = () => {
         showError('Submission Failed', errorMessage)
       }
     } catch (error) {
-      console.error('Contact form error:', error)
       const errorMessage = 'Network error. Please check your connection and try again.'
       setSubmitError(errorMessage)
       showError('Network Error', errorMessage)
@@ -272,6 +281,48 @@ const ContactForm = () => {
                     {errors.email}
                   </p>
                 )}
+              </div>
+
+              <div>
+                <Label htmlFor="mobileNumber" className="text-[#0f1115] font-medium text-sm">
+                  Mobile Number *
+                </Label>
+                
+                <div className="flex items-center mt-2">
+                  {/* Country Code Display */}
+                  <div className="bg-gray-100 border-2 border-[#6b7280]/20 rounded-l-lg px-3 py-1.5 text-[#0f1115] font-medium border-r-0">
+                    +91
+                  </div>
+                  
+                  {/* Phone Number Input */}
+                  <Input
+                    id="mobileNumber"
+                    name="mobileNumber"
+                    type="tel"
+                    value={formData.mobileNumber}
+                    onChange={handleChange}
+                    required
+                    aria-required="true"
+                    aria-invalid={errors.mobileNumber ? 'true' : 'false'}
+                    aria-describedby={errors.mobileNumber ? 'mobileNumber-error' : undefined}
+                    className={`flex-1 rounded-l-none border-l-0 transition-all duration-300 border-2 ${
+                      errors.mobileNumber 
+                        ? 'border-red-400 focus:border-red-500 focus:ring-red-500/20' 
+                        : 'border-[#6b7280]/20 focus:border-[#B85042] focus:ring-[#B85042]/20'
+                    } rounded-r-lg px-4 py-3 text-[#0f1115] placeholder-[#9CA3AF] focus:outline-none focus:ring-4`}
+                    placeholder="982XX XXXXX"
+                    maxLength={10}
+                  />
+                </div>
+                
+                {errors.mobileNumber && (
+                  <p id="mobileNumber-error" className="mt-2 text-sm text-red-500 flex items-center gap-2" role="alert">
+                    <X className="w-4 h-4" />
+                    {errors.mobileNumber}
+                  </p>
+                )}
+                
+               
               </div>
 
               <div>

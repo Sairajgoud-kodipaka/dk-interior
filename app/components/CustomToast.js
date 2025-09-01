@@ -115,13 +115,13 @@ const Toast = ({ toast, removeToast }) => {
         }
       case 'warning':
         return {
-          bg: 'bg-gradient-to-r from-amber-50 to-amber-100',
-          border: 'border-amber-200',
-          icon: 'text-amber-600',
-          iconBg: 'bg-amber-100',
-          title: 'text-amber-800',
-          message: 'text-amber-700',
-          progress: 'bg-amber-400'
+          bg: 'bg-gradient-to-r from-[#B85042]/10 to-[#B85042]/5',
+          border: 'border-[#B85042]/20',
+          icon: 'text-[#B85042]',
+          iconBg: 'bg-[#B85042]/10',
+          title: 'text-[#B85042]',
+          message: 'text-gray-700',
+          progress: 'bg-[#B85042]'
         }
       case 'info':
       default:

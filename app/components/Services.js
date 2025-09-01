@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { useRouter } from 'next/navigation'
 import { ArrowRight, Building2, Home } from 'lucide-react'
 
 const Services = () => {
@@ -9,6 +10,32 @@ const Services = () => {
   const gridRef = useRef(null)
   const isInView = useInView(gridRef, { once: true, threshold: 0.1 })
   const [gridVisible, setGridVisible] = useState(false)
+  const router = useRouter()
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const handleNavigation = (href) => {
+    if (href.startsWith('/')) {
+      // External page navigation
+      router.push(href)
+    } else if (href.startsWith('#')) {
+      // Internal section navigation
+      if (window.location.pathname === '/') {
+        // Already on home page, scroll to section
+        scrollToSection(href.substring(1))
+      } else {
+        // On different page, navigate to home page first, then scroll
+        router.push('/')
+        // Set a flag to scroll after navigation
+        sessionStorage.setItem('scrollToSection', href)
+      }
+    }
+  }
 
   const services = [
     {
@@ -32,19 +59,6 @@ const Services = () => {
       setGridVisible(true)
     }
   }, [isInView])
-
-  const scrollToSection = (sectionId) => {
-    if (sectionId.startsWith('/')) {
-      // External page navigation
-      window.location.href = sectionId
-    } else {
-      // Scroll to section on same page
-      const element = document.getElementById(sectionId)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-      }
-    }
-  }
 
   return (
     <section id="services" className="py-20 bg-gradient-to-br from-white via-gray-50 to-gray-100">
@@ -115,7 +129,7 @@ const Services = () => {
                 
                 {/* CTA Button */}
                 <button 
-                  onClick={() => scrollToSection(service.redirectTo)}
+                  onClick={() => handleNavigation(service.redirectTo)}
                   className="w-full bg-gradient-to-r from-[#B85042] to-[#A14237] text-white px-5 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 cursor-pointer group-hover:shadow-xl border-0 focus:outline-none focus:ring-2 focus:ring-[#B85042] focus:ring-offset-2"
                 >
                   <span className="flex items-center justify-center">
@@ -146,13 +160,13 @@ const Services = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <button 
-                onClick={() => scrollToSection('/fitout-solutions')}
+                onClick={() => handleNavigation('/fitout-solutions')}
                 className="bg-gradient-to-r from-[#B85042] to-[#A14237] text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 cursor-pointer text-base min-w-[180px]"
               >
                 Explore Fit-out Solutions
               </button>
               <button 
-                onClick={() => scrollToSection('/residential-design')}
+                onClick={() => handleNavigation('/residential-design')}
                 className="border-2 border-[#B85042] text-[#B85042] px-8 py-4 rounded-xl font-semibold hover:bg-[#B85042] hover:text-white transition-all duration-300 transform hover:scale-105 cursor-pointer text-base min-w-[180px]"
               >
                 View Residential Design

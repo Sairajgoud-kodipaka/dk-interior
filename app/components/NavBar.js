@@ -74,8 +74,16 @@ const NavBar = () => {
       // Use Next.js router for page navigation
       router.push(section.href)
     } else if (section.href.startsWith('#')) {
-      // Scroll to section on same page
-      scrollToSection(section.href)
+      // Internal section navigation
+      if (window.location.pathname === '/') {
+        // Already on home page, scroll to section
+        scrollToSection(section.href)
+      } else {
+        // On different page, navigate to home page first, then scroll
+        router.push('/')
+        // Set a flag to scroll after navigation
+        sessionStorage.setItem('scrollToSection', section.href)
+      }
     }
     setIsOpen(false)
   }
@@ -178,7 +186,7 @@ const NavBar = () => {
 
       {/* Mobile/Tablet Sidebar */}
       {isOpen && (
-        <div className="fixed inset-0 z-[9999] lg:hidden">
+        <div className="fixed inset-0 z-50 lg:hidden">
           {/* Backdrop */}
           <div
             className="fixed inset-0 bg-black/60 animate-in fade-in duration-300"
