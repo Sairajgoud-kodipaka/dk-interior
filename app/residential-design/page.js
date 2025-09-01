@@ -7,8 +7,6 @@ import { useRouter } from 'next/navigation'
 import { ArrowLeft, Home, Palette, Ruler, Heart, Shield, Clock, Users, Bed, ChefHat, ShowerHead, BookOpen, Baby } from 'lucide-react'
 import NavBar from '../components/NavBar'
 import Hero from '../components/Hero'
-import { useRouter } from 'next/navigation'
-
 import Footer from '../components/Footer'
 
 const ResidentialDesign = () => {
