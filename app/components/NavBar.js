@@ -95,16 +95,16 @@ const NavBar = () => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center">
-              <Link href="/">
-                <img
-                  src="/dk Interior - Logo.png"
-                  alt="DK Interiors Logo"
-                  className="h-16 w-16 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-200"
-                  onError={(e) => {
-                    e.target.src = "/logo.svg"
-                  }}
-                />
-              </Link>
+                             <Link href="/">
+                 <img
+                   src={`/dk Interior - Logo.png?v=${Date.now()}`}
+                   alt="DK Interiors Logo"
+                   className="h-20 w-20 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-200"
+                   onError={(e) => {
+                     e.target.src = "/logo.svg"
+                   }}
+                 />
+               </Link>
             </div>
 
             {/* Desktop Navigation - Hidden on mobile and tablet, visible on lg+ */}
@@ -153,7 +153,7 @@ const NavBar = () => {
                     // Contact button with special styling
                     <button
                       onClick={() => handleNavigation(section)}
-                      className="bg-[#B85042] hover:bg-[#A14237] text-white font-semibold px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#B85042] focus:ring-offset-2 shadow-lg hover:shadow-xl"
+                      className="bg-[#B85042] hover:bg-[#A14237] text-white font-semibold px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#B85042] focus:ring-offset-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                     >
                       {section.name}
                     </button>
@@ -208,9 +208,9 @@ const NavBar = () => {
             <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200 bg-white flex-shrink-0">
               <Link href="/" onClick={() => setIsOpen(false)}>
                 <img
-                  src="/dk Interior - Logo.png"
+                  src={`/dk Interior - Logo.png?v=${Date.now()}`}
                   alt="DK Interiors Logo"
-                  className="h-16 w-auto object-contain cursor-pointer hover:opacity-80 transition-opacity duration-200"
+                  className="h-20 w-auto object-contain cursor-pointer hover:opacity-80 transition-opacity duration-200"
                   onError={(e) => {
                     e.target.src = "/logo.svg"
                   }}

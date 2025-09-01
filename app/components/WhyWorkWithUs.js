@@ -69,7 +69,7 @@ const WhyWorkWithUs = () => {
     },
     {
       icon: Shield,
-      title: '4 Lakh+ SFT Delivered',
+      title: '4 Lakh+ Sq. Ft. Delivered',
       description: 'Managed over 4 lakh square feet of premium interior projects'
     },
     {
