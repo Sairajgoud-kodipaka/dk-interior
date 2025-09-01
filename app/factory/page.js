@@ -149,20 +149,39 @@ export default function FactoryPage() {
                 </p>
               </div>
               
-              <div className="max-w-2xl mx-auto">
-                {/* Address Information */}
-                <div className="bg-white/5 rounded-xl p-8 text-center">
-                  <div className="flex items-center justify-center mb-6">
-                    <div className="text-3xl mr-3">📍</div>
-                    <h4 className="text-2xl font-bold text-white">Our Factory Address</h4>
+              <div className="max-w-6xl mx-auto">
+                {/* Address and Map Side by Side */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  {/* Address Information */}
+                  <div className="bg-white/5 rounded-xl p-8">
+                    <div className="flex items-center mb-6">
+                      <div className="text-3xl mr-3">📍</div>
+                      <h4 className="text-2xl font-bold text-white">Our Factory Address</h4>
+                    </div>
+                    <div className="text-gray-300 space-y-4">
+                      <p className="text-xl">
+                        <strong>DK Interiors Factory</strong>
+                      </p>
+                      <p className="text-lg">Vailal Village, Jinnaram Mandal</p>
+                      <p className="text-lg">Sangareddy District, Telangana</p>
+                      <p className="text-[#B85042] font-semibold text-xl">22,000+ SFT Facility</p>
+                    </div>
                   </div>
-                  <div className="text-gray-300 space-y-4">
-                    <p className="text-xl">
-                      <strong>DK Interiors Factory</strong>
-                    </p>
-                    <p className="text-lg">Vailal Village, Jinnaram Mandal</p>
-                    <p className="text-lg">Sangareddy District, Telangana</p>
-                    <p className="text-[#B85042] font-semibold text-xl">22,000+ SFT Facility</p>
+                  
+                  {/* Google Maps */}
+                  <div className="bg-white/5 rounded-xl p-4">
+                    <div className="w-full h-full min-h-[300px] rounded-lg overflow-hidden">
+                      <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d1914.4205031142044!2d78.35909433038215!3d17.6156913237612!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDM2JzU3LjgiTiA3OMKwMjEnMzguMyJF!5e1!3m2!1sen!2sin!4v1756725513741!5m2!1sen!2sin" 
+                        width="100%" 
+                        height="100%" 
+                        style={{border: 0}} 
+                        allowFullScreen="" 
+                        loading="lazy" 
+                        referrerPolicy="no-referrer-when-downgrade"
+                        className="w-full h-full"
+                      ></iframe>
+                    </div>
                   </div>
                 </div>
               </div>
