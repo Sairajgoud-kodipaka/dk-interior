@@ -81,7 +81,7 @@ export default function PrivacyPage() {
                 <div className="bg-[#f5f4f2] p-6 rounded-lg">
                   <p className="text-[#0f1115] font-medium">DK Interiors</p>
                   <p className="text-[#6b7280]">Phone: +91 98858 09472, +91 97898 18047, +91 96772 92533</p>
-                  <p className="text-[#6b7280]">Email: info@dkinteriors.com</p>
+                  <p className="text-[#6b7280]">Email: info@dk-interior.in</p>
                 </div>
               </section>
             </div>
