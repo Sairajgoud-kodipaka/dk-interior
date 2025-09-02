@@ -1,70 +1,61 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+
 const AnnouncementsBar = () => {
-  return (
-    <div className="bg-[#B85042] text-white overflow-hidden relative h-14 flex items-center" key="announcements-v2">
-      <div className="announcement-wrapper">
-        <div className="announcement-container">
-          <span className="announcement-span">THE FIT OUT PRO</span>
-          <span className="announcement-span">IN-HOUSE PRODUCTION</span>
-          <span className="announcement-span">ONE STOP SOLUTION FOR DESIGN AND BUILD</span>
+  const [isClient, setIsClient] = useState(false)
+  const [version] = useState(Date.now()) // Force re-render
+  
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  const announcements = [
+    "THE FIT-OUT PRO",
+    "IN-HOUSE PRODUCTION", 
+    "ONE STOP SOLUTION FOR DESIGN AND BUILD"
+  ]
+
+  if (!isClient) {
+    return (
+      <div className="bg-[#B85042] text-white overflow-hidden relative h-14 flex items-center">
+        <div className="w-full h-full flex items-center justify-center">
+          <span className="text-lg sm:text-xl font-extrabold tracking-wider uppercase text-white">
+            THE FIT-OUT PRO
+          </span>
         </div>
       </div>
+    )
+  }
+
+  return (
+    <div className="bg-[#B85042] text-white overflow-hidden relative h-14 flex items-center" key={`announcements-${version}`}>
+      <div className="w-full h-full relative flex items-center justify-center">
+        {announcements.map((announcement, index) => (
+          <span
+            key={announcement}
+            className={`
+              absolute w-full text-center text-lg sm:text-xl font-extrabold tracking-wider uppercase text-white
+              opacity-0 transform translate-x-full
+              animate-slide-in-out
+              ${index === 0 ? 'animate-delay-0' : ''}
+              ${index === 1 ? 'animate-delay-3000' : ''}
+              ${index === 2 ? 'animate-delay-6000' : ''}
+            `}
+            style={{
+              animationDuration: '9000ms',
+              animationIterationCount: 'infinite',
+              animationTimingFunction: 'ease-in-out'
+            }}
+          >
+            {announcement}
+          </span>
+        ))}
+      </div>
       
-      <style jsx>{`
-        /* Cache busting - v2.0 */
-        .announcement-wrapper {
-          width: 100%;
-          height: 100%;
-          overflow: hidden;
-          position: relative;
-        }
-        
-        .announcement-container {
-          width: 100%;
-          height: 100%;
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        
-        .announcement-span {
-          font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-          font-size: 1.125rem;
-          font-weight: 800;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          color: #ffffff;
-          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-          position: absolute;
-          width: 100%;
-          text-align: center;
-          opacity: 0;
-          transform: translateX(100%);
-          animation: slideInOut 9s ease-in-out infinite;
-        }
-        
-        .announcement-span:nth-child(1) {
-          animation-delay: 0s;
-        }
-        
-        .announcement-span:nth-child(2) {
-          animation-delay: 3s;
-        }
-        
-        .announcement-span:nth-child(3) {
-          animation-delay: 6s;
-        }
-        
-        @media (min-width: 640px) {
-          .announcement-span {
-            font-size: 1.25rem;
-            letter-spacing: 0.2em;
-          }
-        }
-        
-        @keyframes slideInOut {
+      <style jsx global>{`
+        /* Cache busting - v3.0 - FIT-OUT with hyphen */
+        @keyframes slide-in-out {
           0% {
             opacity: 0;
             transform: translateX(100%);
@@ -87,13 +78,25 @@ const AnnouncementsBar = () => {
           }
         }
         
-        /* Force animation restart */
-        .announcement-span {
+        .animate-slide-in-out {
+          animation-name: slide-in-out;
           animation-fill-mode: both;
           will-change: transform, opacity;
         }
         
-        .announcement-container:hover .announcement-span {
+        .animate-delay-0 {
+          animation-delay: 0ms;
+        }
+        
+        .animate-delay-3000 {
+          animation-delay: 3000ms;
+        }
+        
+        .animate-delay-6000 {
+          animation-delay: 6000ms;
+        }
+        
+        .animate-slide-in-out:hover {
           animation-play-state: paused;
         }
       `}</style>
