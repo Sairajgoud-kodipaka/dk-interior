@@ -5,6 +5,7 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { Factory, Zap, Target } from 'lucide-react'
 import NavBar from './components/NavBar'
+import AnnouncementsBar from './components/AnnouncementsBar'
 import Hero from './components/Hero'
 import Services from './components/Services'
 import WhyWorkWithUs from './components/WhyWorkWithUs'
@@ -113,6 +114,9 @@ export default function App() {
     <div className={`min-h-screen ${isLoaded ? 'animate-fade-in-up' : 'opacity-0'}`}>
       {/* Navigation */}
       <NavBar />
+      
+      {/* Announcements Bar */}
+      <AnnouncementsBar />
       
       {/* Main Content */}
       <main className="relative">
