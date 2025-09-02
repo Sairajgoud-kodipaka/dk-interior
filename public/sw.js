@@ -1,6 +1,6 @@
-const CACHE_NAME = 'dk-interiors-v2'
-const STATIC_CACHE = 'dk-interiors-static-v2'
-const DYNAMIC_CACHE = 'dk-interiors-dynamic-v2'
+const CACHE_NAME = 'dk-interiors-v3'
+const STATIC_CACHE = 'dk-interiors-static-v3'
+const DYNAMIC_CACHE = 'dk-interiors-dynamic-v3'
 
 // Assets to cache immediately
 const STATIC_ASSETS = [
@@ -65,10 +65,57 @@ self.addEventListener('fetch', (event) => {
     return
   }
 
+  // For HTML pages, always try network first, then cache
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          // If network request succeeds, update cache
+          if (response && response.status === 200) {
+            const responseToCache = response.clone()
+            caches.open(DYNAMIC_CACHE)
+              .then((cache) => {
+                cache.put(request, responseToCache)
+              })
+          }
+          return response
+        })
+        .catch(() => {
+          // If network fails, try cache
+          return caches.match(request)
+            .then((cachedResponse) => {
+              return cachedResponse || caches.match('/')
+            })
+        })
+    )
+    return
+  }
+
+  // For other assets, try cache first, then network
   event.respondWith(
     caches.match(request)
       .then((cachedResponse) => {
         if (cachedResponse) {
+          // For static assets, return cached version immediately
+          if (isStaticAsset(request.url)) {
+            return cachedResponse
+          }
+          
+          // For dynamic content, return cached but also fetch fresh version
+          fetch(request)
+            .then((response) => {
+              if (response && response.status === 200) {
+                const responseToCache = response.clone()
+                caches.open(DYNAMIC_CACHE)
+                  .then((cache) => {
+                    cache.put(request, responseToCache)
+                  })
+              }
+            })
+            .catch(() => {
+              // Ignore network errors for background updates
+            })
+          
           return cachedResponse
         }
 

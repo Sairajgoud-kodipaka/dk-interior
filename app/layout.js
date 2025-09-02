@@ -34,6 +34,9 @@ export default function RootLayout({ children }) {
     <html lang="en" className={inter.variable}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta httpEquiv="Pragma" content="no-cache" />
+        <meta httpEquiv="Expires" content="0" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -41,28 +44,35 @@ export default function RootLayout({ children }) {
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
         <script dangerouslySetInnerHTML={{
           __html: `
-            // Only clear caches in development
-            if (typeof window !== 'undefined' && window.location.hostname === 'localhost' && 'caches' in window) {
+            // Cache busting and service worker management
+            if (typeof window !== 'undefined' && 'caches' in window) {
+              // Clear old caches on production
               caches.keys().then(function(cacheNames) {
                 return Promise.all(
                   cacheNames.map(function(cacheName) {
-                    console.log('Deleting cache:', cacheName);
-                    return caches.delete(cacheName);
+                    // Only delete old cache versions
+                    if (cacheName.includes('dk-interiors') && !cacheName.includes('v3')) {
+                      console.log('Deleting old cache:', cacheName);
+                      return caches.delete(cacheName);
+                    }
                   })
                 );
               }).then(function() {
-                console.log('All caches cleared!');
+                console.log('Old caches cleared!');
               });
             }
             
-            // Unregister service worker only in development
-            if (typeof window !== 'undefined' && window.location.hostname === 'localhost' && 'serviceWorker' in navigator) {
-              navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                for(let registration of registrations) {
-                  console.log('Unregistering service worker:', registration);
-                  registration.unregister();
-                }
-              });
+            // Update service worker registration
+            if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+              navigator.serviceWorker.register('/sw.js?v=' + Date.now())
+                .then(function(registration) {
+                  console.log('Service Worker registered:', registration);
+                  // Force update if new version available
+                  registration.update();
+                })
+                .catch(function(error) {
+                  console.log('Service Worker registration failed:', error);
+                });
             }
           `
         }} />

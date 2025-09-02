@@ -40,24 +40,13 @@ export default function PerformanceOptimizer() {
       })
     }
 
-    // Service Worker registration for caching
-    const registerServiceWorker = () => {
-      if ('serviceWorker' in navigator && window.location.hostname !== 'localhost') {
-        navigator.serviceWorker.register('/sw.js')
-          .then(registration => {
-            console.log('SW registered: ', registration)
-          })
-          .catch(registrationError => {
-            console.log('SW registration failed: ', registrationError)
-          })
-      }
-    }
+    // Service Worker registration is handled in layout.js
+    // Removed duplicate registration to prevent conflicts
 
     // Initialize optimizations
     preloadCriticalResources()
     optimizeImageLoading()
     prefetchOnHover()
-    registerServiceWorker()
 
     // Performance monitoring
     if (typeof window !== 'undefined' && 'performance' in window) {
