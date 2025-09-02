@@ -13,19 +13,56 @@ const inter = Inter({
 })
 
 export const metadata = {
-  title: 'DK Interiors — The Fitout Pro',
-  description: 'Premium interior design and fit-out solutions for retail, commercial, and residential spaces.',
-  keywords: 'interior design, fit-out solutions, retail design, commercial interiors, residential design, Hyderabad',
+  title: 'DK Interiors — The Fitout Pro | Premium Interior Design & Fit-out Solutions',
+  description: 'Leading interior design company in Hyderabad. Specialized in retail, commercial & residential fit-out solutions. 20+ years experience. Call +91 98858 09472',
+  keywords: 'interior design Hyderabad, fit-out solutions, retail design, commercial interiors, residential design, furniture manufacturing, custom interiors, office design, showroom design, jewelry store design',
   authors: [{ name: 'DK Interiors' }],
+  creator: 'DK Interiors',
+  publisher: 'DK Interiors',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL('https://www.dk-interior.in'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: 'DK Interiors — The Fitout Pro',
-    description: 'Premium interior design and fit-out solutions for retail, commercial, and residential spaces.',
-    type: 'website',
+    title: 'DK Interiors — The Fitout Pro | Premium Interior Design & Fit-out Solutions',
+    description: 'Leading interior design company in Hyderabad. Specialized in retail, commercial & residential fit-out solutions. 20+ years experience.',
+    url: 'https://www.dk-interior.in',
+    siteName: 'DK Interiors',
+    images: [
+      {
+        url: '/optimized/dk Interior - Logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'DK Interiors - Premium Interior Design Company',
+      },
+    ],
     locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'DK Interiors — The Fitout Pro',
+    description: 'Leading interior design company in Hyderabad. Specialized in retail, commercial & residential fit-out solutions.',
+    images: ['/optimized/dk Interior - Logo.png'],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-verification-code', // Add your Google Search Console verification code
   },
 }
 
@@ -42,6 +79,82 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+        
+        {/* Structured Data for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "DK Interiors",
+              "alternateName": "The Fitout Pro",
+              "url": "https://www.dk-interior.in",
+              "logo": "https://www.dk-interior.in/optimized/dk Interior - Logo.png",
+              "description": "Premium interior design and fit-out solutions for retail, commercial, and residential spaces in Hyderabad",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Survey No.169, Vavilala Village, Jinnaram Mandal",
+                "addressLocality": "Sangareddy",
+                "addressRegion": "Hyderabad",
+                "addressCountry": "IN",
+                "postalCode": "502319"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-98858-09472",
+                "contactType": "customer service",
+                "areaServed": "IN",
+                "availableLanguage": "English"
+              },
+              "email": "dkinterior17@gmail.com",
+              "foundingDate": "2004",
+              "numberOfEmployees": "20-50",
+              "serviceArea": {
+                "@type": "GeoCircle",
+                "geoMidpoint": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 17.3850,
+                  "longitude": 78.4867
+                },
+                "geoRadius": "100000"
+              },
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Interior Design Services",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Fit-out Solutions",
+                      "description": "Complete fit-out solutions for retail, commercial, and corporate spaces"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Residential Design",
+                      "description": "Custom interior design for homes and apartments"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Furniture Manufacturing",
+                      "description": "Custom furniture manufacturing and installation"
+                    }
+                  }
+                ]
+              },
+              "sameAs": [
+                "https://www.dk-interior.in"
+              ]
+            })
+          }}
+        />
         <script dangerouslySetInnerHTML={{
           __html: `
             // Cache busting and service worker management

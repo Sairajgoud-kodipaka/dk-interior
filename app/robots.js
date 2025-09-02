@@ -5,6 +5,6 @@ export default function robots() {
       allow: '/',
       disallow: ['/api/', '/_next/', '/admin/'],
     },
-    sitemap: 'https://dkinteriors.com/sitemap.xml', // Replace with your actual domain
+    sitemap: 'https://www.dk-interior.in/sitemap.xml', // Your actual domain
   }
 }

@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = 'https://dkinteriors.com' // Replace with your actual domain
+  const baseUrl = 'https://www.dk-interior.in' // Your actual domain
   
   return [
     {
