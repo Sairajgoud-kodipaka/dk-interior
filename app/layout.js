@@ -79,6 +79,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+        <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
         
         {/* Structured Data for SEO */}
         <script
