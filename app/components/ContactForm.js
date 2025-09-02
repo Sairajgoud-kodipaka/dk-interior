@@ -183,9 +183,11 @@ const ContactForm = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-[#0f1115] mb-1">Mobile</h4>
-                  <p className="text-[#6b7280] hover:text-[#B85042] transition-colors duration-200">
-                    +91 98858 09472
-                  </p>
+                  <div className="text-[#6b7280] hover:text-[#B85042] transition-colors duration-200">
+                    <p>+91 98858 09472</p>
+                    <p>+91 97898 18047</p>
+                    <p>+91 96772 92533</p>
+                  </div>
                 </div>
               </div>
 

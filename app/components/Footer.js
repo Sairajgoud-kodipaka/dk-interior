@@ -36,8 +36,8 @@ const Footer = () => {
     window.location.href = 'mailto:dkinterior17@gmail.com?subject=Inquiry from DK Interiors Website&body=Hello, I am interested in your interior design services. Please contact me to discuss my project requirements.'
   }
 
-  const handlePhoneClick = () => {
-    window.location.href = 'tel:+919885809472'
+  const handlePhoneClick = (phoneNumber) => {
+    window.location.href = `tel:${phoneNumber}`
   }
 
   const handleAddressClick = () => {
@@ -60,31 +60,52 @@ const Footer = () => {
               />
             </Link>
             <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 max-w-md leading-relaxed">
-              Transforming spaces with innovative design solutions. 
+              Transforming spaces with innovative design solutions.
               Your trusted partner for premium interior fit-outs across India.
             </p>
-            <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-300">
-              <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-[#B85042]" />
-                <button 
-                  onClick={handleEmailClick}
-                  className="break-all text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer hover:underline text-left"
-                >
-                  dkinterior17@gmail.com
-                </button>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-[#B85042]" />
-                <button 
-                  onClick={handlePhoneClick}
+            <div className="flex items-start space-x-3">
+              <Mail className="w-5 h-5 text-[#B85042] mt-1 mb-4" />
+              <button
+                onClick={handleEmailClick}
+                className="break-all text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer hover:underline text-left"
+              >
+                dkinterior17@gmail.com
+              </button>
+            </div>
+
+            <div className="space-y-4 text-sm sm:text-base text-gray-300">
+              <div className="flex items-start space-x-3">
+                <Phone className="w-5 h-5 text-[#B85042] mt-1" />
+                <button
+                  onClick={() => handlePhoneClick('+919885809472')}
                   className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer hover:underline text-left"
                 >
                   +91 98858 09472
                 </button>
               </div>
               <div className="flex items-start space-x-3">
+                <div className="w-5 h-5 mt-1"></div>
+                <button
+                  onClick={() => handlePhoneClick('+919789818047')}
+                  className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer hover:underline text-left"
+                >
+                  +91 97898 18047
+                </button>
+              </div>
+              <div className="flex items-start space-x-3">
+                <div className="w-5 h-5 mt-1"></div>
+                <button
+                  onClick={() => handlePhoneClick('+919677292533')}
+                  className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer hover:underline text-left"
+                >
+                  +91 96772 92533
+                </button>
+              </div>
+
+
+              <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-[#B85042] mt-1" />
-                <button 
+                <button
                   onClick={handleAddressClick}
                   className="text-xs sm:text-sm leading-relaxed text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer hover:underline text-left"
                 >
@@ -99,7 +120,7 @@ const Footer = () => {
             <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-[#B85042] border-b-2 border-[#B85042] pb-2">Services</h3>
             <ul className="space-y-2 sm:space-y-3">
               <li>
-                <Link 
+                <Link
                   href="/fitout-solutions"
                   className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline block py-1"
                 >
@@ -107,7 +128,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   href="/residential-design"
                   className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline block py-1"
                 >
@@ -122,7 +143,7 @@ const Footer = () => {
             <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-[#B85042] border-b-2 border-[#B85042] pb-2">Company</h3>
             <ul className="space-y-2 sm:space-y-3">
               <li>
-                <Link 
+                <Link
                   href="/about"
                   className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline block py-1"
                 >
@@ -130,7 +151,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <button 
+                <button
                   onClick={() => handleNavigation('#our-work')}
                   className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer hover:underline block py-1 w-full text-left"
                 >
@@ -138,7 +159,7 @@ const Footer = () => {
                 </button>
               </li>
               <li>
-                <Link 
+                <Link
                   href="/factory"
                   className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-left hover:underline block py-1"
                 >
@@ -146,7 +167,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <button 
+                <button
                   onClick={() => handleNavigation('#contact')}
                   className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer hover:underline block py-1 w-full text-left"
                 >
@@ -154,7 +175,7 @@ const Footer = () => {
                 </button>
               </li>
               <li>
-                <button 
+                <button
                   onClick={() => handleNavigation('#trusted-brands')}
                   className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer hover:underline block py-1 w-full text-left"
                 >
@@ -171,7 +192,7 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>
+    </footer >
   )
 }
 

@@ -53,12 +53,11 @@ export default function Error({ error, reset }) {
           <p className="text-sm text-[#6b7280] mb-2">
             Still having trouble?
           </p>
-          <a 
-            href="tel:+919885809472"
-            className="text-[#B85042] hover:text-[#A14237] font-medium transition-colors duration-200"
-          >
-            Call us at +91 98858 09472
-          </a>
+          <div className="text-[#B85042] hover:text-[#A14237] font-medium transition-colors duration-200">
+            <a href="tel:+919885809472" className="block">Call us at +91 98858 09472</a>
+            <a href="tel:+919789818047" className="block">Call us at +91 97898 18047</a>
+            <a href="tel:+919677292533" className="block">Call us at +91 96772 92533</a>
+          </div>
         </div>
       </div>
     </div>

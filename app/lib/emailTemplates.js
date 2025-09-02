@@ -136,7 +136,7 @@ export const customerConfirmationEmail = (data) => ({
         <div class="contact-info">
           <h3 style="margin-top: 0; color: #B85042;">📞 Need to reach us quickly?</h3>
           <p style="margin: 5px 0;"><strong>Email:</strong> dkinterior17@gmail.com</p>
-          <p style="margin: 5px 0;"><strong>Mobile:</strong> +91 98858 09472</p>
+          <p style="margin: 5px 0;"><strong>Mobile:</strong> +91 98858 09472, +91 97898 18047, +91 96772 92533</p>
           <p style="margin: 5px 0;"><strong>Business Hours:</strong> Mon-Fri: 9:00 AM - 6:00 PM, Sat: 10:00 AM - 4:00 PM</p>
         </div>
         
@@ -174,7 +174,7 @@ What Happens Next?
 
 Need to reach us quickly?
 - Email: dkinterior17@gmail.com
-- Mobile: +91 98858 09472
+- Mobile: +91 98858 09472, +91 97898 18047, +91 96772 92533
 - Business Hours: Mon-Fri: 9:00 AM - 6:00 PM, Sat: 10:00 AM - 4:00 PM
 
 We're committed to delivering exceptional results and creating spaces that exceed your expectations. Your vision is our priority!
