@@ -5,11 +5,11 @@ export default function Loading() {
         {/* Logo */}
         <div className="mb-8">
           <img
-            src="/optimized/dk Interior - Logo.png"
+            src="/dk Interior - Logo.png"
             alt="DK Interiors Logo"
-            className="h-16 w-16 mx-auto object-contain animate-pulse"
-            width={64}
-            height={64}
+            className="h-20 w-20 mx-auto object-contain animate-pulse"
+            width={80}
+            height={80}
           />
         </div>
         

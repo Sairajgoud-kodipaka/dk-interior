@@ -100,9 +100,9 @@ const NavBar = () => {
                  <Image
                    src="/dk Interior - Logo.png"
                    alt="DK Interiors Logo"
-                   width={80}
-                   height={80}
-                   className="h-20 w-20 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-200"
+                   width={96}
+                   height={96}
+                   className="h-24 w-24 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-200"
                    priority
                    loading="eager"
                  />
@@ -116,20 +116,20 @@ const NavBar = () => {
                   {section.id === 'services' ? (
                     // Services dropdown
                     <div className="relative">
-                      <button className="flex items-center text-sm font-medium transition-colors duration-200 hover:text-[#B85042] focus:outline-none rounded-sm px-2 py-1 text-[#0f1115]">
+                      <button className="flex items-center text-base font-medium transition-colors duration-200 hover:text-[#B85042] focus:outline-none rounded-sm px-3 py-2 text-[#0f1115]">
                         Services
                         <ChevronDown className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180" />
                       </button>
                       <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-[#6b7280]/20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                         <Link
                           href="/fitout-solutions"
-                          className="block w-full text-left px-4 py-3 text-sm text-[#0f1115] hover:bg-[#B85042]/10 hover:text-[#B85042] transition-colors duration-200 rounded-lg"
+                          className="block w-full text-left px-4 py-3 text-base text-[#0f1115] hover:bg-[#B85042]/10 hover:text-[#B85042] transition-colors duration-200 rounded-lg"
                         >
                           Fit-out Solutions
                         </Link>
                         <Link
                           href="/residential-design"
-                          className="block w-full text-left px-4 py-3 text-sm text-[#0f1115] hover:bg-[#B85042]/10 hover:text-[#B85042] transition-colors duration-200 rounded-lg"
+                          className="block w-full text-left px-4 py-3 text-base text-[#0f1115] hover:bg-[#B85042]/10 hover:text-[#B85042] transition-colors duration-200 rounded-lg"
                         >
                           Residential Design
                         </Link>
@@ -138,14 +138,14 @@ const NavBar = () => {
                   ) : section.id === 'about' ? (
                     // About dropdown
                     <div className="relative">
-                      <button className="flex items-center text-sm font-medium transition-colors duration-200 hover:text-[#B85042] focus:outline-none rounded-sm px-2 py-1 text-[#0f1115]">
+                      <button className="flex items-center text-base font-medium transition-colors duration-200 hover:text-[#B85042] focus:outline-none rounded-sm px-3 py-2 text-[#0f1115]">
                         About Us
                         <ChevronDown className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180" />
                       </button>
                       <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-[#6b7280]/20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                         <Link
                           href="/about"
-                          className="block w-full text-left px-4 py-3 text-sm text-[#0f1115] hover:bg-[#B85042]/10 hover:text-[#B85042] transition-colors duration-200 rounded-lg"
+                          className="block w-full text-left px-4 py-3 text-base text-[#0f1115] hover:bg-[#B85042]/10 hover:text-[#B85042] transition-colors duration-200 rounded-lg"
                         >
                           Our Story
                         </Link>
@@ -155,7 +155,7 @@ const NavBar = () => {
                     // Contact button with special styling
                     <button
                       onClick={() => handleNavigation(section)}
-                      className="bg-[#B85042] hover:bg-[#A14237] text-white font-semibold px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#B85042] focus:ring-offset-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                      className="bg-[#B85042] hover:bg-[#A14237] text-white font-semibold text-base px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#B85042] focus:ring-offset-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                     >
                       {section.name}
                     </button>
@@ -163,7 +163,7 @@ const NavBar = () => {
                     // Regular navigation item
                     <button
                       onClick={() => handleNavigation(section)}
-                      className={`text-sm font-medium transition-colors duration-200 hover:text-[#B85042] focus:outline-none rounded-sm px-2 py-1 ${
+                      className={`text-base font-medium transition-colors duration-200 hover:text-[#B85042] focus:outline-none rounded-sm px-3 py-2 ${
                         section.href === '/' && activeSection === 'hero'
                           ? 'text-[#B85042] border-b-2 border-[#B85042]'
                           : 'text-[#0f1115]'
@@ -212,9 +212,9 @@ const NavBar = () => {
                 <Image
                   src="/dk Interior - Logo.png"
                   alt="DK Interiors Logo"
-                  width={80}
-                  height={80}
-                  className="h-20 w-auto object-contain cursor-pointer hover:opacity-80 transition-opacity duration-200"
+                  width={96}
+                  height={96}
+                  className="h-24 w-auto object-contain cursor-pointer hover:opacity-80 transition-opacity duration-200"
                   priority
                   loading="eager"
                 />

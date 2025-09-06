@@ -56,7 +56,7 @@ const Footer = () => {
               <img
                 src="/dk Interior - Logo w.png"
                 alt="DK Interiors Logo"
-                className="h-20 w-auto mb-4 sm:mb-6 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-200"
+                className="h-24 w-auto mb-4 sm:mb-6 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-200"
               />
             </Link>
             <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 max-w-md leading-relaxed">
