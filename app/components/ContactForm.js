@@ -198,7 +198,7 @@ const ContactForm = () => {
                 <div>
                   <h4 className="font-semibold text-[#0f1115] mb-1">Factory Location</h4>
                   <p className="text-[#6b7280] hover:text-[#B85042] transition-colors duration-200">
-                    Survey No.169, Vavilala Village, Jinnaram Mandal,<br />
+                   3-94/1/A/1, Survey No.169, Vavilala Village, Jinnaram Mandal,<br />
                     Sangareddy, Hyderabad, Telangana -502319
                   </p>
                 </div>

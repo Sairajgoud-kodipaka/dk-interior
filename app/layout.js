@@ -93,7 +93,7 @@ export default function RootLayout({ children }) {
               "description": "Premium interior design and fit-out solutions for retail, commercial, and residential spaces in Hyderabad",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "Survey No.169, Vavilala Village, Jinnaram Mandal",
+                "streetAddress": "3-94/1/A/1,Survey No.169, Vavilala Village, Jinnaram Mandal",
                 "addressLocality": "Sangareddy",
                 "addressRegion": "Hyderabad",
                 "addressCountry": "IN",

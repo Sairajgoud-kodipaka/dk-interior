@@ -41,7 +41,7 @@ const Footer = () => {
   }
 
   const handleAddressClick = () => {
-    const address = "Survey No.169, Vavilala Village, Jinnaram Mandal, Sangareddy, Hyderabad, Telangana -502319"
+    const address = "3-94/1/A/1,Survey No.169, Vavilala Village, Jinnaram Mandal, Sangareddy, Hyderabad, Telangana -502319"
     const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`
     window.open(googleMapsUrl, '_blank')
   }
@@ -109,7 +109,7 @@ const Footer = () => {
                   onClick={handleAddressClick}
                   className="text-xs sm:text-sm leading-relaxed text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer hover:underline text-left"
                 >
-                  Survey No.169, Vavilala Village, Jinnaram Mandal, Sangareddy, Hyderabad, Telangana -502319
+                 3-94/1/A/1, Survey No.169, Vavilala Village, Jinnaram Mandal, Sangareddy, Hyderabad, Telangana -502319
                 </button>
               </div>
             </div>
